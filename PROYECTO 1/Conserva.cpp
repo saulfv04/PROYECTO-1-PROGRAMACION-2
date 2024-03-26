@@ -12,6 +12,10 @@ Conserva::Conserva(Fecha* ptrF, bool en, string c, string nC, string d, double p
     limite = l;
 }
 
+Conserva::Conserva(const Conserva& copia)
+{
+}
+
 Conserva::~Conserva(){
     if (ptrFechaIng != nullptr) {
         delete ptrFechaIng;

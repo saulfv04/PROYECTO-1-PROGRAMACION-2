@@ -6,6 +6,7 @@ class Conserva : public Producto
 		bool envasado;
 	public:
 		Conserva(Fecha*,bool,string,string,string,double,string,int,int);
+		Conserva(const Conserva&);
 		virtual ~Conserva();
 		
 		//Accesores y Mutadores propios de la clase
