@@ -6,6 +6,7 @@ class Abarrote :public ProdPerecedero
 		string empresaNombre;
 	public:
 		Abarrote(Perecedero*,Fecha*, string,bool, double, string, string, string, double, string, int, int);
+		Abarrote(const Abarrote&);
 		virtual ~Abarrote();
 
 		//Accesores y Mutadores de la propia clase;

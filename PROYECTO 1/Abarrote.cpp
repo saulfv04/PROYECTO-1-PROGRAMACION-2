@@ -16,6 +16,24 @@ Abarrote::Abarrote(Perecedero* ptrP,Fecha* ptrFI, string eN,bool n, double p, st
     limite = l;
 }
 
+Abarrote::Abarrote(const Abarrote& copia)
+{
+    this->ptrFechaIng =copia.ptrFechaIng;
+    this->ptrPer =copia.ptrPer;
+    this->empresaNombre = copia.empresaNombre;
+    this->nacional = copia.nacional;
+    this->peso = copia.peso;
+    this->ptrFechaIng = copia.ptrFechaIng;
+    this->codigo = copia.codigo;
+    this->nombreComercial = copia.nombreComercial;
+    this->descripcion = copia.descripcion;
+    this->precioCosto = copia.precioCosto;
+    this->categoria = copia.categoria;
+    this->existencia = copia.existencia;
+    this->limite = copia.limite;
+
+}
+
 Abarrote::~Abarrote()
 {
     if (ptrFechaIng != nullptr) {
@@ -49,6 +67,21 @@ int Abarrote::getFechaPer()
 
 string Abarrote::toString()
 {
+    stringstream s;
+    s << "----- PRODUCTO ABARRATO ----- " << endl;
+    s << "Nombre " << this->nombreComercial << endl;
+    s << "Codigo:  " << this->codigo << endl;
+    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
+    s << "Fecha de vencimiento: " << this->ptrPer->toString() << endl;
+    s << "Categoria:  " << this->categoria << endl;
+    s << "Nacionalidad:  " << this->nacional << endl;
+    s << "Peso:  " << this->peso << endl;
+    s << "Empresa nombre:  " << this->empresaNombre << endl;
+    s << "Descripcion:  " << this->descripcion << endl;
+    s << "Precio costo:  $" << this->precioCosto << endl;
+    s << "Existencia:  " << this->existencia << endl;
+    s << "Limite de compra:  " << this->limite << endl;
+    return s.str();
 }
 
 string Abarrote::getnombreComecial()
