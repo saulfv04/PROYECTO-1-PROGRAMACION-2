@@ -13,5 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Producto-Decorado-cpp">
+      <UniqueIdentifier>{60a80286-ec15-4474-96d4-fe3b753f2b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Producto">
+      <UniqueIdentifier>{65600e6d-d8df-46c0-b6fa-1bf160d7eedb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Conserva.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Producto.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Prod-Perecedero.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Abarrote.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Carne.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Fecha.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Perecedero.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Empaque.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Embutido.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Conserva.cpp">
+      <Filter>Source Files\Producto-Decorado-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Prod-Perecedero.cpp">
+      <Filter>Source Files\Producto-Decorado-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Abarrote.cpp">
+      <Filter>Source Files\Producto-Decorado-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Fecha.cpp">
+      <Filter>Source Files\Producto-Decorado-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Perecedero.cpp">
+      <Filter>Source Files\Producto-Decorado-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Empaque.cpp">
+      <Filter>Source Files\Producto-Decorado-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Embutido.cpp">
+      <Filter>Source Files\Producto-Decorado-cpp</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
