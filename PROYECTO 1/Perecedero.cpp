@@ -5,6 +5,10 @@ Perecedero::Perecedero(Fecha* fP)
 	ptrFechaPer = fP;
 }
 
+Perecedero::Perecedero(const Perecedero& copia){
+	this->ptrFechaPer = copia.ptrFechaPer;
+}
+
 Perecedero::~Perecedero()
 {
 	if (ptrFechaPer != nullptr) {

@@ -99,6 +99,27 @@ int Embutido::getFechaPer()
 
 string Embutido::toString()
 {
+    stringstream s;
+    s << "----- PRODUCTO CONSERVA ----- " << endl;
+    s << "Marca: " << this->marca << endl;
+    s << "Nombre: " << this->nombreComercial << endl;
+    s << "Codigo:  " << this->codigo << endl;
+    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
+    s << "Categoria:  " << this->categoria << endl;
+    s << "Empaque: ";
+    if (ptrEmpaque->getTripa()) {
+        s << "(con) tripa " << endl;
+    }
+    else {
+        s << "(sin) tripa " << endl;
+    }
+    s << "Descripcion:  " << this->descripcion << endl;
+    s << "Procedencia animal:  " << this->nombreAnimal<< endl;
+    s << "Parte animal:  " << this->parteDelAnimal << endl;
+    s << "Precio costo:  $" << this->precioCosto << endl;
+    s << "Existencia:  " << this->existencia << endl;
+    s << "Limite de compra:  " << this->limite << endl;
+    return s.str();
 }
 
 string Embutido::getnombreComecial()
