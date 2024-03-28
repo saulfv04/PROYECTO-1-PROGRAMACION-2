@@ -15,7 +15,7 @@ Conserva::Conserva(Fecha* ptrF, bool en, string c, string nC, string d, double p
 Conserva::Conserva(const Conserva& copia)
 {
     this->envasado = copia.envasado;
-    this->ptrFechaIng = copia.ptrFechaIng;
+    this->ptrFechaIng = new Fecha(*copia.ptrFechaIng);
     this->codigo = copia.codigo;
     this->nombreComercial = copia.nombreComercial;
     this->descripcion = copia.descripcion;
@@ -137,4 +137,10 @@ void Conserva::setExistencia(int e)
 void Conserva::setLimite(int l)
 {
     limite = l;
+}
+
+double Conserva::ganancia()
+{
+    Categoria c;
+    return precioCosto * c.porceganancia(categoria);
 }

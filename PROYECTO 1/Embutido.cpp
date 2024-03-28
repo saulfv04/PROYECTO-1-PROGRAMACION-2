@@ -15,11 +15,13 @@ Embutido::Embutido(Empaque* ptrEm, string mar, string nA, string pA, Perecedero*
     categoria = cat;
     existencia = e;
     limite = l;
+    ptrPer = ptrPere;
+    ptrFechaIng = ptrF;
 }
 
 Embutido::Embutido(const Embutido& e)
 {
-    this->ptrEmpaque = e.ptrEmpaque;
+    this->ptrEmpaque = new Empaque(*e.ptrEmpaque);
     this->marca = e.marca;
     this->nombreAnimal = e.nombreAnimal;
     this->parteDelAnimal = e.parteDelAnimal;
@@ -32,6 +34,8 @@ Embutido::Embutido(const Embutido& e)
     this->categoria = e.categoria;
     this->existencia = e.existencia;
     this->limite = e.limite;
+    this->ptrPer = new Perecedero(*e.ptrPer);
+    this->ptrFechaIng = new Fecha(*e.ptrFechaIng);
 }
 
 Embutido::~Embutido()
@@ -65,6 +69,24 @@ void Embutido::setMarca(string m)
 void Embutido::setEmpaque(Empaque* em)
 {
     ptrEmpaque = em;
+}
+
+bool Embutido::getNacional()
+{
+    return false;
+}
+
+double Embutido::getPeso()
+{
+    return 0.0;
+}
+
+void Embutido::setNacional(bool)
+{
+}
+
+void Embutido::setPeso(double)
+{
 }
 
 string Embutido::getNombreAnimal()
@@ -190,4 +212,10 @@ void Embutido::setExistencia(int e)
 void Embutido::setLimite(int l)
 {
     limite = l;
+}
+
+double Embutido::ganancia()
+{
+    Categoria c;
+    return precioCosto * c.porceganancia(categoria);
 }

@@ -35,6 +35,9 @@ class Conserva : public Producto
 		virtual void setCategoria(string);
 		virtual void setExistencia(int);
 		virtual void setLimite(int);
+
+
+		virtual double ganancia();
 		
 
 

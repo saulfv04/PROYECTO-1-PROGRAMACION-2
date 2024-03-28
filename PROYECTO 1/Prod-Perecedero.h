@@ -21,7 +21,7 @@ class ProdPerecedero:public Producto {
 
 		//Accesores y Mutadores heredados
 		virtual int getFechaIng() = 0;
-		virtual string getnombreComecial() = 0;
+		virtual string getnombreComecial()  = 0;
 		virtual string getCodigo() = 0;
 		virtual string getDescripcion() = 0;
 		virtual double getprecioCosto() = 0;

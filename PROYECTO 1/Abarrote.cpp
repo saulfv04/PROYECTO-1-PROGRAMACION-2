@@ -18,12 +18,11 @@ Abarrote::Abarrote(Perecedero* ptrP,Fecha* ptrFI, string eN,bool n, double p, st
 
 Abarrote::Abarrote(const Abarrote& copia)
 {
-    this->ptrFechaIng =copia.ptrFechaIng;
-    this->ptrPer =copia.ptrPer;
+    this->ptrFechaIng = new Fecha(*copia.ptrFechaIng);
+    this->ptrPer =new Perecedero(*copia.ptrPer);
     this->empresaNombre = copia.empresaNombre;
     this->nacional = copia.nacional;
     this->peso = copia.peso;
-    this->ptrFechaIng = copia.ptrFechaIng;
     this->codigo = copia.codigo;
     this->nombreComercial = copia.nombreComercial;
     this->descripcion = copia.descripcion;
