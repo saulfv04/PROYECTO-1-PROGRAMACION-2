@@ -18,6 +18,10 @@ class Embutido :public Carne
 		void setEmpaque(Empaque*);
 
 		//Accesores y Mutadores heredados
+		virtual bool getNacional();
+		virtual double getPeso();
+		virtual void setNacional(bool);
+		virtual void setPeso(double);
 		virtual string getNombreAnimal();
 		virtual string getparteDelAnimal();
 		virtual void setNombreAnimal(string);
@@ -39,5 +43,6 @@ class Embutido :public Carne
 		virtual void setCategoria(string);
 		virtual void setExistencia(int);
 		virtual void setLimite(int);
+		virtual double ganancia();
 };
 

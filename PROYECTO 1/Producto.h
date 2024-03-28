@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include "Fecha.h"
+#include "Categoria.h"
 using namespace std;
 
 
@@ -37,4 +38,5 @@ class Producto {
 		virtual void setCategoria(string) = 0;
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
+		virtual double ganancia() = 0;
 };
