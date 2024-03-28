@@ -9,6 +9,7 @@ class Perecedero
 		Fecha* ptrFechaPer;
 	public:
 		Perecedero(Fecha*);
+		Perecedero(const Perecedero&);
 		virtual ~Perecedero();
 
 		string toString();

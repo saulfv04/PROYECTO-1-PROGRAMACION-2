@@ -12,6 +12,7 @@ class Fecha
 		int anio;
 	public:
 		Fecha(int, int, int);
+		Fecha(const Fecha&);
 		virtual ~Fecha();
 
 		int getFecha();

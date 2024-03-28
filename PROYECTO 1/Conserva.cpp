@@ -14,6 +14,15 @@ Conserva::Conserva(Fecha* ptrF, bool en, string c, string nC, string d, double p
 
 Conserva::Conserva(const Conserva& copia)
 {
+    this->envasado = copia.envasado;
+    this->ptrFechaIng = copia.ptrFechaIng;
+    this->codigo = copia.codigo;
+    this->nombreComercial = copia.nombreComercial;
+    this->descripcion = copia.descripcion;
+    this->precioCosto = copia.precioCosto;
+    this->categoria = copia.categoria;
+    this->existencia = copia.existencia;
+    this->limite = copia.limite;
 }
 
 Conserva::~Conserva(){
@@ -36,7 +45,22 @@ void Conserva::setEnvasado(bool e)
 string Conserva::toString()
 {
     stringstream s;
-    s << "Descripcion: " << descripcion;
+    s << "----- PRODUCTO CONSERVA ----- " << endl;
+    s << "Nombre " << this->nombreComercial << endl;
+    s << "Codigo:  " << this->codigo << endl;
+    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
+    s << "Categoria:  " << this->categoria << endl;
+    s << "Envasado: ";
+    if (envasado) {
+        s << "(Verdadero)" << endl;
+    }
+    else {
+        s << "(Falso)" << endl;
+    }
+    s << "Descripcion:  " << this->descripcion<< endl;
+    s << "Precio costo:  $" << this->precioCosto << endl;
+    s << "Existencia:  " << this->existencia << endl;
+    s << "Limite de compra:  " << this->limite << endl;
     return s.str();
 }
 

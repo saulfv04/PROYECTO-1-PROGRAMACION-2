@@ -11,6 +11,7 @@ class Empaque
 		bool tripa;
 	public:
 		Empaque(bool);
+		Empaque(const Empaque&);
 		virtual ~Empaque();
 		bool getTripa();
 };

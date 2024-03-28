@@ -7,6 +7,13 @@ Fecha::Fecha(int d, int m, int a)
     anio = a;
 }
 
+Fecha::Fecha(const Fecha& copia)
+{
+    this->anio = copia.anio;
+    this->mes = copia.mes;
+    this->dia = copia.dia;
+}
+
 Fecha::~Fecha(){}
 
 int Fecha::getFecha()
