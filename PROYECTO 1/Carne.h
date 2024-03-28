@@ -12,8 +12,8 @@ class Carne :public ProdPerecedero
 		//Accesores y Mutadores de la propia clase
 		virtual string getNombreAnimal() = 0;
 		virtual string getparteDelAnimal() = 0;
-		virtual void setNombreAnimal() = 0;
-		virtual void setparteDelAnimal() = 0;
+		virtual void setNombreAnimal(string) = 0;
+		virtual void setparteDelAnimal(string) = 0;
 
 		//Accesores y Mutadores heredados
 		virtual bool getNacional() = 0;
@@ -25,7 +25,6 @@ class Carne :public ProdPerecedero
 		virtual int getFechaIng() = 0;
 
 		//Accesores y Mutadores heredados
-		virtual int getFechaIng() = 0;
 		virtual string getnombreComecial() = 0;
 		virtual string getCodigo() = 0;
 		virtual string getDescripcion() = 0;
@@ -42,6 +41,8 @@ class Carne :public ProdPerecedero
 		virtual void setCategoria(string) = 0;
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
+
+		virtual double ganancia()=0;
 
 
 };

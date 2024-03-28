@@ -6,7 +6,7 @@ Perecedero::Perecedero(Fecha* fP)
 }
 
 Perecedero::Perecedero(const Perecedero& copia){
-	this->ptrFechaPer = copia.ptrFechaPer;
+	this->ptrFechaPer = new Fecha(*copia.ptrFechaPer);
 }
 
 Perecedero::~Perecedero()
