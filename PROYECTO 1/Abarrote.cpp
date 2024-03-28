@@ -54,6 +54,26 @@ void Abarrote::setEmpresaNombre(string eN)
 
 }
 
+bool Abarrote::getNacional()
+{
+    return this->nacional;
+}
+
+double Abarrote::getPeso()
+{
+    return this->precioCosto;
+}
+
+void Abarrote::setNacional(bool t)
+{
+    this->nacional = t;
+}
+
+void Abarrote::setPeso(double p)
+{
+    this->precioCosto = p;
+}
+
 int Abarrote::getFechaIng()
 {
     return ptrFechaIng->getFecha();
@@ -73,7 +93,12 @@ string Abarrote::toString()
     s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
     s << "Fecha de vencimiento: " << this->ptrPer->toString() << endl;
     s << "Categoria:  " << this->categoria << endl;
-    s << "Nacionalidad:  " << this->nacional << endl;
+    if (this->nacional) {
+        s << "Nacional " << endl;
+    }
+    else {
+        s << "Internacional " << endl;
+    }
     s << "Peso:  " << this->peso << endl;
     s << "Empresa nombre:  " << this->empresaNombre << endl;
     s << "Descripcion:  " << this->descripcion << endl;
@@ -151,4 +176,10 @@ void Abarrote::setExistencia(int e)
 void Abarrote::setLimite(int l)
 {
     limite = l;
+}
+
+double Abarrote::ganancia()
+{
+    Categoria c;
+    return precioCosto * c.porceganancia(categoria);
 }

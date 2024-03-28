@@ -7,7 +7,7 @@ class Embutido :public Carne
 		string marca;
 		Empaque* ptrEmpaque;
 	public:
-		Embutido(Empaque*, string, string, string, Perecedero*, Fecha*, string, bool, double, string, string, string, double, string, int, int);
+		Embutido(Empaque*, string, string, string, Perecedero*, Fecha*, bool, double, string, string, string, double, string, int, int);
 		Embutido(const Embutido& e);
 		virtual ~Embutido();
 		
