@@ -15,6 +15,9 @@ class Perecedero
 		string toString();
 		int getFechaPer();
 
+		virtual void guardarPerecedero(ofstream&);
+		static Perecedero* leerPerecedero(ifstream&);
+
 
 };
 

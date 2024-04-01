@@ -37,6 +37,7 @@ class ProdPerecedero:public Producto {
 		virtual void setCategoria(string) = 0;
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
+		virtual void guardarProducto(ofstream&) = 0;
 
 
 

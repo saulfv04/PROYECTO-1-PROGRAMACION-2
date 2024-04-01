@@ -225,3 +225,70 @@ double Embutido::ganancia()
     Categoria c;
     return precioCosto * c.porceganancia(categoria);
 }
+
+void Embutido::guardarProducto(ofstream& file)
+{
+    string nacionalF;
+    if (this->nacional)nacionalF = "(Verdadero)";
+    else nacionalF = "(Falso)";
+
+
+    file << "Embutido" << '\t' << marca << '\t' << nombreAnimal<<'\t'<<parteDelAnimal<<'\t'<<nacionalF<<'\t'<<peso<< '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion << '\t'
+        << precioCosto << '\t' << categoria << '\t' << existencia << '\t' << limite << '\n';
+    if (ptrFechaIng != nullptr) {
+        ptrFechaIng->guardarFecha(file);
+    }
+
+    if (ptrEmpaque != nullptr) {
+        ptrEmpaque->guardarEmpaque(file);
+    }
+    if (ptrPer != nullptr) {
+        ptrPer->guardarPerecedero(file);
+    }
+    if (ptrFechaIng != nullptr) {
+        ptrFechaIng->guardarFecha(file);
+    }
+}
+
+Embutido* Embutido::leerEmbutido(ifstream& file)
+{
+
+    string marcaF,nombreAnimalF,parteDelAnimalF,nacionalF,pesoF, codigoF, nombreComercialF, descripcionF, precioCostoF, categoriaF, existenciaF, limiteF;
+    bool nac;
+    double precioCost, pe;
+    int exist, limit;
+    Empaque* emp;
+    Fecha* fec;
+    Perecedero* fecPer;
+
+
+
+    getline(file, marcaF, '\t');
+    getline(file, nombreAnimalF, '\t');
+    getline(file, parteDelAnimalF, '\t');
+    getline(file, nacionalF, '\t');
+    getline(file, pesoF, '\t');
+    getline(file, codigoF, '\t');
+    getline(file, nombreComercialF, '\t');
+    getline(file, descripcionF, '\t');
+    getline(file, precioCostoF, '\t');
+    getline(file, categoriaF, '\t');
+    getline(file, existenciaF, '\t');
+    getline(file, limiteF, '\n');
+
+
+    pe = stod(pesoF);
+    precioCost = stod(precioCostoF);
+    exist = stoi(existenciaF);
+    limit = stoi(limiteF);
+
+    if (nacionalF == "(Verdadero)")nac = true;
+    else  nac = false;
+
+
+    emp = Empaque::leerEmpaque(file);
+    fec = Fecha::leerFecha(file);
+    fecPer = Perecedero::leerPerecedero(file);
+
+    return new Embutido(emp,marcaF,nombreAnimalF,parteDelAnimalF,fecPer,fec,nac,pe, codigoF, nombreComercialF, descripcionF, precioCost, categoriaF, exist, limit);
+}
