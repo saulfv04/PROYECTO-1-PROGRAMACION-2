@@ -15,6 +15,10 @@ class Abarrote :public ProdPerecedero
 
 
 		//Accesores y Mutadores hereadados
+		virtual bool getNacional();
+		virtual double getPeso();
+		virtual void setNacional(bool);
+		virtual void setPeso(double);
 		virtual int getFechaIng();
 		virtual int getFechaPer();
 		virtual string toString();	
@@ -35,6 +39,6 @@ class Abarrote :public ProdPerecedero
 		virtual void setExistencia(int);
 		virtual void setLimite(int);
 
-
+		virtual double ganancia();
 };
 

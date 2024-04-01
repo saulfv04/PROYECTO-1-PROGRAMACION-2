@@ -1,6 +1,6 @@
 #include "Embutido.h"
 
-Embutido::Embutido(Empaque* ptrEm, string mar, string nA, string pA, Perecedero* ptrPere, Fecha* ptrF, string eN, bool n, double p, string c, string nC, string d, double pC, string cat, int e, int l)
+Embutido::Embutido(Empaque* ptrEm, string mar, string nA, string pA, Perecedero* ptrPere, Fecha* ptrF, bool n, double p, string c, string nC, string d, double pC, string cat, int e, int l)
 {
     ptrEmpaque = ptrEm;
     marca = mar;
@@ -134,6 +134,12 @@ string Embutido::toString()
     }
     else {
         s << "(sin) tripa " << endl;
+    }
+    if (this->nacional) {
+        s << "Nacional " << endl;
+    }
+    else {
+        s << "Internacional " << endl;
     }
     s << "Descripcion:  " << this->descripcion << endl;
     s << "Procedencia animal:  " << this->nombreAnimal<< endl;
