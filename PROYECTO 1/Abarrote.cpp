@@ -183,3 +183,57 @@ double Abarrote::ganancia()
     Categoria c;
     return precioCosto * c.porceganancia(categoria);
 }
+
+void Abarrote::guardarProducto(ofstream& file)
+{
+    string Nacional;
+    if (nacional == true) {
+        Nacional = "(Verdadero)";
+    }
+    else {
+        Nacional = "(Falso)";
+    }
+    file << "Abarrote"<<empresaNombre<<'\t' << Nacional << '\t' << peso << '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion
+        << '\t' << precioCosto << '\t' << categoria << '\t' << existencia << '\t'
+        << '\t' << limite <<'\t';
+    if (ptrFechaIng!= NULL) {
+        ptrFechaIng->guardarFecha(file);
+    }
+    if (ptrPer != NULL) {
+        ptrPer->guardarPerecedero(file);
+    }
+}
+
+Abarrote* Abarrote::leerAbarrote(ifstream& file)
+{
+    string Codigo, NombreComercial, Descripcion, PrecioCosto, Categoria, Existencia, Limite, Peso, Nacional, NombreEmpresa;
+    Fecha* fecha = NULL;
+    Perecedero* venc = NULL;
+    double pCost, pes;
+    int exis, lim;
+    bool nac;
+    getline(file, Codigo, '\t');
+    getline(file, NombreComercial, '\t');
+    getline(file, Descripcion, '\t');
+    getline(file, PrecioCosto, '\t');
+    getline(file, Categoria, '\t');
+    getline(file, Existencia, '\t');
+    getline(file, Limite, '\t');
+    getline(file, Peso, '\t');
+    getline(file, Nacional, '\t');
+    getline(file, Limite, '\t');
+    getline(file, NombreEmpresa, '\n');
+
+    fecha = Fecha::leerFecha(file);
+    venc = Perecedero::leerPerecedero(file);
+
+    exis = stoi(Existencia);
+    lim = stoi(Limite);
+    pes = stod(Peso);
+    pCost = stod(PrecioCosto);
+
+    if (Nacional == "Nacional")nac = true;
+    else nac = false;
+
+    return new Abarrote(venc,fecha, NombreEmpresa,nac, pes,Codigo, NombreComercial, Descripcion, pCost, Categoria, exis, lim);
+}

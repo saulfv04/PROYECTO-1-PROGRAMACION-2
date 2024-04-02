@@ -37,3 +37,23 @@ string Fecha::toString()
     return s.str();
 
 }
+
+void Fecha::guardarFecha(ofstream& file)
+{
+    file << dia << '\t' << mes << '\t' << anio << '\n';
+}
+
+Fecha* Fecha::leerFecha(ifstream& file)
+{
+    string diaF, mesF, anioF;
+    int dia, mes, anio;
+    getline(file, diaF, '\t');
+    getline(file, mesF, '\t');
+    getline(file, anioF, '\n');
+
+    dia = stoi(diaF);
+    mes = stoi(mesF);
+    anio = stoi(anioF);
+
+    return new Fecha(dia,mes,anio);
+}

@@ -43,6 +43,7 @@ class Carne :public ProdPerecedero
 		virtual void setLimite(int) = 0;
 
 		virtual double ganancia()=0;
+		virtual void guardarProducto(ofstream&) = 0;
 
 
 };

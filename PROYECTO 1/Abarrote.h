@@ -40,5 +40,7 @@ class Abarrote :public ProdPerecedero
 		virtual void setLimite(int);
 
 		virtual double ganancia();
+		virtual void guardarProducto(ofstream&);
+		static Abarrote* leerAbarrote(ifstream&);
 };
 

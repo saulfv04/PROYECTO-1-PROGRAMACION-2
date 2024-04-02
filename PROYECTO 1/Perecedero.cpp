@@ -25,3 +25,19 @@ int Perecedero::getFechaPer()
 {
 	return ptrFechaPer->getFecha();
 }
+
+void Perecedero::guardarPerecedero(ofstream& file)
+{
+	if (ptrFechaPer != nullptr) {
+		ptrFechaPer->guardarFecha(file);
+	}
+}
+
+Perecedero* Perecedero::leerPerecedero(ifstream& file)
+{
+	Fecha* fecha;
+
+	fecha = Fecha::leerFecha(file);
+	
+	return new Perecedero(fecha);
+}
