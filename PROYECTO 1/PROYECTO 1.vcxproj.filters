@@ -51,6 +51,24 @@
     <ClInclude Include="Categoria.h">
       <Filter>Header Files\Producto</Filter>
     </ClInclude>
+    <ClInclude Include="BaseCarrito.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Carrito.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductoDecorador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoradorConserva.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoradorAbarrote.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoradorEmbutido.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Conserva.cpp">
@@ -78,6 +96,21 @@
       <Filter>Source Files\Producto-cpp</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Carrito.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProductoDecorador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorConserva.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorAbarrote.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorEmbutido.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
