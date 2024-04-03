@@ -144,3 +144,51 @@ double Conserva::ganancia()
     Categoria c;
     return precioCosto * c.porceganancia(categoria);
 }
+
+void Conserva::guardarProducto(ofstream& file)
+{
+    string envasadoF;
+    if (this->envasado)envasadoF = "(Verdadero)";
+    else envasadoF = "(Falso)";
+
+    file<<"Conserva"<<'\t' << envasadoF << '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion << '\t'
+        << precioCosto << '\t' << categoria << '\t' << existencia << '\t' << limite << '\n';
+    if (ptrFechaIng != nullptr) {
+        ptrFechaIng->guardarFecha(file);
+    }
+}
+
+Conserva* Conserva::leerConserva(ifstream& file)
+{
+    
+    string envasadoF,codigoF,nombreComercialF,descripcionF,precioCostoF,categoriaF, existenciaF, limiteF;
+    bool env;
+    double precioCost;
+    int exist, limit;
+    Fecha* fec;
+
+
+    getline(file, envasadoF, '\t');
+    getline(file, codigoF, '\t');
+    getline(file, nombreComercialF, '\t');
+    getline(file, descripcionF, '\t');
+    getline(file, precioCostoF, '\t');
+    getline(file, categoriaF, '\t');
+    getline(file, existenciaF, '\t');
+    getline(file, limiteF, '\n');
+
+    precioCost = stod(precioCostoF);
+    exist = stoi(existenciaF);
+    limit = stoi(limiteF);
+
+    if (envasadoF == "(Verdadero)") {
+        env = true;
+    }
+    else {
+        env = false;
+    }
+
+    fec = Fecha::leerFecha(file);
+
+    return new Conserva(fec,env,codigoF,nombreComercialF,descripcionF,precioCost,categoriaF,exist,limit);
+}

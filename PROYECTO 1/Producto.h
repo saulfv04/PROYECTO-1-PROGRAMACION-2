@@ -39,4 +39,6 @@ class Producto {
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
 		virtual double ganancia() = 0;
+		virtual void guardarProducto(ofstream&) = 0;
+		
 };
