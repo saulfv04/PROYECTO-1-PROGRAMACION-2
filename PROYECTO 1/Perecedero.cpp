@@ -41,3 +41,9 @@ Perecedero* Perecedero::leerPerecedero(ifstream& file)
 	
 	return new Perecedero(fecha);
 }
+
+//ostream& operator<<(ostream& s, Perecedero& per)
+//{
+//	s << per.ptrFechaPer;
+//	return s;
+//}

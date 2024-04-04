@@ -17,5 +17,7 @@ class Empaque
 		bool getTripa();
 		void guardarEmpaque(ofstream&);
 		static Empaque* leerEmpaque(ifstream&);
+
+		/*friend ostream& operator<<(ostream&, Empaque&);*/
 };
 

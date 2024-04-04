@@ -44,6 +44,7 @@ class Carne :public ProdPerecedero
 
 		virtual double ganancia()=0;
 		virtual void guardarProducto(ofstream&) = 0;
+		/*virtual void print(ostream& s) = 0;*/
 
 
 };

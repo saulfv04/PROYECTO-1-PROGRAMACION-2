@@ -23,3 +23,9 @@ void DecoradorConserva::imprimir()
     ptrConserva->toString();
     ptrCarrito->imprimir();
 }
+//
+//ostream& operator<<(ostream& o , DecoradorConserva& con)
+//{
+//    o << "Conserva: " << con.ptrConserva << '\n' << con.ptrCarrito << endl;
+//    return o;
+//}

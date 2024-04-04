@@ -38,6 +38,7 @@ class ProdPerecedero:public Producto {
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
 		virtual void guardarProducto(ofstream&) = 0;
+		/*virtual void print(ostream& s) = 0;*/
 
 
 

@@ -42,5 +42,6 @@ class Abarrote :public ProdPerecedero
 		virtual double ganancia();
 		virtual void guardarProducto(ofstream&);
 		static Abarrote* leerAbarrote(ifstream&);
+		/*virtual void print(ostream& s)override;*/
 };
 
