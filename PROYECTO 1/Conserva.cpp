@@ -187,3 +187,20 @@ Conserva* Conserva::leerConserva(ifstream& file)
 
     return new Conserva(fec,env,codigoF,nombreComercialF,descripcionF,precioCost,categoriaF,exist,limit);
 }
+
+//void Conserva::print(ostream& s)
+//{
+//    s << "Nombre " << nombreComercial << endl;
+//    s << "Categoria:  " << categoria << endl;
+//    s << "Envasado: ";
+//    if (envasado) {
+//        s << "(Verdadero)" << endl;
+//    }
+//    else {
+//        s << "(Falso)" << endl;
+//    }
+//    s << "Precio costo:  $" << precioCosto << endl;
+//}
+
+
+

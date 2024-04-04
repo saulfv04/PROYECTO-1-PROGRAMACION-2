@@ -32,3 +32,9 @@ void DecoradorEmbutido::imprimir()
 	cout << endl;
 	ptrCarrito->imprimir();
 }
+//
+//ostream& operator<<(ostream& o, DecoradorEmbutido& p)
+//{
+//	o << "Embutido: " << p.ptrEmbutido<< '\n' << p.ptrCarrito << endl;
+//	return o;
+//}

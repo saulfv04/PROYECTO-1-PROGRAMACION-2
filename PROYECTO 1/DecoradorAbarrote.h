@@ -11,5 +11,6 @@ public:
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
 	virtual void imprimir();
+	/*friend ostream& operator<<(ostream&, DecoradorAbarrote&);*/
 };
 

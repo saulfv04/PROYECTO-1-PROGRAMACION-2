@@ -57,3 +57,9 @@ Fecha* Fecha::leerFecha(ifstream& file)
 
     return new Fecha(dia,mes,anio);
 }
+
+//ostream& operator<<(ostream& s, Fecha& fec)
+//{
+//    s << "Fecha (D/M/A): " << fec.dia << " / " << fec.mes << " / " << fec.anio << " / " << endl;
+//    return s;
+//}

@@ -40,6 +40,7 @@ class Conserva : public Producto
 		virtual double ganancia();
 		virtual void guardarProducto(ofstream&);
 		static Conserva* leerConserva(ifstream&);
+		/*virtual void print(ostream& s)override;*/
 
 
 
