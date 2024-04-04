@@ -21,3 +21,9 @@ void Carrito::imprimir()
 {
     cout << "------------CARRITO COMPRAS------------" << endl;
 }
+
+//ostream& operator<<(ostream& o, Carrito& ca)
+//{
+//    o << "Carrito Compras" << endl;
+//    return o;
+//}

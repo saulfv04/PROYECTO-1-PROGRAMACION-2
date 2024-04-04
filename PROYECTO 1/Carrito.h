@@ -8,6 +8,6 @@ public:
 	BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
 	void imprimir();
-
+	/*friend ostream& operator<<(ostream&, Carrito&);*/
 };
 

@@ -40,5 +40,13 @@ class Producto {
 		virtual void setLimite(int) = 0;
 		virtual double ganancia() = 0;
 		virtual void guardarProducto(ofstream&) = 0;
+		/*virtual void print(ostream& s) = 0;*/
+		/*friend ostream& operator<<(ostream& , Producto&);*/
+
 		
 };
+
+//ostream& operator<<(ostream& s, Producto& obj) {
+//	obj.print(s);
+//	return s;
+//}
