@@ -23,3 +23,9 @@ void DecoradorAbarrote::imprimir()
     ptrAbarrote->toString();
     ptrCarrito->imprimir();
 }
+
+//ostream& operator<<(ostream& o, DecoradorAbarrote& ab)
+//{
+//    o << "Abarrote:" << ab.ptrAbarrote << '\n' << ab.ptrCarrito << endl;
+//    return o;
+//}

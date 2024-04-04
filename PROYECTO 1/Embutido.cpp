@@ -122,11 +122,12 @@ int Embutido::getFechaPer()
 string Embutido::toString()
 {
     stringstream s;
-    s << "----- PRODUCTO CONSERVA ----- " << endl;
+    s << "----- PRODUCTO EMBUTIDO ----- " << endl;
     s << "Marca: " << this->marca << endl;
     s << "Nombre: " << this->nombreComercial << endl;
     s << "Codigo:  " << this->codigo << endl;
     s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
+    s << "Fecha de vencimiento: " << this->ptrPer->toString() << endl;
     s << "Categoria:  " << this->categoria << endl;
     s << "Empaque: ";
     if (ptrEmpaque->getTripa()) {
@@ -292,3 +293,28 @@ Embutido* Embutido::leerEmbutido(ifstream& file)
 
     return new Embutido(emp,marcaF,nombreAnimalF,parteDelAnimalF,fecPer,fec,nac,pe, codigoF, nombreComercialF, descripcionF, precioCost, categoriaF, exist, limit);
 }
+//
+//void Embutido::print(ostream& s)
+//{
+//    s << "Marca: " << marca << endl;
+//    s << "Nombre: " << nombreComercial << endl;
+//    s << "Fecha de vencimiento: " << ptrPer << endl;
+//    s << "Empaque: ";
+//    if (ptrEmpaque->getTripa()) {
+//        s << "(con) tripa " << endl;
+//    }
+//    else {
+//        s << "(sin) tripa " << endl;
+//    }
+//    if (nacional) {
+//        s << "Nacional " << endl;
+//    }
+//    else {
+//        s << "Internacional " << endl;
+//    }
+//    s << "Procedencia animal:  " << nombreAnimal << endl;
+//    s << "Parte animal:  " << parteDelAnimal << endl;
+//    s << "Precio costo:  $" << precioCosto << endl;
+//}
+
+

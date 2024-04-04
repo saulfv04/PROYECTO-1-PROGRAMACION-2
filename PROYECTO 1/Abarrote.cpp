@@ -87,7 +87,7 @@ int Abarrote::getFechaPer()
 string Abarrote::toString()
 {
     stringstream s;
-    s << "----- PRODUCTO ABARRATO ----- " << endl;
+    s << "----- PRODUCTO ABARROTE ----- " << endl;
     s << "Nombre " << this->nombreComercial << endl;
     s << "Codigo:  " << this->codigo << endl;
     s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
@@ -237,3 +237,19 @@ Abarrote* Abarrote::leerAbarrote(ifstream& file)
 
     return new Abarrote(venc,fecha, NombreEmpresa,nac, pes,Codigo, NombreComercial, Descripcion, pCost, Categoria, exis, lim);
 }
+//
+//void Abarrote::print(ostream& s)
+//{
+//    s << "Nombre " << nombreComercial << endl;
+//    s << "Fecha de vencimiento: " << ptrPer << endl;
+//    if (nacional) {
+//        s << "Nacional " << endl;
+//    }
+//    else {
+//        s << "Internacional " << endl;
+//    }
+//    s << "Peso:  " << peso << endl;
+//    s << "Empresa nombre:  " << empresaNombre << endl;
+//    s << "Precio costo:  $" << precioCosto << endl;
+//}
+

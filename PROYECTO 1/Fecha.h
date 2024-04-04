@@ -20,5 +20,7 @@ class Fecha
 		string toString();
 		void guardarFecha(ofstream&);
 		static Fecha* leerFecha(ifstream&);
+
+		/*friend ostream& operator<<(ostream&, Fecha&);*/
 };
 

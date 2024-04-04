@@ -41,3 +41,9 @@ Empaque* Empaque::leerEmpaque(ifstream& file)
         return new Empaque(false);
     }
 }
+
+//ostream& operator<<(ostream& s, Empaque& emp)
+//{
+//    s << emp.tripa;
+//    return s;
+//}
