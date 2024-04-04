@@ -4,6 +4,7 @@ Carrito::Carrito()
 {
 }
 
+
 Carrito::~Carrito()
 {
 }
@@ -19,7 +20,7 @@ void Carrito::setSiguiente(BaseCarrito*)
 
 void Carrito::imprimir()
 {
-    cout << "------------CARRITO COMPRAS------------" << endl;
+    cout << endl << "------------CARRITO COMPRAS------------" << endl;
 }
 
 //ostream& operator<<(ostream& o, Carrito& ca)

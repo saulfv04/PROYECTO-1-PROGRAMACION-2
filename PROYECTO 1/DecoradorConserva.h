@@ -7,6 +7,7 @@ private:
 	Conserva* ptrConserva;
 public:
 	DecoradorConserva(BaseCarrito*, Conserva*);
+	DecoradorConserva(const DecoradorConserva&);
 	virtual ~DecoradorConserva();
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);

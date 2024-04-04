@@ -6,6 +6,7 @@ private:
 	Embutido* ptrEmbutido;
 public:
 	DecoradorEmbutido(BaseCarrito*, Embutido*);
+	DecoradorEmbutido(const DecoradorEmbutido&);
 	virtual ~DecoradorEmbutido();
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
