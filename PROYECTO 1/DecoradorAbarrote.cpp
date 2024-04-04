@@ -6,6 +6,12 @@ DecoradorAbarrote::DecoradorAbarrote(BaseCarrito* carro, Abarrote* prtAba)
     this->ptrAbarrote = prtAba;
 }
 
+DecoradorAbarrote::DecoradorAbarrote(const DecoradorAbarrote& copia)
+{
+    this->ptrCarrito = copia.ptrCarrito;
+    this->ptrAbarrote = copia.ptrAbarrote;
+}
+
 DecoradorAbarrote::~DecoradorAbarrote(){}
 
 BaseCarrito* DecoradorAbarrote::getSiguiente()
@@ -20,6 +26,9 @@ void DecoradorAbarrote::setSiguiente(BaseCarrito* ptrCarro)
 
 void DecoradorAbarrote::imprimir()
 {
-    ptrAbarrote->toString();
+    cout<<"----------------ABARROTE----------------" << endl;
+    cout << endl;
+    cout << ptrAbarrote->toString();
+    cout << endl;
     ptrCarrito->imprimir();
 }

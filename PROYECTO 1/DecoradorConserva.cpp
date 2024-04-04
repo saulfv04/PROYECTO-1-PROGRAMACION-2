@@ -6,6 +6,12 @@ DecoradorConserva::DecoradorConserva(BaseCarrito* ptrCarro, Conserva* ptrConser)
     this->ptrConserva = ptrConser;
 }
 
+DecoradorConserva::DecoradorConserva(const DecoradorConserva& copia)
+{
+    this->ptrCarrito = copia.ptrCarrito;
+    this->ptrConserva = copia.ptrConserva;
+}
+
 DecoradorConserva::~DecoradorConserva(){}
 
 BaseCarrito* DecoradorConserva::getSiguiente()
@@ -20,6 +26,9 @@ void DecoradorConserva::setSiguiente(BaseCarrito* conserva)
 
 void DecoradorConserva::imprimir()
 {
-    ptrConserva->toString();
+    cout << "----------------CONSERVA----------------" << endl;
+    cout << endl;
+    cout << ptrConserva->toString();
+    cout << endl;
     ptrCarrito->imprimir();
 }

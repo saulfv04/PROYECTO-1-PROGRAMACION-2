@@ -87,24 +87,19 @@ int Abarrote::getFechaPer()
 string Abarrote::toString()
 {
     stringstream s;
-    s << "----- PRODUCTO ABARRATO ----- " << endl;
     s << "Nombre " << this->nombreComercial << endl;
     s << "Codigo:  " << this->codigo << endl;
-    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
-    s << "Fecha de vencimiento: " << this->ptrPer->toString() << endl;
-    s << "Categoria:  " << this->categoria << endl;
     if (this->nacional) {
         s << "Nacional " << endl;
     }
-    else {
+    else 
         s << "Internacional " << endl;
-    }
+    
     s << "Peso:  " << this->peso << endl;
     s << "Empresa nombre:  " << this->empresaNombre << endl;
     s << "Descripcion:  " << this->descripcion << endl;
     s << "Precio costo:  $" << this->precioCosto << endl;
-    s << "Existencia:  " << this->existencia << endl;
-    s << "Limite de compra:  " << this->limite << endl;
+    s << "Fecha de vecimiento: " << this->ptrPer->toString() << endl;
     return s.str();
 }
 
