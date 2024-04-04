@@ -122,9 +122,13 @@ int Embutido::getFechaPer()
 string Embutido::toString()
 {
     stringstream s;
+    s << "----- PRODUCTO EMBUTIDO ----- " << endl;
     s << "Marca: " << this->marca << endl;
     s << "Nombre: " << this->nombreComercial << endl;
     s << "Codigo:  " << this->codigo << endl;
+    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
+    s << "Fecha de vencimiento: " << this->ptrPer->toString() << endl;
+    s << "Categoria:  " << this->categoria << endl;
     s << "Empaque: ";
     if (ptrEmpaque->getTripa()) {
         s << "(con) tripa " << endl;
@@ -135,14 +139,15 @@ string Embutido::toString()
     if (this->nacional) {
         s << "Nacional " << endl;
     }
-    else 
+    else {
         s << "Internacional " << endl;
-
+    }
     s << "Descripcion:  " << this->descripcion << endl;
     s << "Procedencia animal:  " << this->nombreAnimal<< endl;
     s << "Parte animal:  " << this->parteDelAnimal << endl;
     s << "Precio costo:  $" << this->precioCosto << endl;
-    s << "Fecha de vecimiento: " << this->ptrPer->toString() << endl;
+    s << "Existencia:  " << this->existencia << endl;
+    s << "Limite de compra:  " << this->limite << endl;
     return s.str();
 }
 
@@ -288,3 +293,28 @@ Embutido* Embutido::leerEmbutido(ifstream& file)
 
     return new Embutido(emp,marcaF,nombreAnimalF,parteDelAnimalF,fecPer,fec,nac,pe, codigoF, nombreComercialF, descripcionF, precioCost, categoriaF, exist, limit);
 }
+//
+//void Embutido::print(ostream& s)
+//{
+//    s << "Marca: " << marca << endl;
+//    s << "Nombre: " << nombreComercial << endl;
+//    s << "Fecha de vencimiento: " << ptrPer << endl;
+//    s << "Empaque: ";
+//    if (ptrEmpaque->getTripa()) {
+//        s << "(con) tripa " << endl;
+//    }
+//    else {
+//        s << "(sin) tripa " << endl;
+//    }
+//    if (nacional) {
+//        s << "Nacional " << endl;
+//    }
+//    else {
+//        s << "Internacional " << endl;
+//    }
+//    s << "Procedencia animal:  " << nombreAnimal << endl;
+//    s << "Parte animal:  " << parteDelAnimal << endl;
+//    s << "Precio costo:  $" << precioCosto << endl;
+//}
+
+
