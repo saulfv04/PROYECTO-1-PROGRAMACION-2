@@ -32,7 +32,7 @@ string Fecha::toString()
 {
     stringstream s;
 
-    s << "Fecha (D/M/A): " << dia << " / " << mes << " / " << anio << " / " << endl;
+    s << "Fecha (D/M/A): "  << dia << " / " << mes << " / " << anio  << endl;
 
     return s.str();
 

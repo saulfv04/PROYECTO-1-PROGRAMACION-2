@@ -45,11 +45,8 @@ void Conserva::setEnvasado(bool e)
 string Conserva::toString()
 {
     stringstream s;
-    s << "----- PRODUCTO CONSERVA ----- " << endl;
     s << "Nombre " << this->nombreComercial << endl;
     s << "Codigo:  " << this->codigo << endl;
-    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
-    s << "Categoria:  " << this->categoria << endl;
     s << "Envasado: ";
     if (envasado) {
         s << "(Verdadero)" << endl;
@@ -59,8 +56,6 @@ string Conserva::toString()
     }
     s << "Descripcion:  " << this->descripcion<< endl;
     s << "Precio costo:  $" << this->precioCosto << endl;
-    s << "Existencia:  " << this->existencia << endl;
-    s << "Limite de compra:  " << this->limite << endl;
     return s.str();
 }
 

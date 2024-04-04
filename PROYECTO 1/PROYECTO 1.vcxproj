@@ -140,6 +140,7 @@
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Perecedero.h" />
+    <ClInclude Include="Persona.h" />
     <ClInclude Include="Prod-Perecedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProductoDecorador.h" />
@@ -157,6 +158,7 @@
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Perecedero.cpp" />
+    <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Prod-Perecedero.cpp" />
     <ClCompile Include="ProductoDecorador.cpp" />
   </ItemGroup>

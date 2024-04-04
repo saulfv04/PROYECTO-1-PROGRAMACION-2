@@ -69,6 +69,9 @@
     <ClInclude Include="DecoradorEmbutido.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Persona.h">
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Conserva.cpp">
@@ -111,6 +114,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DecoradorEmbutido.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Persona.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

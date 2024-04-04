@@ -6,6 +6,7 @@ private:
 	Abarrote* ptrAbarrote;
 public:
 	DecoradorAbarrote(BaseCarrito*, Abarrote*);
+	DecoradorAbarrote(const DecoradorAbarrote&);
 	virtual ~DecoradorAbarrote();
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);

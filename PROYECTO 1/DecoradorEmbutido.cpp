@@ -6,6 +6,11 @@ DecoradorEmbutido::DecoradorEmbutido(BaseCarrito* carro, Embutido* ptrEm)
 	this->ptrEmbutido = ptrEm;
 }
 
+DecoradorEmbutido::DecoradorEmbutido(const DecoradorEmbutido& copia)
+{
+	this->ptrCarrito = copia.ptrCarrito;
+	this->ptrEmbutido = copia.ptrEmbutido;
+}
 DecoradorEmbutido::~DecoradorEmbutido()
 {
 }
@@ -22,7 +27,9 @@ void DecoradorEmbutido::setSiguiente(BaseCarrito* carro)
 
 void DecoradorEmbutido::imprimir()
 {
-	ptrEmbutido->toString();
+	cout << "----------------EMBUTIDO----------------" << endl;
+	cout << ptrEmbutido->toString();
+	cout << endl;
 	ptrCarrito->imprimir();
 }
 //
