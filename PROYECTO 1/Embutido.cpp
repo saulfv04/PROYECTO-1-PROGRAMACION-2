@@ -114,6 +114,11 @@ int Embutido::getFechaIng()
     return ptrFechaIng->getFecha();
 }
 
+Perecedero* Embutido::getPer()
+{
+    return ptrPer;
+}
+
 int Embutido::getFechaPer()
 {
     return ptrPer->getFechaPer();

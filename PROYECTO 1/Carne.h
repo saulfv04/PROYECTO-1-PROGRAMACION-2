@@ -22,6 +22,7 @@ class Carne :public ProdPerecedero
 		virtual void setPeso(double) = 0;
 		virtual string toString() = 0;
 		virtual int getFechaPer() = 0;
+		virtual Perecedero* getPer() = 0;
 		virtual int getFechaIng() = 0;
 
 		//Accesores y Mutadores heredados

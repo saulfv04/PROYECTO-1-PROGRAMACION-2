@@ -79,6 +79,11 @@ int Abarrote::getFechaIng()
     return ptrFechaIng->getFecha();
 }
 
+Perecedero* Abarrote::getPer()
+{
+    return ptrPer;
+}
+
 int Abarrote::getFechaPer()
 {
     return ptrPer->getFechaPer();

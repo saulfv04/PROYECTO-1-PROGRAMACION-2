@@ -31,9 +31,17 @@ void Persona::setNombre(string n){
 	this->nombre = n;
 }
 
+string Persona::toString()
+{
+	stringstream s;
+	s << "Nombre: " << this->nombre << endl;
+	s << "Cedula: " << this->cedula << endl;
+	return s.str();
+}
+
 ostream& operator<<(ostream& o, Persona& p)
 {
-	o << "Nombre: " << p.nombre << "Cedula: " << p.cedula<<endl;
+	o << p.toString();
 	return o;
 }
 
