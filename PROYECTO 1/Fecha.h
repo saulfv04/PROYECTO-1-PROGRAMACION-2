@@ -21,6 +21,6 @@ class Fecha
 		void guardarFecha(ofstream&);
 		static Fecha* leerFecha(ifstream&);
 
-		/*friend ostream& operator<<(ostream&, Fecha&);*/
+		friend ostream& operator<<(ostream&, Fecha&);
 };
 

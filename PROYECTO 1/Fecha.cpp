@@ -32,10 +32,8 @@ string Fecha::toString()
 {
     stringstream s;
 
-    s << "Fecha (D/M/A): "  << dia << " / " << mes << " / " << anio  << endl;
-
+    s << "Fecha (D/M/A): "  << dia << " / " << mes << " / " << anio;
     return s.str();
-
 }
 
 void Fecha::guardarFecha(ofstream& file)
@@ -58,8 +56,8 @@ Fecha* Fecha::leerFecha(ifstream& file)
     return new Fecha(dia,mes,anio);
 }
 
-//ostream& operator<<(ostream& s, Fecha& fec)
-//{
-//    s << "Fecha (D/M/A): " << fec.dia << " / " << fec.mes << " / " << fec.anio << " / " << endl;
-//    return s;
-//}
+ostream& operator<<(ostream& s, Fecha& fec)
+{
+    s << fec.toString();
+    return s;
+}

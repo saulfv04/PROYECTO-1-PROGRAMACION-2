@@ -17,7 +17,7 @@ class Perecedero
 
 		virtual void guardarPerecedero(ofstream&);
 		static Perecedero* leerPerecedero(ifstream&);
-		/*friend ostream& operator<<(ostream&, Perecedero&);*/
+		friend ostream& operator<<(ostream&, Perecedero&);
 
 
 };

@@ -47,32 +47,40 @@ void DecoradorEmbutido::setSiguiente(BaseCarrito* carro)
 	this->ptrCarrito = carro;
 }
 
-void DecoradorEmbutido::imprimir()
-{
-	cout << "----------------EMBUTIDO----------------" << endl;
-	cout << endl;
-	cout << "marca: " << this->marca<< endl;
-	cout << "nombre: " << this->nombreComercial << endl;
-	cout << "codigo: " << this->codigo << endl;
-	cout << "nombre animal: " << this->nombreAnimal << endl;
-	cout << "parte animal: " << this->parteDelAnimal << endl;
-	cout << "descripcion: " << this->descripcion << endl;
-	cout << "empresa: " << this->nombreComercial << endl;
-	cout << "Procedencia: ";
+string DecoradorEmbutido::imprimir(){
+	stringstream s;
+	s << "----------------EMBUTIDO----------------" << endl;
+	s << endl;
+	s << "marca: " << this->marca<< endl;
+	s << "nombre: " << this->nombreComercial << endl;
+	s << "codigo: " << this->codigo << endl;
+	s << "nombre animal: " << this->nombreAnimal << endl;
+	s << "parte animal: " << this->parteDelAnimal << endl;
+	s << "descripcion: " << this->descripcion << endl;
+	s << "empresa: " << this->nombreComercial << endl;
+	s << "Procedencia: ";
 	if (this->nacional) {
-		cout << "nacional " << endl;
+		s << "nacional " << endl;
 	}
 	else {
-		cout << "internacional " << endl;
+		s << "internacional " << endl;
 	}
-	cout << "fecha vecimiento: " << this->ptrPer->toString() << endl;
-	cout << "precio costo: " << this->precioCosto << endl;
-	cout << endl;
-	ptrCarrito->imprimir();
+	if (this->ptrEmpaque->getTripa()) {
+		s << "contiene tripa " << endl;
+	}
+	else {
+		s << "no contiene tripa " << endl;
+	}
+	s << "fecha vecimiento: " << this->ptrPer->toString() << endl;
+	s << "precio costo: " << this->precioCosto << endl;
+	s << endl;
+	s<< ptrCarrito->imprimir();
+	return s.str();
 }
-//
-//ostream& operator<<(ostream& o, DecoradorEmbutido& p)
-//{
-//	o << "Embutido: " << p.ptrEmbutido<< '\n' << p.ptrCarrito << endl;
-//	return o;
-//}
+
+ostream& operator<<(ostream& o, DecoradorEmbutido& p)
+{
+	o << p.imprimir() << endl;
+	return o;
+}
+
