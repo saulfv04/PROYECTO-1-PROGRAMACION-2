@@ -21,6 +21,7 @@ public:
 
 	void setNombre(string);
 
+	string toString();
 
 	friend ostream& operator<<(ostream&, Persona&);
 	friend ifstream& operator>>(ifstream&, Persona&);

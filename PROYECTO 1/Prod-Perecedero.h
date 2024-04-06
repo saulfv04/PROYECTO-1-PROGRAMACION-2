@@ -18,6 +18,7 @@ class ProdPerecedero:public Producto {
 		virtual void setPeso(double) = 0;
 		virtual string toString()=0;
 		virtual int getFechaPer() = 0;
+		virtual Perecedero* getPer()=0;
 
 		//Accesores y Mutadores heredados
 		virtual int getFechaIng() = 0;

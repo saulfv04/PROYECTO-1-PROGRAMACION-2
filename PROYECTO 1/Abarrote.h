@@ -20,6 +20,7 @@ class Abarrote :public ProdPerecedero
 		virtual void setNacional(bool);
 		virtual void setPeso(double);
 		virtual int getFechaIng();
+		virtual Perecedero* getPer();
 		virtual int getFechaPer();
 		virtual string toString();	
 		virtual string getnombreComecial();

@@ -28,6 +28,7 @@ class Embutido :public Carne
 		virtual void setNombreAnimal(string);
 		virtual void setparteDelAnimal(string);
 		virtual int getFechaIng();
+		virtual Perecedero* getPer();
 		virtual int getFechaPer();
 		virtual string toString();
 		virtual string getnombreComecial();
