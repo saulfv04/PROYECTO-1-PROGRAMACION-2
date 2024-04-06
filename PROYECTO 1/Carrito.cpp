@@ -18,13 +18,15 @@ void Carrito::setSiguiente(BaseCarrito*)
 {
 }
 
-void Carrito::imprimir()
+string Carrito::imprimir()
 {
-    cout << endl << "------------CARRITO COMPRAS------------" << endl;
+    stringstream s;
+    s << endl << "------------CARRITO COMPRAS------------" << endl;
+    return s.str();
 }
 
-//ostream& operator<<(ostream& o, Carrito& ca)
-//{
-//    o << "Carrito Compras" << endl;
-//    return o;
-//}
+ostream& operator<<(ostream& o, Carrito& ca)
+{
+    o << ca.imprimir() << endl;
+    return o;
+}

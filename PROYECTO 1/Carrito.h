@@ -7,7 +7,7 @@ public:
 	virtual ~Carrito();
 	BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
-	void imprimir();
-	/*friend ostream& operator<<(ostream&, Carrito&);*/
+	virtual string imprimir();
+	friend ostream& operator<<(ostream&, Carrito&);
 };
 

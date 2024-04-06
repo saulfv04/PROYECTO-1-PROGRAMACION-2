@@ -48,7 +48,7 @@ class Embutido :public Carne
 		virtual double ganancia();
 		virtual void guardarProducto(ofstream&);
 		static Embutido* leerEmbutido(ifstream&);
-		/*virtual void print(ostream& s)override;*/
+		friend ostream& operator <<(ostream& s, Embutido&);
 	
 };
 

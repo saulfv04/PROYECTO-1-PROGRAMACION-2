@@ -14,7 +14,7 @@ public:
 	virtual ~DecoradorConserva();
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
-	virtual void imprimir();
-	/*friend ostream& operator<<(ostream&, DecoradorConserva&);*/
+	virtual string imprimir();
+	friend ostream& operator<<(ostream&, DecoradorConserva&);
 };
 

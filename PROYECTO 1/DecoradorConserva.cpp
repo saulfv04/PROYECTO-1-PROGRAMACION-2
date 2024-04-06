@@ -32,27 +32,29 @@ void DecoradorConserva::setSiguiente(BaseCarrito* conserva)
     ptrCarrito = conserva;
 }
 
-void DecoradorConserva::imprimir()
-{
-    cout << "----------------CONSERVA----------------" << endl;
-    cout << endl;
-    cout <<"nombre: " << this->nombre << endl;
-    cout << "codigo: " << this->codigo << endl;
-    cout << "descripcion: " << this->descricion << endl;
-    cout << "envasado: ";
+string DecoradorConserva::imprimir(){
+    stringstream s;
+    s << "----------------CONSERVA----------------" << endl;
+    s << endl;
+    s <<"nombre: " << this->nombre << endl;
+    s << "codigo: " << this->codigo << endl;
+    s << "descripcion: " << this->descricion << endl;
+    s << "envasado: ";
     if (this->envasado) {
-        cout << "con envasado" << endl;
+        s << "con envasado" << endl;
     }
     else {
-        cout << "sin envasar" << endl;
+        s << "sin envasar" << endl;
     }
-    cout << "precio costo: " << this->precio << endl;
-    cout << "" << endl;
-    ptrCarrito->imprimir();
+    s << "precio costo: " << this->precio << endl;
+    s << "" << endl;
+    s<<ptrCarrito->imprimir();
+    return s.str();
 }
-//
-//ostream& operator<<(ostream& o , DecoradorConserva& con)
-//{
-//    o << "Conserva: " << con.ptrConserva << '\n' << con.ptrCarrito << endl;
-//    return o;
-//}
+
+ostream& operator<<(ostream& o , DecoradorConserva& con)
+{
+    o <<con.imprimir()<< endl;
+    return o;
+}
+

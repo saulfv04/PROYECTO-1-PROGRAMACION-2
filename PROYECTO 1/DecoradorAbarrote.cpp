@@ -37,29 +37,30 @@ void DecoradorAbarrote::setSiguiente(BaseCarrito* ptrCarro)
     ptrCarrito = ptrCarro;
 }
 
-void DecoradorAbarrote::imprimir()
-{
-    cout<<"----------------ABARROTE----------------" << endl;
-    cout << endl;
-    cout <<"nombre: " << this->nombreComercial << endl;
-    cout << "codigo: " << this->codigo << endl;
-    cout << "descripcion: " << this->descripcion << endl;
-    cout << "empresa: " << this->nombreComercial << endl;
-    cout << "Procedencia: ";
+string DecoradorAbarrote::imprimir(){
+    stringstream s;
+    s <<"----------------ABARROTE----------------" << endl;
+    s << endl;
+    s <<"nombre: " << this->nombreComercial << endl;
+    s << "codigo: " << this->codigo << endl;
+    s << "descripcion: " << this->descripcion << endl;
+    s << "empresa: " << this->nombreComercial << endl;
+    s << "Procedencia: ";
     if (this->nacional) {
-        cout << "nacional " << endl;
+        s << "nacional " << endl;
     }
     else {
-        cout << "internacional " << endl;
+        s << "internacional " << endl;
     }
-    cout << "fecha vecimiento: " << this->ptrPer->toString() << endl;
-    cout << "precio costo: " << this->precioCosto << endl;
-    cout << endl;
-    ptrCarrito->imprimir();
+    s << "fecha vecimiento: " << this->ptrPer->toString() << endl;
+    s << "precio costo: " << this->precioCosto << endl;
+    s << endl;
+    s<<ptrCarrito->imprimir();
+    return s.str();
 }
 
-//ostream& operator<<(ostream& o, DecoradorAbarrote& ab)
-//{
-//    o << "Abarrote:" << ab.ptrAbarrote << '\n' << ab.ptrCarrito << endl;
-//    return o;
-//}
+ostream& operator<<(ostream& o, DecoradorAbarrote& ab)
+{
+    o << ab.imprimir() << endl;
+    return o;
+}

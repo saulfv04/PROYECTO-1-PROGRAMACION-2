@@ -18,6 +18,6 @@ class Empaque
 		void guardarEmpaque(ofstream&);
 		static Empaque* leerEmpaque(ifstream&);
 
-		/*friend ostream& operator<<(ostream&, Empaque&);*/
+		friend ostream& operator<<(ostream&, Empaque&);
 };
 
