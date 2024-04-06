@@ -79,6 +79,11 @@ int Abarrote::getFechaIng()
     return ptrFechaIng->getFecha();
 }
 
+Perecedero* Abarrote::getPer()
+{
+    return ptrPer;
+}
+
 int Abarrote::getFechaPer()
 {
     return ptrPer->getFechaPer();
@@ -90,8 +95,8 @@ string Abarrote::toString()
     s << "----- PRODUCTO ABARROTE ----- " << endl;
     s << "Nombre " << this->nombreComercial << endl;
     s << "Codigo:  " << this->codigo << endl;
-    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
-    s << "Fecha de vencimiento: " << this->ptrPer->toString() << endl;
+    s << "Fecha de ingreso: " << *this->ptrFechaIng << endl;
+    s << "Fecha de vencimiento: " << *this->ptrPer << endl;
     s << "Categoria:  " << this->categoria << endl;
     if (this->nacional) {
         s << "Nacional " << endl;
@@ -237,19 +242,9 @@ Abarrote* Abarrote::leerAbarrote(ifstream& file)
 
     return new Abarrote(venc,fecha, NombreEmpresa,nac, pes,Codigo, NombreComercial, Descripcion, pCost, Categoria, exis, lim);
 }
-//
-//void Abarrote::print(ostream& s)
-//{
-//    s << "Nombre " << nombreComercial << endl;
-//    s << "Fecha de vencimiento: " << ptrPer << endl;
-//    if (nacional) {
-//        s << "Nacional " << endl;
-//    }
-//    else {
-//        s << "Internacional " << endl;
-//    }
-//    s << "Peso:  " << peso << endl;
-//    s << "Empresa nombre:  " << empresaNombre << endl;
-//    s << "Precio costo:  $" << precioCosto << endl;
-//}
 
+
+ostream& operator<<(ostream& s, Abarrote& abarrote){
+    s << abarrote.toString();
+    return s;
+}

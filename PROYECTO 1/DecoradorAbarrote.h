@@ -3,14 +3,22 @@
 #include "Abarrote.h"
 class DecoradorAbarrote : public ProductoDecorador{
 private:
-	Abarrote* ptrAbarrote;
+
+	Perecedero* ptrPer;
+	string empresaNombre;
+	string codigo;
+	string nombreComercial;
+	string descripcion;
+	bool nacional;
+	double peso;
+	double precioCosto;
 public:
-	DecoradorAbarrote(BaseCarrito*, Abarrote*);
+	DecoradorAbarrote(BaseCarrito*, Perecedero*, string, string, string, string, bool, double, double);
 	DecoradorAbarrote(const DecoradorAbarrote&);
 	virtual ~DecoradorAbarrote();
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
-	virtual void imprimir();
-	/*friend ostream& operator<<(ostream&, DecoradorAbarrote&);*/
+	virtual string imprimir();
+	friend ostream& operator<<(ostream&, DecoradorAbarrote&);
 };
 

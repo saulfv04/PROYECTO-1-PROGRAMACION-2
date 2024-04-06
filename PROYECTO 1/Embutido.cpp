@@ -114,6 +114,11 @@ int Embutido::getFechaIng()
     return ptrFechaIng->getFecha();
 }
 
+Perecedero* Embutido::getPer()
+{
+    return ptrPer;
+}
+
 int Embutido::getFechaPer()
 {
     return ptrPer->getFechaPer();
@@ -126,11 +131,11 @@ string Embutido::toString()
     s << "Marca: " << this->marca << endl;
     s << "Nombre: " << this->nombreComercial << endl;
     s << "Codigo:  " << this->codigo << endl;
-    s << "Fecha de ingreso: " << this->ptrFechaIng->toString() << endl;
-    s << "Fecha de vencimiento: " << this->ptrPer->toString() << endl;
+    s << "Fecha de ingreso: " << *this->ptrFechaIng << endl;
+    s << "Fecha de vencimiento: " << *this->ptrPer << endl;
     s << "Categoria:  " << this->categoria << endl;
     s << "Empaque: ";
-    if (ptrEmpaque->getTripa()) {
+    if (this->ptrEmpaque->getTripa()) {
         s << "(con) tripa " << endl;
     }
     else {
@@ -293,28 +298,8 @@ Embutido* Embutido::leerEmbutido(ifstream& file)
 
     return new Embutido(emp,marcaF,nombreAnimalF,parteDelAnimalF,fecPer,fec,nac,pe, codigoF, nombreComercialF, descripcionF, precioCost, categoriaF, exist, limit);
 }
-//
-//void Embutido::print(ostream& s)
-//{
-//    s << "Marca: " << marca << endl;
-//    s << "Nombre: " << nombreComercial << endl;
-//    s << "Fecha de vencimiento: " << ptrPer << endl;
-//    s << "Empaque: ";
-//    if (ptrEmpaque->getTripa()) {
-//        s << "(con) tripa " << endl;
-//    }
-//    else {
-//        s << "(sin) tripa " << endl;
-//    }
-//    if (nacional) {
-//        s << "Nacional " << endl;
-//    }
-//    else {
-//        s << "Internacional " << endl;
-//    }
-//    s << "Procedencia animal:  " << nombreAnimal << endl;
-//    s << "Parte animal:  " << parteDelAnimal << endl;
-//    s << "Precio costo:  $" << precioCosto << endl;
-//}
-
-
+ostream& operator<<(ostream& s, Embutido& e)
+{
+    s << e.toString();
+    return s;
+}

@@ -18,6 +18,7 @@ class ProdPerecedero:public Producto {
 		virtual void setPeso(double) = 0;
 		virtual string toString()=0;
 		virtual int getFechaPer() = 0;
+		virtual Perecedero* getPer()=0;
 
 		//Accesores y Mutadores heredados
 		virtual int getFechaIng() = 0;
@@ -38,15 +39,6 @@ class ProdPerecedero:public Producto {
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
 		virtual void guardarProducto(ofstream&) = 0;
-		/*virtual void print(ostream& s) = 0;*/
-
-
-
-
-
-
-
-
 
 
 };

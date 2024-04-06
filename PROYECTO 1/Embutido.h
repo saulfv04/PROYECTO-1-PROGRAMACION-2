@@ -28,6 +28,7 @@ class Embutido :public Carne
 		virtual void setNombreAnimal(string);
 		virtual void setparteDelAnimal(string);
 		virtual int getFechaIng();
+		virtual Perecedero* getPer();
 		virtual int getFechaPer();
 		virtual string toString();
 		virtual string getnombreComecial();
@@ -47,7 +48,7 @@ class Embutido :public Carne
 		virtual double ganancia();
 		virtual void guardarProducto(ofstream&);
 		static Embutido* leerEmbutido(ifstream&);
-		/*virtual void print(ostream& s)override;*/
+		friend ostream& operator <<(ostream& s, Embutido&);
 	
 };
 
