@@ -61,11 +61,15 @@ int main() {
      cout << endl;
      cout << endl;*/
 
-     Lista<Producto> lista;
-     lista.agregarInicio(*prod1);
-     lista.agregarInicio(*prod2);
-     lista.agregarInicio(*prod3);
-     cout << lista.toString() << endl;
+     Lista<Persona>* lista = new Lista<Persona>();
+     Persona* p1 = new Persona("433456464");
+     Persona* p2 = new Persona("433456464");
+     Persona* p3 = new Persona("433456464");
+
+     lista->agregarInicio(p1);
+     lista->agregarInicio(p2);
+     lista->agregarInicio(p3);
+     cout << lista->toString() << endl;
 
 
 
@@ -78,7 +82,6 @@ int main() {
   /*  Persona* p1 = new Persona("Juan", "433456464");
     cout << "Persona con sobrecarga" << endl;
     cout << *p1;*/
-
     system("pause");
     return 0;
 }
