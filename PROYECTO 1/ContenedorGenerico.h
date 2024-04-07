@@ -15,7 +15,7 @@ public:
 	Lista(const Lista&);
 	Lista& operator = (const Lista&);//operador de asignacion
 	virtual ~Lista();
-	void agregarInicio(T&);
+	void agregarInicio(T*);
 	void agregarFinal(T*);
 	T* eliminar(); // Eliminar primero, que devuelve lo que se borro
 	string toString()const;
@@ -116,7 +116,7 @@ inline void Lista<T>::removeInicio()
 }
 
 template<class T>
-void Lista<T>::agregarInicio(T& dat) {
+void Lista<T>::agregarInicio(T* dat) {
 	T* dato1 = new T(*dat);
 	if (primero == NULL) {
 		primero = new Nodo<T>(NULL, *dato1);
