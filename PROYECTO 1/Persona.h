@@ -5,21 +5,17 @@
 using namespace std;
 class Persona {
 private:
-	string nombre;
 	string cedula;
 
 public:
 	//c
 	Persona();
-	Persona(string,string);
+	Persona(string);
 	Persona(const Persona&);
 	~Persona();
 
 	//
-	string getNombre();
 	string getCedula();
-
-	void setNombre(string);
 
 	string toString();
 

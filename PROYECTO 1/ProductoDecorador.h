@@ -11,6 +11,8 @@ public:
 	virtual BaseCarrito* getSiguiente()=0;
 	virtual void setSiguiente(BaseCarrito*)=0;
 	virtual string imprimir()=0;
+	virtual double getTotal() = 0;
+	/*virtual int getCantidad() = 0;*/
 
 
 };

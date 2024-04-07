@@ -133,17 +133,20 @@
     <ClInclude Include="Carrito.h" />
     <ClInclude Include="Categoria.h" />
     <ClInclude Include="Conserva.h" />
+    <ClInclude Include="ContenedorGenerico.h" />
     <ClInclude Include="DecoradorAbarrote.h" />
     <ClInclude Include="DecoradorConserva.h" />
     <ClInclude Include="DecoradorEmbutido.h" />
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="Fecha.h" />
+    <ClInclude Include="Nodo.h" />
     <ClInclude Include="Perecedero.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Prod-Perecedero.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProductoDecorador.h" />
+    <ClInclude Include="Venta.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Abarrote.cpp" />
@@ -163,6 +166,7 @@
     <ClCompile Include="Prod-Perecedero.cpp" />
     <ClCompile Include="Producto.cpp" />
     <ClCompile Include="ProductoDecorador.cpp" />
+    <ClCompile Include="Venta.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

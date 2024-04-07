@@ -23,5 +23,7 @@ public:
 	virtual void setSiguiente(BaseCarrito*);
 	virtual string imprimir();
 	friend ostream& operator<<(ostream& o, DecoradorEmbutido&);
+    virtual double getTotal();
+    /*virtual int getCantidad();*/
 };
 
