@@ -15,6 +15,8 @@
 #include <iostream>
 #include "Persona.h"
 
+#include "ContenedorGenerico.h"
+
 
 int main() {
 
@@ -47,7 +49,7 @@ int main() {
      /**/
 
 
-     cout << *prod1;
+    /* cout << *prod1;
      cout << endl;
      cout << endl;
 
@@ -57,7 +59,13 @@ int main() {
 
      cout << *prod3;
      cout << endl;
-     cout << endl;
+     cout << endl;*/
+
+     Lista<Producto> lista;
+     lista.agregarInicio(*prod1);
+     lista.agregarInicio(*prod2);
+     lista.agregarInicio(*prod3);
+     cout << lista.toString() << endl;
 
 
 
