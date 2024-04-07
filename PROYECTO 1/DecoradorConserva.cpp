@@ -20,7 +20,9 @@ DecoradorConserva::DecoradorConserva(const DecoradorConserva& copia)
     this->envasado = copia.envasado;
 }
 
-DecoradorConserva::~DecoradorConserva(){}
+DecoradorConserva::~DecoradorConserva(){
+
+}
 
 BaseCarrito* DecoradorConserva::getSiguiente()
 {
@@ -34,22 +36,26 @@ void DecoradorConserva::setSiguiente(BaseCarrito* conserva)
 
 string DecoradorConserva::imprimir(){
     stringstream s;
-    s << "----------------CONSERVA----------------" << endl;
-    s << endl;
-    s <<"nombre: " << this->nombre << endl;
-    s << "codigo: " << this->codigo << endl;
-    s << "descripcion: " << this->descricion << endl;
+    s << "Conserva: " << " ";
+    s <<"nombre: " << this->nombre << " ";
+    s << "codigo: " << this->codigo << " ";
+    s << "descripcion: " << this->descricion << " ";
     s << "envasado: ";
     if (this->envasado) {
-        s << "con envasado" << endl;
+        s << "con envasado" << " ";
     }
     else {
-        s << "sin envasar" << endl;
+        s << "sin envasar" << " ";
     }
-    s << "precio costo: " << this->precio << endl;
-    s << "" << endl;
+    s << "precio: " << this->precio;
+    s << endl;
     s<<ptrCarrito->imprimir();
     return s.str();
+}
+
+double DecoradorConserva::getTotal()
+{
+    return this->precio + ptrCarrito->getTotal();
 }
 
 ostream& operator<<(ostream& o , DecoradorConserva& con)

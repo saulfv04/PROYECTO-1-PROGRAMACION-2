@@ -16,5 +16,7 @@ public:
 	virtual void setSiguiente(BaseCarrito*);
 	virtual string imprimir();
 	friend ostream& operator<<(ostream&, DecoradorConserva&);
+	virtual double getTotal();
+	/*virtual int getCantidad();*/
 };
 

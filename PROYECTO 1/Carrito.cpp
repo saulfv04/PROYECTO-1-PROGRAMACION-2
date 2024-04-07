@@ -4,9 +4,9 @@ Carrito::Carrito()
 {
 }
 
-
 Carrito::~Carrito()
 {
+
 }
 
 BaseCarrito* Carrito::getSiguiente()
@@ -24,6 +24,16 @@ string Carrito::imprimir()
     s << endl << "------------CARRITO COMPRAS------------" << endl;
     return s.str();
 }
+
+double Carrito::getTotal()
+{
+    return 0.0;
+}
+
+//int Carrito::getCantidad()
+//{
+//    return 0;
+//}
 
 ostream& operator<<(ostream& o, Carrito& ca)
 {

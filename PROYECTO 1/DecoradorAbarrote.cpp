@@ -25,7 +25,11 @@ DecoradorAbarrote::DecoradorAbarrote(const DecoradorAbarrote& copia)
     this->precioCosto = copia.precioCosto;
 }
 
-DecoradorAbarrote::~DecoradorAbarrote(){}
+DecoradorAbarrote::~DecoradorAbarrote(){
+    if (ptrPer) {
+		delete ptrPer;
+	}
+}
 
 BaseCarrito* DecoradorAbarrote::getSiguiente()
 {
@@ -39,24 +43,29 @@ void DecoradorAbarrote::setSiguiente(BaseCarrito* ptrCarro)
 
 string DecoradorAbarrote::imprimir(){
     stringstream s;
-    s <<"----------------ABARROTE----------------" << endl;
-    s << endl;
-    s <<"nombre: " << this->nombreComercial << endl;
-    s << "codigo: " << this->codigo << endl;
-    s << "descripcion: " << this->descripcion << endl;
-    s << "empresa: " << this->nombreComercial << endl;
+    s << "Cantidad : 1" << endl;
+    s << "Abarrote: ";
+    s <<"nombre: " << this->nombreComercial << " ";
+    s << "codigo: " << this->codigo << " ";
+    s << "descripcion: " << this->descripcion << " ";
+    s << "empresa: " << this->nombreComercial << " ";
     s << "Procedencia: ";
     if (this->nacional) {
-        s << "nacional " << endl;
+        s << "nacional " << " ";
     }
     else {
-        s << "internacional " << endl;
+        s << "internacional " << " ";
     }
-    s << "fecha vecimiento: " << this->ptrPer->toString() << endl;
-    s << "precio costo: " << this->precioCosto << endl;
+    s << "fecha vecimiento: " << this->ptrPer->toString() << " ";
+    s << "precio: " << this->precioCosto;
     s << endl;
-    s<<ptrCarrito->imprimir();
+    s << ptrCarrito->imprimir();
     return s.str();
+}
+
+double DecoradorAbarrote::getTotal()
+{
+    return this->precioCosto + ptrCarrito->getTotal();
 }
 
 ostream& operator<<(ostream& o, DecoradorAbarrote& ab)

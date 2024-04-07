@@ -35,6 +35,12 @@ DecoradorEmbutido::DecoradorEmbutido(const DecoradorEmbutido& copia)
 }
 DecoradorEmbutido::~DecoradorEmbutido()
 {
+	if (ptrEmpaque) {
+		delete ptrEmpaque;
+	}
+	if (ptrPer) {
+		delete ptrPer;
+	}
 }
 
 BaseCarrito* DecoradorEmbutido::getSiguiente()
@@ -49,34 +55,40 @@ void DecoradorEmbutido::setSiguiente(BaseCarrito* carro)
 
 string DecoradorEmbutido::imprimir(){
 	stringstream s;
-	s << "----------------EMBUTIDO----------------" << endl;
-	s << endl;
-	s << "marca: " << this->marca<< endl;
-	s << "nombre: " << this->nombreComercial << endl;
-	s << "codigo: " << this->codigo << endl;
-	s << "nombre animal: " << this->nombreAnimal << endl;
-	s << "parte animal: " << this->parteDelAnimal << endl;
-	s << "descripcion: " << this->descripcion << endl;
-	s << "empresa: " << this->nombreComercial << endl;
+	s << "Embutido: " << " ";
+	s << "marca: " << this->marca<< " ";
+	s << "nombre: " << this->nombreComercial << " ";
+	s << "codigo: " << this->codigo << " ";
+	s << "nombre animal: " << this->nombreAnimal << " ";
+	s << "parte animal: " << this->parteDelAnimal << " ";
+	s << "descripcion: " << this->descripcion << " ";
+	s << "empresa: " << this->nombreComercial << " ";
 	s << "Procedencia: ";
 	if (this->nacional) {
-		s << "nacional " << endl;
+		s << "nacional " << " ";
 	}
 	else {
-		s << "internacional " << endl;
+		s << "internacional " << " ";
 	}
 	if (this->ptrEmpaque->getTripa()) {
-		s << "contiene tripa " << endl;
+		s << "contiene tripa " << " ";
 	}
 	else {
-		s << "no contiene tripa " << endl;
+		s << "no contiene tripa " << " ";
 	}
-	s << "fecha vecimiento: " << this->ptrPer->toString() << endl;
-	s << "precio costo: " << this->precioCosto << endl;
+	s << "fecha vecimiento: " << this->ptrPer->toString() << " ";
+	s << "precio: " << this->precioCosto;
 	s << endl;
 	s<< ptrCarrito->imprimir();
 	return s.str();
 }
+
+double DecoradorEmbutido::getTotal()
+{
+	return this->precioCosto + ptrCarrito->getTotal();
+}
+
+
 
 ostream& operator<<(ostream& o, DecoradorEmbutido& p)
 {
