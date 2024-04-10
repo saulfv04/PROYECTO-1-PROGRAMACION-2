@@ -124,7 +124,7 @@ int Embutido::getFechaPer()
     return ptrPer->getFechaPer();
 }
 
-string Embutido::toString()
+string Embutido::toString()const
 {
     stringstream s;
     s << "----- PRODUCTO EMBUTIDO ----- " << endl;
@@ -230,6 +230,11 @@ double Embutido::ganancia()
 {
     Categoria c;
     return precioCosto * c.porceganancia(categoria);
+}
+
+ObjetoBase* Embutido::clonar() const
+{
+    return new Embutido(*this);
 }
 
 void Embutido::guardarProducto(ofstream& file)

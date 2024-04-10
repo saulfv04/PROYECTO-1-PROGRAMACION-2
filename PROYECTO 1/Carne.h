@@ -20,11 +20,11 @@ class Carne :public ProdPerecedero
 		virtual double getPeso() = 0;
 		virtual void setNacional(bool) = 0;
 		virtual void setPeso(double) = 0;
-		virtual string toString() = 0;
+		virtual string toString()const = 0;
 		virtual int getFechaPer() = 0;
 		virtual Perecedero* getPer() = 0;
 		virtual int getFechaIng() = 0;
-
+		virtual  ObjetoBase* clonar()const = 0;
 		//Accesores y Mutadores heredados
 		virtual string getnombreComecial() = 0;
 		virtual string getCodigo() = 0;

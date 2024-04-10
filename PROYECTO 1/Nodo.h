@@ -11,7 +11,7 @@ private:
 	Nodo* siguiente;
 	T* dato;
 public:
-	Nodo(Nodo<T>*, T&);
+	Nodo(Nodo<T>*, T*);
 	virtual~Nodo();
 	Nodo<T>* obtenerSig()const;
 	T* obtenerInfo()const;
@@ -22,7 +22,7 @@ public:
 };
 
 template<class T>
-Nodo<T>::Nodo(Nodo<T>* sig, T& dat) :siguiente(sig), dato(&dat) {}
+Nodo<T>::Nodo(Nodo<T>* sig, T* dat) :siguiente(sig), dato(dat) {}
 
 template<class T>
 Nodo<T>::~Nodo()

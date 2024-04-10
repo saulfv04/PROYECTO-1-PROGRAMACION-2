@@ -3,10 +3,11 @@
 #include <sstream>
 #include "Fecha.h"
 #include "Categoria.h"
+#include "ObjetoBase.h"
 using namespace std;
 
 
-class Producto {
+class Producto:public ObjetoBase {
 protected:
 	string codigo;
 	string nombreComercial;
@@ -18,7 +19,7 @@ protected:
 	Fecha* ptrFechaIng;
 public:
 	virtual ~Producto() {}
-	virtual string toString() = 0;
+	virtual string toString()const = 0;
 
 	//Accesores
 	virtual string getnombreComecial() = 0;
@@ -41,6 +42,9 @@ public:
 	virtual double ganancia() = 0;
 	virtual void guardarProducto(ofstream&) = 0;
 
-	friend ostream& operator<<(ostream& , Producto&);
+	//heredados
+	virtual  ObjetoBase* clonar()const = 0;
+
+
 
 };
