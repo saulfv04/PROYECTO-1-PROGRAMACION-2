@@ -75,7 +75,7 @@ Lista<T>& Lista<T>::operator=(const Lista& l) {
 template<class T>
 Lista<T>::~Lista() {
 	eliminarTodos();
-	delete this;
+
 }
 
 template<class T>
@@ -124,13 +124,14 @@ inline void Lista<T>::removeInicio()
 
 template<class T>
 void Lista<T>::agregarInicio(T* dat) {
-	T* dato1 = new T(*dat); 
+	T* dato1 = dat->clonar();	
 	if (primero == nullptr) {
 		primero = new Nodo<T>(nullptr, dato1);
 	}
 	else {
-		Nodo<T>* pNuevo = new Nodo<T>(primero, dato1);
-		primero = pNuevo;
+		Nodo<T>* pNuevo = new Nodo<T>(nullptr, dato1); // New node's next pointer should point to the current first node
+		pNuevo->setSig(primero); // Set the next pointer of the new node to the current first node
+		primero = pNuevo; // Update the first node pointer to the new node
 	}
 }
 

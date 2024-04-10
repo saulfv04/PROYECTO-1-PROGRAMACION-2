@@ -16,6 +16,7 @@
 #include "Persona.h"
 #include "ObjetoBase.h"
 #include "ContenedorGenerico.h"
+#include "Venta.h"
 
 
 int main() {
@@ -52,11 +53,18 @@ int main() {
     ObjetoBase* p2 = new Persona("45656333");
     ObjetoBase* p3 = new Persona("000008888");
 
-    /*Lista<ObjetoBase>* CE1 = new Lista<ObjetoBase>();*/ //ERROR ACTUAL
+    Lista<ObjetoBase>* CE1 = new Lista<ObjetoBase>();
 
-  
+    CE1->agregarInicio(prod1);
+    CE1->agregarInicio(prod2);
+    CE1->agregarInicio(prod3);
 
-     //cout << CE1->toString();
+
+    cout << CE1->toString();
+
+
+   
+    
     system("pause");
     return 0;
 }
