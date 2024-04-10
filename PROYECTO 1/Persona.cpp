@@ -20,11 +20,21 @@ Persona::~Persona(){}
 
 
 
-string Persona::toString()
+string Persona::getCedula()
+{
+	return this->cedula;
+}
+
+string Persona::toString()const
 {
 	stringstream s;
 	s << "Cedula: " << this->cedula << endl;
 	return s.str();
+}
+
+ObjetoBase* Persona::clonar() const
+{
+	return new Persona(*this);
 }
 
 ostream& operator<<(ostream& o, Persona& p)

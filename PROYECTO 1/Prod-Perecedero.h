@@ -16,7 +16,7 @@ class ProdPerecedero:public Producto {
 		virtual double getPeso() = 0;
 		virtual void setNacional(bool) = 0;
 		virtual void setPeso(double) = 0;
-		virtual string toString()=0;
+		virtual string toString()const =0;
 		virtual int getFechaPer() = 0;
 		virtual Perecedero* getPer()=0;
 
@@ -29,7 +29,7 @@ class ProdPerecedero:public Producto {
 		virtual string getCategoria() = 0;
 		virtual int getExistencia() = 0;
 		virtual int getLimite() = 0;
-
+		virtual  ObjetoBase* clonar()const = 0;
 		//Mutadores
 		virtual void setCodigo(string) = 0;
 		virtual void setnombreComercial(string) = 0;

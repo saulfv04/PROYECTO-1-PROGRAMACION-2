@@ -22,7 +22,7 @@ class Abarrote :public ProdPerecedero
 		virtual int getFechaIng();
 		virtual Perecedero* getPer();
 		virtual int getFechaPer();
-		virtual string toString();	
+		virtual string toString()const;
 		virtual string getnombreComecial();
 		virtual string getCodigo();
 		virtual string getDescripcion();
@@ -30,7 +30,7 @@ class Abarrote :public ProdPerecedero
 		virtual string getCategoria();
 		virtual int getExistencia();
 		virtual int getLimite();
-
+		virtual  ObjetoBase* clonar()const;
 	
 		virtual void setCodigo(string);
 		virtual void setnombreComercial(string);

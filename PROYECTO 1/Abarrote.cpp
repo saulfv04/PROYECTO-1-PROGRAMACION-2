@@ -89,7 +89,7 @@ int Abarrote::getFechaPer()
     return ptrPer->getFechaPer();
 }
 
-string Abarrote::toString()
+string Abarrote::toString()const
 {
     stringstream s;
     s << "----- PRODUCTO ABARROTE ----- " << endl;
@@ -146,6 +146,11 @@ int Abarrote::getExistencia()
 int Abarrote::getLimite()
 {
     return limite;
+}
+
+ObjetoBase* Abarrote::clonar() const
+{
+    return new Abarrote(*this);
 }
 
 void Abarrote::setCodigo(string c)

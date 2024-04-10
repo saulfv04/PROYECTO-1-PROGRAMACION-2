@@ -42,7 +42,7 @@ void Conserva::setEnvasado(bool e)
 }
 
 
-string Conserva::toString()
+string Conserva::toString()const
 {
     stringstream s;
     s << "----- PRODUCTO CONSERVA ----- " << endl;
@@ -63,6 +63,11 @@ string Conserva::toString()
 int Conserva::getFechaIng()
 {
     return ptrFechaIng->getFecha();
+}
+
+ObjetoBase* Conserva::clonar() const
+{
+    return new Conserva(*this);
 }
 
 string Conserva::getnombreComecial()
@@ -154,8 +159,7 @@ void Conserva::guardarProducto(ofstream& file)
     }
 }
 
-Conserva* Conserva::leerConserva(ifstream& file)
-{
+Conserva* Conserva::leerConserva(ifstream& file){
     
     string envasadoF,codigoF,nombreComercialF,descripcionF,precioCostoF,categoriaF, existenciaF, limiteF;
     bool env;

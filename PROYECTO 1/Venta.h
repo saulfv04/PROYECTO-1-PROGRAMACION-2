@@ -1,29 +1,43 @@
 #pragma once
 #include "BaseCarrito.h"
 #include "Persona.h"
+#include "ObjetoBase.h"
+using namespace std;
 
 
-
-class Venta
-{
+class Venta:public ObjetoBase{
 	private:
 		BaseCarrito* carrito;
 		Persona* persona;
 		string codigo;
 	public:
+
+		//Constructores y Destructor
 		Venta(BaseCarrito*,Persona*,string);
 		Venta(const Venta&);
 		virtual ~Venta();
+
+
+		//Accesores
 		string getCodigo();
-		void setCodigo(string);
-		BaseCarrito* getCarrito();
-		void setCarrito(BaseCarrito*);
 		Persona* getPersona();
+		BaseCarrito* getCarrito();
+
+		//Mutadores
+		void setCodigo(string);
+		void setCarrito(BaseCarrito*);
 		void setPersona(Persona*);
-		string toString();//Factura
+
+
+		string toString()const;//Factura
 		friend ostream& operator<<(ostream&, Venta&);
-		double totalbruto();
-		double totalIVa();
-		double totalneto();
+
+		//Métodos de cálculo
+		double totalbruto()const;
+		double totalIVa()const;
+		double totalneto()const;
+
+		//Heredados
+		ObjetoBase* clonar()const;
 };
 
