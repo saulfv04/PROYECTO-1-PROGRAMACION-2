@@ -2,12 +2,11 @@
 #pragma once
 #include <iostream>
 #include "Nodo.h"
-
+#include "ObjetoBase.h"
 using namespace std;
 
 template<class T>
-
-class Lista {
+class Lista :public ObjetoBase{
 private:
 	Nodo<T>* primero;
 public:
@@ -28,6 +27,11 @@ public:
 	void removeInicio();
 	bool isEmpty();
 
+	//Heredados
+	virtual  ObjetoBase* clonar()const;
+
+	friend ostream& operator<<(ostream& o, Lista& l) { return o << l.toString(); }
+
 
 
 
@@ -44,16 +48,13 @@ Lista<T>::Lista()
 }
 
 template<class T>
-Lista<T>::Lista(const Lista& lis)
+Lista<T>::Lista(const Lista& list)
 {
-	primero = NULL;
-	Nodo<T>* pAct = lis.primero;// De la lista que llega
+	Nodo<T>* pAct = list.primero;
 	while (pAct != NULL) {
-		T* dat1 = new T(*pAct->obtenerInfo());
-		this->agregarFinal(pAct);
+		agregarInicio(pAct->obtenerInfo()->clonar());
 		pAct = pAct->obtenerSig();
 	}
-
 }
 
 template<class T>
@@ -81,6 +82,12 @@ template<class T>
 bool Lista<T>::isEmpty()
 {
 	return (primero == NULL);
+}
+
+template<class T>
+inline ObjetoBase* Lista<T>::clonar() const
+{
+	return new Lista<T>(*this);
 }
 
 template<class T>
@@ -117,14 +124,14 @@ inline void Lista<T>::removeInicio()
 
 template<class T>
 void Lista<T>::agregarInicio(T* dat) {
-	T* dato1 = new T(*dat);
-	if (primero == NULL) {
-		primero = new Nodo<T>(NULL, *dato1);
+	T* dato1 = new T(*dat); 
+	if (primero == nullptr) {
+		primero = new Nodo<T>(nullptr, dato1);
 	}
 	else {
-		Nodo<T>* pNuevo = new Nodo<T>(primero, *dato1);
+		Nodo<T>* pNuevo = new Nodo<T>(primero, dato1);
 		primero = pNuevo;
-	}	
+	}
 }
 
 template<class T>

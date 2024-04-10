@@ -3,6 +3,7 @@
 Venta::Venta(BaseCarrito* carr, Persona* per, string cod):carrito(carr),persona(per),codigo(cod){}
 
 Venta::Venta(const Venta& ven) {
+
 }
 
 Venta::~Venta()
@@ -45,8 +46,7 @@ void Venta::setPersona(Persona* p)
     	persona = p;
 }
 
-string Venta::toString()
-{
+string Venta::toString()const{
     stringstream s;
     s<<"----------------------------------------" <<"|"<<  endl;
     s<<"|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << codigo << "|" << endl;
@@ -58,18 +58,23 @@ string Venta::toString()
     return s.str();
 }
 
-double Venta::totalbruto() {
+double Venta::totalbruto()const{
     return carrito->getTotal();
 }
 
-double Venta::totalIVa()
+double Venta::totalIVa()const
 {
     return totalbruto() * 0.013;
 }
 
-double Venta::totalneto()
+double Venta::totalneto()const
 {
     return totalbruto() + totalIVa();
+}
+
+ObjetoBase* Venta::clonar() const
+{
+    return new Venta(*this);
 }
 
 ostream& operator<<(ostream& o , Venta& v)
