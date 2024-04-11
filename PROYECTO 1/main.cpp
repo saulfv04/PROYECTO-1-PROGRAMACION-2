@@ -53,16 +53,26 @@ int main() {
     ObjetoBase* p2 = new Persona("45656333");
     ObjetoBase* p3 = new Persona("000008888");
 
-    Lista<ObjetoBase>* CE1 = new Lista<ObjetoBase>();
+    //Lista<ObjetoBase>* CE1 = new Lista<ObjetoBase>();
 
-    CE1->agregarInicio(prod1);
-    CE1->agregarInicio(prod2);
-    CE1->agregarInicio(prod3);
-
-
-    cout << CE1->toString();
+    //CE1->agregarInicio(prod1);
+    //CE1->agregarInicio(prod2);
+    //CE1->agregarInicio(prod3);
 
 
+    //cout << CE1->toString();
+
+
+    ObjetoBase* carrito = new Carrito();
+    DecoradorAbarrote* abarrote = new DecoradorAbarrote((BaseCarrito*)carrito, pere2, "Dos pinos", "134564", "Helado de vainilla", "Contiene chocolate derretido en su interior", true, 0.9, 8.99);
+   /* ObjetoBase* conserva = new DecoradorConserva((BaseCarrito*)abarrote, "Atun en agua", "1299903", "Conserva sin fcha limite de vencimiento", 3.99, true);
+    ObjetoBase* embutido = new DecoradorEmbutido((BaseCarrito*)conserva, empaque, pere1, "SABEMAS", "124331", "COSTILLA AHUMADA", "Procedencia Japonesa", "VACUNO", "COSTILLA", 2.1, 60.99, false);*/
+
+    Lista<ObjetoBase>* CE2 = new Lista<ObjetoBase>();
+
+    CE2->agregarInicio(abarrote);
+
+    cout<< *CE2;
    
     
     system("pause");
