@@ -34,7 +34,7 @@ void DecoradorConserva::setSiguiente(BaseCarrito* conserva)
     ptrCarrito = conserva;
 }
 
-string DecoradorConserva::imprimir(){
+string DecoradorConserva::toString() const{
     stringstream s;
     s << "Conserva: " << " ";
     s <<"nombre: " << this->nombre << " ";
@@ -49,7 +49,7 @@ string DecoradorConserva::imprimir(){
     }
     s << "precio: " << this->precio;
     s << endl;
-    s<<ptrCarrito->imprimir();
+    s<<ptrCarrito->toString();
     return s.str();
 }
 
@@ -58,9 +58,14 @@ double DecoradorConserva::getTotal()
     return this->precio + ptrCarrito->getTotal();
 }
 
+ObjetoBase* DecoradorConserva::clonar() const
+{
+    return new DecoradorConserva(*this);
+}
+
 ostream& operator<<(ostream& o , DecoradorConserva& con)
 {
-    o <<con.imprimir()<< endl;
+    o <<con.toString()<< endl;
     return o;
 }
 

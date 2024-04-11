@@ -21,9 +21,10 @@ public:
 	virtual ~DecoradorEmbutido();
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
-	virtual string imprimir();
+	virtual string toString() const;
 	friend ostream& operator<<(ostream& o, DecoradorEmbutido&);
     virtual double getTotal();
     /*virtual int getCantidad();*/
+    virtual ObjetoBase* clonar() const;
 };
 

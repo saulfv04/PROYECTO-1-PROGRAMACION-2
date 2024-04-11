@@ -1,9 +1,12 @@
 #include "Venta.h"
 
-Venta::Venta(BaseCarrito* carr, Persona* per, string cod):carrito(carr),persona(per),codigo(cod){}
+Venta::Venta(ProductoDecorador* carr, Persona* per, string cod):carrito(carr),persona(per),codigo(cod){}
 
 Venta::Venta(const Venta& ven) {
 
+    this->carrito = static_cast<ProductoDecorador*>(ven.carrito->clonar());
+	persona = new Persona(*ven.persona);
+	codigo = ven.codigo;
 }
 
 Venta::~Venta()
@@ -31,7 +34,7 @@ BaseCarrito* Venta::getCarrito()
     return this->carrito;
 }
 
-void Venta::setCarrito(BaseCarrito* c)
+void Venta::setCarrito(ProductoDecorador* c)
 {
 	carrito = c;
 }
@@ -52,7 +55,7 @@ string Venta::toString()const{
     s<<"|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << codigo << "|" << endl;
     s << "|" << "\t" << "\t" << "CLIENTE: " << *persona << "|" << endl;
     s << "|" << "DETALLE DE COMPRA" << "|" << endl;
-    s << "|" << carrito->imprimir();
+    s << "|" << carrito->toString();
     s << "|" << "TOTAL BRUTO: " << totalbruto()<< "%13"<< "IMPORTE: " << totalIVa() << " TOTAL NETO: " << totalneto() << "|" << endl;
     s << "---------------------------------------- "<<"|" << endl;
     return s.str();

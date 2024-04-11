@@ -41,7 +41,7 @@ void DecoradorAbarrote::setSiguiente(BaseCarrito* ptrCarro)
     ptrCarrito = ptrCarro;
 }
 
-string DecoradorAbarrote::imprimir(){
+string DecoradorAbarrote::toString() const{
     stringstream s;
     s << "Cantidad : 1" << endl;
     s << "Abarrote: ";
@@ -59,7 +59,7 @@ string DecoradorAbarrote::imprimir(){
     s << "fecha vecimiento: " << this->ptrPer->toString() << " ";
     s << "precio: " << this->precioCosto;
     s << endl;
-    s << ptrCarrito->imprimir();
+    s << ptrCarrito->toString();
     return s.str();
 }
 
@@ -68,8 +68,13 @@ double DecoradorAbarrote::getTotal()
     return this->precioCosto + ptrCarrito->getTotal();
 }
 
+ObjetoBase* DecoradorAbarrote::clonar() const
+{
+    return new DecoradorAbarrote(*this);
+}
+
 ostream& operator<<(ostream& o, DecoradorAbarrote& ab)
 {
-    o << ab.imprimir() << endl;
+    o << ab.toString() << endl;
     return o;
 }

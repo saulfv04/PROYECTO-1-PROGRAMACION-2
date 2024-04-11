@@ -1,5 +1,5 @@
 #pragma once
-#include "BaseCarrito.h"
+#include "ProductoDecorador.h"
 #include "Persona.h"
 #include "ObjetoBase.h"
 using namespace std;
@@ -7,13 +7,13 @@ using namespace std;
 
 class Venta:public ObjetoBase{
 	private:
-		BaseCarrito* carrito;
+		ProductoDecorador* carrito;
 		Persona* persona;
 		string codigo;
 	public:
 
 		//Constructores y Destructor
-		Venta(BaseCarrito*,Persona*,string);
+		Venta(ProductoDecorador*,Persona*,string);
 		Venta(const Venta&);
 		virtual ~Venta();
 
@@ -25,7 +25,7 @@ class Venta:public ObjetoBase{
 
 		//Mutadores
 		void setCodigo(string);
-		void setCarrito(BaseCarrito*);
+		void setCarrito(ProductoDecorador*);
 		void setPersona(Persona*);
 
 

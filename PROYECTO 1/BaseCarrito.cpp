@@ -2,6 +2,6 @@
 
 ostream& operator<<(ostream& o, BaseCarrito& c)
 {
-    o << c.imprimir();
+    o << c.toString();
     return o;
 }
