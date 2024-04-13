@@ -1,9 +1,13 @@
 #include "Venta.h"
 
-Venta::Venta(BaseCarrito* carr, Persona* per, string cod):carrito(carr),persona(per),codigo(cod){}
+Venta::Venta(ProductoDecorador* carr, Persona* per,Fecha* f, string cod):carrito(carr),persona(per),fVenta(f),codigo(cod){}
 
 Venta::Venta(const Venta& ven) {
 
+    this->carrito = static_cast<ProductoDecorador*>(ven.carrito->clonar());
+	persona = new Persona(*ven.persona);
+	codigo = ven.codigo;
+    fVenta = new Fecha(*ven.fVenta);
 }
 
 Venta::~Venta()
@@ -31,7 +35,12 @@ BaseCarrito* Venta::getCarrito()
     return this->carrito;
 }
 
-void Venta::setCarrito(BaseCarrito* c)
+Fecha* Venta::getFecha()
+{
+    return this->fVenta;
+}
+
+void Venta::setCarrito(ProductoDecorador* c)
 {
 	carrito = c;
 }
@@ -46,13 +55,19 @@ void Venta::setPersona(Persona* p)
     	persona = p;
 }
 
+void Venta::setFecha(Fecha* f)
+{
+    fVenta = f;
+}
+
 string Venta::toString()const{
     stringstream s;
     s<<"----------------------------------------" <<"|"<<  endl;
     s<<"|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << codigo << "|" << endl;
     s << "|" << "\t" << "\t" << "CLIENTE: " << *persona << "|" << endl;
+    s << "|" << "\t" << "\t" << "FECHA: " << *fVenta << "|" << endl;
     s << "|" << "DETALLE DE COMPRA" << "|" << endl;
-    s << "|" << carrito->imprimir();
+    s << "|" << carrito->toString();
     s << "|" << "TOTAL BRUTO: " << totalbruto()<< "%13"<< "IMPORTE: " << totalIVa() << " TOTAL NETO: " << totalneto() << "|" << endl;
     s << "---------------------------------------- "<<"|" << endl;
     return s.str();
@@ -72,7 +87,7 @@ double Venta::totalneto()const
     return totalbruto() + totalIVa();
 }
 
-ObjetoBase* Venta::clonar() const
+Venta* Venta::clonar() const
 {
     return new Venta(*this);
 }

@@ -141,7 +141,6 @@
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Nodo.h" />
-    <ClInclude Include="ObjetoBase.h" />
     <ClInclude Include="Perecedero.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Prod-Perecedero.h" />
@@ -162,10 +161,8 @@
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ObjetoBase.cpp" />
     <ClCompile Include="Perecedero.cpp" />
     <ClCompile Include="Persona.cpp" />
-    <ClCompile Include="Prod-Perecedero.cpp" />
     <ClCompile Include="Producto.cpp" />
     <ClCompile Include="ProductoDecorador.cpp" />
     <ClCompile Include="Venta.cpp" />

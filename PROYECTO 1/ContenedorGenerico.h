@@ -2,11 +2,11 @@
 #pragma once
 #include <iostream>
 #include "Nodo.h"
-#include "ObjetoBase.h"
+
 using namespace std;
 
 template<class T>
-class Lista :public ObjetoBase{
+class Lista{
 private:
 	Nodo<T>* primero;
 public:
@@ -28,7 +28,7 @@ public:
 	bool isEmpty();
 
 	//Heredados
-	virtual  ObjetoBase* clonar()const;
+	virtual Lista<T>* clonar()const;
 
 	friend ostream& operator<<(ostream& o, Lista& l) { return o << l.toString(); }
 
@@ -75,7 +75,7 @@ Lista<T>& Lista<T>::operator=(const Lista& l) {
 template<class T>
 Lista<T>::~Lista() {
 	eliminarTodos();
-	delete this;
+
 }
 
 template<class T>
@@ -85,10 +85,13 @@ bool Lista<T>::isEmpty()
 }
 
 template<class T>
-inline ObjetoBase* Lista<T>::clonar() const
+inline Lista<T>* Lista<T>::clonar() const
 {
 	return new Lista<T>(*this);
 }
+
+
+
 
 template<class T>
 int Lista<T>::size()
@@ -124,13 +127,14 @@ inline void Lista<T>::removeInicio()
 
 template<class T>
 void Lista<T>::agregarInicio(T* dat) {
-	T* dato1 = new T(*dat); 
+	T* dato1 = dat->clonar();	
 	if (primero == nullptr) {
 		primero = new Nodo<T>(nullptr, dato1);
 	}
 	else {
-		Nodo<T>* pNuevo = new Nodo<T>(primero, dato1);
-		primero = pNuevo;
+		Nodo<T>* pNuevo = new Nodo<T>(nullptr, dato1); // New node's next pointer should point to the current first node
+		pNuevo->setSig(primero); // Set the next pointer of the new node to the current first node
+		primero = pNuevo; // Update the first node pointer to the new node
 	}
 }
 

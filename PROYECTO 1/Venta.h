@@ -1,19 +1,20 @@
 #pragma once
-#include "BaseCarrito.h"
+#include "ProductoDecorador.h"
 #include "Persona.h"
-#include "ObjetoBase.h"
+#include "Fecha.h"
 using namespace std;
 
 
-class Venta:public ObjetoBase{
+class Venta{
 	private:
-		BaseCarrito* carrito;
+		ProductoDecorador* carrito;
 		Persona* persona;
 		string codigo;
+		Fecha* fVenta;
 	public:
 
 		//Constructores y Destructor
-		Venta(BaseCarrito*,Persona*,string);
+		Venta(ProductoDecorador*,Persona*,Fecha*,string);
 		Venta(const Venta&);
 		virtual ~Venta();
 
@@ -22,11 +23,13 @@ class Venta:public ObjetoBase{
 		string getCodigo();
 		Persona* getPersona();
 		BaseCarrito* getCarrito();
+		Fecha* getFecha();
 
 		//Mutadores
 		void setCodigo(string);
-		void setCarrito(BaseCarrito*);
+		void setCarrito(ProductoDecorador*);
 		void setPersona(Persona*);
+		void setFecha(Fecha*);
 
 
 		string toString()const;//Factura
@@ -38,6 +41,6 @@ class Venta:public ObjetoBase{
 		double totalneto()const;
 
 		//Heredados
-		ObjetoBase* clonar()const;
+		Venta* clonar()const;
 };
 

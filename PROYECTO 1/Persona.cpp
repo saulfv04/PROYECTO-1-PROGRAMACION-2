@@ -32,7 +32,7 @@ string Persona::toString()const
 	return s.str();
 }
 
-ObjetoBase* Persona::clonar() const
+Persona* Persona::clonar() const
 {
 	return new Persona(*this);
 }

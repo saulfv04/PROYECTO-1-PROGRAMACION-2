@@ -53,7 +53,7 @@ void DecoradorEmbutido::setSiguiente(BaseCarrito* carro)
 	this->ptrCarrito = carro;
 }
 
-string DecoradorEmbutido::imprimir(){
+string DecoradorEmbutido::toString() const{
 	stringstream s;
 	s << "Embutido: " << " ";
 	s << "marca: " << this->marca<< " ";
@@ -79,7 +79,7 @@ string DecoradorEmbutido::imprimir(){
 	s << "fecha vecimiento: " << this->ptrPer->toString() << " ";
 	s << "precio: " << this->precioCosto;
 	s << endl;
-	s<< ptrCarrito->imprimir();
+	s<< ptrCarrito->toString();
 	return s.str();
 }
 
@@ -88,11 +88,16 @@ double DecoradorEmbutido::getTotal()
 	return this->precioCosto + ptrCarrito->getTotal();
 }
 
+BaseCarrito* DecoradorEmbutido::clonar() const
+{
+	return new DecoradorEmbutido(*this);
+}
+
 
 
 ostream& operator<<(ostream& o, DecoradorEmbutido& p)
 {
-	o << p.imprimir() << endl;
+	o << p.toString() << endl;
 	return o;
 }
 

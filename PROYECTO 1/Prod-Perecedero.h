@@ -29,7 +29,7 @@ class ProdPerecedero:public Producto {
 		virtual string getCategoria() = 0;
 		virtual int getExistencia() = 0;
 		virtual int getLimite() = 0;
-		virtual  ObjetoBase* clonar()const = 0;
+		virtual  Producto* clonar()const = 0;
 		//Mutadores
 		virtual void setCodigo(string) = 0;
 		virtual void setnombreComercial(string) = 0;

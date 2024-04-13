@@ -14,9 +14,10 @@ public:
 	virtual ~DecoradorConserva();
 	virtual BaseCarrito* getSiguiente();
 	virtual void setSiguiente(BaseCarrito*);
-	virtual string imprimir();
+	virtual string toString() const;
 	friend ostream& operator<<(ostream&, DecoradorConserva&);
 	virtual double getTotal();
 	/*virtual int getCantidad();*/
+	virtual BaseCarrito* clonar() const;
 };
 

@@ -24,7 +24,7 @@ class Carne :public ProdPerecedero
 		virtual int getFechaPer() = 0;
 		virtual Perecedero* getPer() = 0;
 		virtual int getFechaIng() = 0;
-		virtual  ObjetoBase* clonar()const = 0;
+		virtual  Producto* clonar()const = 0;
 		//Accesores y Mutadores heredados
 		virtual string getnombreComecial() = 0;
 		virtual string getCodigo() = 0;
