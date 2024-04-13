@@ -34,7 +34,7 @@ double Carrito::getTotal()
     return 0.0;
 }
 
-ObjetoBase* Carrito::clonar() const
+BaseCarrito* Carrito::clonar() const
 {
     return NULL;
 }

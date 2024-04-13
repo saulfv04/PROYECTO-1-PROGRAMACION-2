@@ -17,7 +17,7 @@ class Conserva : public Producto
 		//Accesores y Mutadores heredados
 		virtual string toString()const;
 		virtual int getFechaIng();
-		virtual  ObjetoBase* clonar()const;
+		virtual  Producto* clonar()const;
 		//Accesores
 		virtual string getnombreComecial();
 		virtual string getCodigo();

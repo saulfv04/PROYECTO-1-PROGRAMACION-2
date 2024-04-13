@@ -18,6 +18,6 @@ public:
 	friend ostream& operator<<(ostream&, DecoradorConserva&);
 	virtual double getTotal();
 	/*virtual int getCantidad();*/
-	virtual ObjetoBase* clonar() const;
+	virtual BaseCarrito* clonar() const;
 };
 

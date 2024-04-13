@@ -2,11 +2,11 @@
 #pragma once
 #include <iostream>
 #include "Nodo.h"
-#include "ObjetoBase.h"
+
 using namespace std;
 
 template<class T>
-class Lista :public ObjetoBase{
+class Lista{
 private:
 	Nodo<T>* primero;
 public:
@@ -28,7 +28,7 @@ public:
 	bool isEmpty();
 
 	//Heredados
-	virtual  ObjetoBase* clonar()const;
+	virtual Lista<T>* clonar()const;
 
 	friend ostream& operator<<(ostream& o, Lista& l) { return o << l.toString(); }
 
@@ -85,10 +85,13 @@ bool Lista<T>::isEmpty()
 }
 
 template<class T>
-inline ObjetoBase* Lista<T>::clonar() const
+inline Lista<T>* Lista<T>::clonar() const
 {
 	return new Lista<T>(*this);
 }
+
+
+
 
 template<class T>
 int Lista<T>::size()

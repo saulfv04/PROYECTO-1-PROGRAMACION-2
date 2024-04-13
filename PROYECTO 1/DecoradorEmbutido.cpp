@@ -88,7 +88,7 @@ double DecoradorEmbutido::getTotal()
 	return this->precioCosto + ptrCarrito->getTotal();
 }
 
-ObjetoBase* DecoradorEmbutido::clonar() const
+BaseCarrito* DecoradorEmbutido::clonar() const
 {
 	return new DecoradorEmbutido(*this);
 }

@@ -14,7 +14,8 @@ public:
 	virtual string toString() const =0;
 	virtual double getTotal() = 0;
 	/*virtual int getCantidad() = 0;*/
-	virtual ObjetoBase* clonar() const = 0;
+	virtual BaseCarrito* clonar() const = 0;
+	
 
 };
 

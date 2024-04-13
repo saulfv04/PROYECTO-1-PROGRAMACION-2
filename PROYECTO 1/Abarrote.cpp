@@ -148,7 +148,7 @@ int Abarrote::getLimite()
     return limite;
 }
 
-ObjetoBase* Abarrote::clonar() const
+Producto* Abarrote::clonar() const
 {
     return new Abarrote(*this);
 }
