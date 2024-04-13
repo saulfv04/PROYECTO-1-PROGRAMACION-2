@@ -46,7 +46,7 @@ class Embutido :public Carne
 		virtual void setExistencia(int);
 		virtual void setLimite(int);
 		virtual double ganancia();
-		virtual  ObjetoBase* clonar()const;
+		virtual  Producto* clonar()const;
 		virtual void guardarProducto(ofstream&);
 		static Embutido* leerEmbutido(ifstream&);
 		friend ostream& operator <<(ostream& s, Embutido&);

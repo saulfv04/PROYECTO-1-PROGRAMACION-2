@@ -30,7 +30,7 @@ class Abarrote :public ProdPerecedero
 		virtual string getCategoria();
 		virtual int getExistencia();
 		virtual int getLimite();
-		virtual  ObjetoBase* clonar()const;
+		virtual  Producto* clonar()const;
 	
 		virtual void setCodigo(string);
 		virtual void setnombreComercial(string);

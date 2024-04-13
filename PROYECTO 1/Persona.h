@@ -2,9 +2,9 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include "ObjetoBase.h"
+
 using namespace std;
-class Persona :public ObjetoBase{
+class Persona{
 private:
 	string cedula;
 
@@ -21,7 +21,7 @@ public:
 	string toString()const;
 
 	//Heredado
-	virtual  ObjetoBase* clonar()const;
+	virtual  Persona* clonar()const;
 	friend ostream& operator<<(ostream&, Persona&);
 	friend ifstream& operator>>(ifstream&, Persona&);
 };

@@ -25,9 +25,6 @@
     <Filter Include="Header Files\Decorador">
       <UniqueIdentifier>{cdd6fc1a-5ee8-49d7-a56b-640f6701b8ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ObjBase">
-      <UniqueIdentifier>{0a9be773-e888-4463-8920-521ec52ce17a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Conserva.h">
@@ -90,15 +87,9 @@
     <ClInclude Include="ProductoDecorador.h">
       <Filter>Header Files\Decorador</Filter>
     </ClInclude>
-    <ClInclude Include="ObjetoBase.h">
-      <Filter>Header Files\ObjBase</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Conserva.cpp">
-      <Filter>Source Files\Producto-cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Prod-Perecedero.cpp">
       <Filter>Source Files\Producto-cpp</Filter>
     </ClCompile>
     <ClCompile Include="Abarrote.cpp">
@@ -147,9 +138,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Venta.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjetoBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -65,7 +65,7 @@ int Conserva::getFechaIng()
     return ptrFechaIng->getFecha();
 }
 
-ObjetoBase* Conserva::clonar() const
+Producto* Conserva::clonar() const
 {
     return new Conserva(*this);
 }

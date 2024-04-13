@@ -68,7 +68,7 @@ double DecoradorAbarrote::getTotal()
     return this->precioCosto + ptrCarrito->getTotal();
 }
 
-ObjetoBase* DecoradorAbarrote::clonar() const
+BaseCarrito* DecoradorAbarrote::clonar() const
 {
     return new DecoradorAbarrote(*this);
 }

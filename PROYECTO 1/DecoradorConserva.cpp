@@ -58,7 +58,7 @@ double DecoradorConserva::getTotal()
     return this->precio + ptrCarrito->getTotal();
 }
 
-ObjetoBase* DecoradorConserva::clonar() const
+BaseCarrito* DecoradorConserva::clonar() const
 {
     return new DecoradorConserva(*this);
 }

@@ -232,7 +232,7 @@ double Embutido::ganancia()
     return precioCosto * c.porceganancia(categoria);
 }
 
-ObjetoBase* Embutido::clonar() const
+Producto* Embutido::clonar() const
 {
     return new Embutido(*this);
 }

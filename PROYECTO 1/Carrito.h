@@ -12,7 +12,7 @@ public:
 	friend ostream& operator<<(ostream&, Carrito&);
 	virtual double getTotal();
 	/*virtual int getCantidad();*/
-	virtual ObjetoBase* clonar() const;
+	virtual BaseCarrito* clonar() const;
 
 };
 

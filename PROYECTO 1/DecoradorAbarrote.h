@@ -22,7 +22,7 @@ public:
 	friend ostream& operator<<(ostream&, DecoradorAbarrote&);
 	virtual double getTotal();
 	/*virtual int getCantidad();*/
-	virtual ObjetoBase* clonar() const;
+	virtual BaseCarrito* clonar() const;
 
 };
 
