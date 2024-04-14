@@ -1,13 +1,13 @@
 #include "Venta.h"
 
-Venta::Venta(ProductoDecorador* carr, string per, Fecha* f, string cod) :carrito(carr), nombreCliente(per), fVenta(f), codigo(cod){}
+Venta::Venta(ProductoDecorador* carr, string per, Fecha* f, string cod) :carrito(carr), cedulaCliente(per), fVenta(f), codigo(cod){}
 
 
 
 Venta::Venta(const Venta& ven) {
 
     this->carrito = static_cast<ProductoDecorador*>(ven.carrito->clonar());
-    this->nombreCliente = ven.nombreCliente;
+    this->cedulaCliente = ven.cedulaCliente;
 	codigo = ven.codigo;
     fVenta = new Fecha(*ven.fVenta);
 }
@@ -20,12 +20,6 @@ Venta::~Venta()
     cout << "Borrando Venta" << endl;
 
 }
-
-string Venta::getCodigo()const{
-    return this->codigo;
-}
-
-
 ComponenteAbstracto* Venta::getCarrito(){
     return this->carrito;
 }
@@ -40,11 +34,13 @@ void Venta::setCarrito(ProductoDecorador* c)
 	carrito = c;
 }
 
-
+string Venta::getCodigo()const {
+    return this->codigo;
+}
 
 string Venta::getPersona()
 {
-    return this->nombreCliente;
+    return this->cedulaCliente;
 }
 
 
@@ -58,7 +54,7 @@ string Venta::toString()const{
     stringstream s;
     s<<"----------------------------------------" <<"|"<<  endl;
     s<<"|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << this->codigo << "|" << endl;
-    s << "|" << "\t" << "\t" << "CLIENTE: " << this->nombreCliente << "|" << endl;
+    s << "|" << "\t" << "\t" << "CLIENTE: " << this->cedulaCliente << "|" << endl;
     s << "|" << "\t" << "\t" << "FECHA: " << *this->fVenta << "|" << endl;
     s << "|" << "DETALLE DE COMPRA" << "|" << endl;
     s << "|" << *this->carrito;

@@ -8,7 +8,7 @@ using namespace std;
 class Venta{
 	private:
 		ProductoDecorador* carrito;
-		string nombreCliente;
+		string cedulaCliente;
 		string codigo;
 		Fecha* fVenta;
 	public:
@@ -29,16 +29,16 @@ class Venta{
 		void setCarrito(ProductoDecorador*);
 		void setFecha(Fecha*);
 
-
+		//Información 
 		string toString()const;//Factura
-		friend ostream& operator<<(ostream&, Venta&);
 
 		//Métodos de cálculo
 		double totalbruto()const;
 		double totalIVa()const;
 		double totalneto()const;
 
-		//Heredados
+		//Sobrecargas
 		Venta* clonar()const;
+		friend ostream& operator<<(ostream&, Venta&);
 };
 

@@ -44,10 +44,16 @@ class Abarrote :public ProdPerecedero
 		virtual void setFechaIng(Fecha*);
 		virtual void SetFechaPer(Perecedero*);
 
-		virtual double ganancia();
+		//Archivos
 		virtual void guardarProducto(ofstream&);
 		static Abarrote* leerAbarrote(ifstream&);
+
+		//Sobrecargas
 		friend ostream& operator <<(ostream& s,Abarrote&);
 		friend istream& operator >>(istream&, Abarrote&);
+
+		//Métodos de cálculo
+		virtual double ganancia();
+
 };
 

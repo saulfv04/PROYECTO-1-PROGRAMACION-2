@@ -1,5 +1,24 @@
 #include "Embutido.h"
 
+Embutido::Embutido()
+{
+    this->categoria = "i";
+    this->codigo = "i";
+    this->descripcion = "i";
+    this->ptrEmpaque = NULL;
+    this->existencia = 0;
+    this->limite = 0;
+    this->nacional = false;
+    this->nombreComercial = "i";
+    this->peso = 0;
+    this->precioCosto = 0;
+    this->ptrFechaIng = NULL;
+    this->ptrPer = NULL;
+    this->parteDelAnimal = "i";
+    this->nombreAnimal = "i";
+    this->marca = "i";
+}
+
 Embutido::Embutido(Empaque* ptrEm, string mar, string nA, string pA, Perecedero* ptrPere, Fecha* ptrF, bool n, double p, string c, string nC, string d, double pC, string cat, int e, int l)
 {
     ptrEmpaque = new Empaque(*ptrEm);
