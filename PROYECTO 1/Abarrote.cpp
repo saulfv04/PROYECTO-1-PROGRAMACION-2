@@ -18,8 +18,8 @@ Abarrote::Abarrote()
 
 Abarrote::Abarrote(Perecedero* ptrP,Fecha* ptrFI, string eN,bool n, double p, string c, string nC, string d, double pC, string cat, int e, int l)
 {
-    ptrFechaIng = ptrFI;
-    ptrPer = ptrP;
+    ptrFechaIng =new Fecha(*ptrFI);
+    ptrPer = new Perecedero(*ptrP);
     empresaNombre = eN;
 	nacional = n;
 	peso = p;

@@ -15,7 +15,7 @@ Conserva::Conserva()
 
 Conserva::Conserva(Fecha* ptrF, bool en, string c, string nC, string d, double pC, string cat, int e, int l) {
     envasado = en;
-    ptrFechaIng = ptrF;
+    ptrFechaIng = new Fecha(*ptrF);
     codigo = c;
     nombreComercial = nC;
     descripcion = d;
