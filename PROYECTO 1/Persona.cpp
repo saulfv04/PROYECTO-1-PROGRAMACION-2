@@ -15,13 +15,15 @@ Persona::Persona(const Persona& p){
 	
 }
 
-Persona::~Persona(){}
+Persona::~Persona(){
+	cout << "Borrando Persona" << endl;
+
+}
 
 
 
 
-string Persona::getCedula()
-{
+string Persona::getCodigo()const{
 	return this->cedula;
 }
 

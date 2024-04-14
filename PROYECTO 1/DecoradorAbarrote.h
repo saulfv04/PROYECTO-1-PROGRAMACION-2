@@ -13,16 +13,18 @@ private:
 	double peso;
 	double precioCosto;
 public:
-	DecoradorAbarrote(BaseCarrito*, Perecedero*, string, string, string, string, bool, double, double);
+	DecoradorAbarrote(ComponenteAbstracto*, Perecedero*, string, string, string, string, bool, double, double);
 	DecoradorAbarrote(const DecoradorAbarrote&);
 	virtual ~DecoradorAbarrote();
-	virtual BaseCarrito* getSiguiente();
-	virtual void setSiguiente(BaseCarrito*);
+	virtual ComponenteAbstracto* getSiguiente();
+	virtual void setSiguiente(ComponenteAbstracto*);
 	virtual string toString() const;
-	friend ostream& operator<<(ostream&, DecoradorAbarrote&);
 	virtual double getTotal();
 	/*virtual int getCantidad();*/
-	virtual BaseCarrito* clonar() const;
+	virtual ComponenteAbstracto* clonar() const;
+
+	//Sobrecargas
+	friend ostream& operator<<(ostream&, DecoradorAbarrote&);
 
 };
 

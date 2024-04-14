@@ -30,9 +30,6 @@
     <ClInclude Include="Conserva.h">
       <Filter>Header Files\Producto</Filter>
     </ClInclude>
-    <ClInclude Include="Producto.h">
-      <Filter>Header Files\Producto</Filter>
-    </ClInclude>
     <ClInclude Include="Prod-Perecedero.h">
       <Filter>Header Files\Producto</Filter>
     </ClInclude>
@@ -69,7 +66,7 @@
     <ClInclude Include="ContenedorGenerico.h">
       <Filter>Header Files\Contenedor</Filter>
     </ClInclude>
-    <ClInclude Include="BaseCarrito.h">
+    <ClInclude Include="ComponenteAbstracto.h">
       <Filter>Header Files\Decorador</Filter>
     </ClInclude>
     <ClInclude Include="Carrito.h">
@@ -86,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="ProductoDecorador.h">
       <Filter>Header Files\Decorador</Filter>
+    </ClInclude>
+    <ClInclude Include="Producto.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,10 +134,10 @@
     <ClCompile Include="BaseCarrito.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Producto.cpp">
+    <ClCompile Include="Venta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Venta.cpp">
+    <ClCompile Include="Producto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

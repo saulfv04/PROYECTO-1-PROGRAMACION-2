@@ -1,11 +1,13 @@
 #include "Venta.h"
 
-Venta::Venta(ProductoDecorador* carr, Persona* per,Fecha* f, string cod):carrito(carr),persona(per),fVenta(f),codigo(cod){}
+Venta::Venta(ProductoDecorador* carr, string per, Fecha* f, string cod) :carrito(carr), nombreCliente(per), fVenta(f), codigo(cod){}
+
+
 
 Venta::Venta(const Venta& ven) {
 
     this->carrito = static_cast<ProductoDecorador*>(ven.carrito->clonar());
-	persona = new Persona(*ven.persona);
+    this->nombreCliente = ven.nombreCliente;
 	codigo = ven.codigo;
     fVenta = new Fecha(*ven.fVenta);
 }
@@ -15,23 +17,16 @@ Venta::~Venta()
     if (carrito) {
         delete carrito;
     }
-    if (persona) {
-		delete persona;
-	}
+    cout << "Borrando Venta" << endl;
+
 }
 
-string Venta::getCodigo()
-{
+string Venta::getCodigo()const{
     return this->codigo;
 }
 
-void Venta::setCodigo(string c)
-{
-    	codigo = c;
-}
 
-BaseCarrito* Venta::getCarrito()
-{
+ComponenteAbstracto* Venta::getCarrito(){
     return this->carrito;
 }
 
@@ -45,15 +40,14 @@ void Venta::setCarrito(ProductoDecorador* c)
 	carrito = c;
 }
 
-Persona* Venta::getPersona()
+
+
+string Venta::getPersona()
 {
-    return this->persona;
+    return this->nombreCliente;
 }
 
-void Venta::setPersona(Persona* p)
-{
-    	persona = p;
-}
+
 
 void Venta::setFecha(Fecha* f)
 {
@@ -63,13 +57,13 @@ void Venta::setFecha(Fecha* f)
 string Venta::toString()const{
     stringstream s;
     s<<"----------------------------------------" <<"|"<<  endl;
-    s<<"|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << codigo << "|" << endl;
-    s << "|" << "\t" << "\t" << "CLIENTE: " << *persona << "|" << endl;
-    s << "|" << "\t" << "\t" << "FECHA: " << *fVenta << "|" << endl;
+    s<<"|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << this->codigo << "|" << endl;
+    s << "|" << "\t" << "\t" << "CLIENTE: " << this->nombreCliente << "|" << endl;
+    s << "|" << "\t" << "\t" << "FECHA: " << *this->fVenta << "|" << endl;
     s << "|" << "DETALLE DE COMPRA" << "|" << endl;
-    s << "|" << carrito->toString();
-    s << "|" << "TOTAL BRUTO: " << totalbruto()<< "%13"<< "IMPORTE: " << totalIVa() << " TOTAL NETO: " << totalneto() << "|" << endl;
-    s << "---------------------------------------- "<<"|" << endl;
+    s << "|" << *this->carrito;
+    s << "|" << "  TOTAL BRUTO: $" << totalbruto()<< "  "<< "   IMPORTE %13: $" << totalIVa() << "      TOTAL NETO: $" << totalneto() << " " << endl;
+    s << "|  ----------------------------------------------------------------------- "<<"|" << endl;
     return s.str();
 }
 

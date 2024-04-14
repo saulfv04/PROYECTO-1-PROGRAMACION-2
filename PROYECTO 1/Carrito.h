@@ -1,18 +1,20 @@
 #pragma once
-#include "BaseCarrito.h"
-class Carrito :public BaseCarrito{
+#include "ComponenteAbstracto.h"
+class Carrito :public ComponenteAbstracto{
 
 public:
 	Carrito();
 	virtual ~Carrito();
 	Carrito(const Carrito&);
-	BaseCarrito* getSiguiente();
-	virtual void setSiguiente(BaseCarrito*);
+	ComponenteAbstracto* getSiguiente();
+	virtual void setSiguiente(ComponenteAbstracto*);
 	virtual string toString() const;
-	friend ostream& operator<<(ostream&, Carrito&);
 	virtual double getTotal();
 	/*virtual int getCantidad();*/
-	virtual BaseCarrito* clonar() const;
+	virtual ComponenteAbstracto* clonar() const;
+
+	//Sobrecargas
+	friend ostream& operator<<(ostream&, Carrito&);
 
 };
 

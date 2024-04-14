@@ -1,5 +1,18 @@
 #include "Conserva.h"
 
+Conserva::Conserva()
+{
+    this->categoria = "i";
+    this->codigo = "i";
+    this->descripcion = "i";
+    this->envasado = true;
+    this->existencia = 0;
+    this->limite = 0;
+    this->nombreComercial = "i";
+    this->ptrFechaIng = new Fecha();
+    this->precioCosto = 0;
+}
+
 Conserva::Conserva(Fecha* ptrF, bool en, string c, string nC, string d, double pC, string cat, int e, int l) {
     envasado = en;
     ptrFechaIng = ptrF;
@@ -29,6 +42,8 @@ Conserva::~Conserva(){
     if (ptrFechaIng != nullptr) {
         delete ptrFechaIng;
     }
+    cout << "Borrando Conserva" << endl;
+
 }
 
 bool Conserva::getEnvasado()
@@ -75,7 +90,7 @@ string Conserva::getnombreComecial()
     return nombreComercial;
 }
 
-string Conserva::getCodigo()
+string Conserva::getCodigo()const
 {
     return codigo;
 }
@@ -140,6 +155,11 @@ void Conserva::setLimite(int l)
     limite = l;
 }
 
+void Conserva::setFechaIng(Fecha* f)
+{
+    this->ptrFechaIng = new Fecha(*f);
+}
+
 double Conserva::ganancia()
 {
     Categoria c;
@@ -196,5 +216,35 @@ Conserva* Conserva::leerConserva(ifstream& file){
 ostream& operator<<(ostream& s, Conserva& c)
 {
     s << c.toString();
+    return s;
+}
+istream& operator>>(istream& s, Conserva& c) {
+    string op;
+    cout << "Ingreso de datos Producto Conserva: " << endl;
+    Fecha* f = new Fecha();
+    s >> *f;
+    c.setFechaIng(f);
+    cout << "Codigo: " << endl;
+    s >> c.categoria;
+    cout << "Nombre: " << endl;
+    s >> c.nombreComercial;
+    cout << "Descripcion: " << endl;
+    s >> c.descripcion;
+    cout << "Categoria: " << endl;
+    s >> c.categoria;
+    cout << "Precio: " << endl;
+    s >> c.precioCosto;
+    cout << "Existencia de producto: " << endl;
+    s >> c.existencia;
+    cout << "Limite de compra: " << endl;
+    s >> c.limite;
+    cout << "Envasado (N)No || (S):Si " << endl;
+    cin >> op;
+    if (op=="S"||op=="s") {
+         c.setEnvasado(true);
+    }else{
+        c.setEnvasado(false);
+    }
+
     return s;
 }

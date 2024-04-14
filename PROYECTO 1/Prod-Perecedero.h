@@ -20,17 +20,18 @@ class ProdPerecedero:public Producto {
 		virtual int getFechaPer() = 0;
 		virtual Perecedero* getPer()=0;
 
-		//Accesores y Mutadores heredados
+		//Accesores heredados
 		virtual int getFechaIng() = 0;
 		virtual string getnombreComecial()  = 0;
-		virtual string getCodigo() = 0;
+		virtual string getCodigo() const = 0;
 		virtual string getDescripcion() = 0;
 		virtual double getprecioCosto() = 0;
 		virtual string getCategoria() = 0;
 		virtual int getExistencia() = 0;
 		virtual int getLimite() = 0;
 		virtual  Producto* clonar()const = 0;
-		//Mutadores
+
+		//Mutadores heredados
 		virtual void setCodigo(string) = 0;
 		virtual void setnombreComercial(string) = 0;
 		virtual void setDescripcion(string) = 0;
@@ -38,6 +39,10 @@ class ProdPerecedero:public Producto {
 		virtual void setCategoria(string) = 0;
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
+		virtual void setFechaIng(Fecha*) = 0;
+		virtual void SetFechaPer(Perecedero*)=0;
+
+
 		virtual void guardarProducto(ofstream&) = 0;
 
 

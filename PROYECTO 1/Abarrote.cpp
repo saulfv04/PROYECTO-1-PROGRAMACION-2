@@ -1,5 +1,21 @@
 #include "Abarrote.h"
 
+Abarrote::Abarrote()
+{
+    this->categoria = "i";
+    this->codigo = "i";
+    this->descripcion = "i";
+    this->empresaNombre = "i";
+    this->existencia = 0;
+    this->limite = 0;
+    this->nacional = false;
+    this->nombreComercial = "i";
+    this->peso = 0;
+    this->precioCosto = 0;
+    this->ptrFechaIng = NULL;
+    this->ptrPer = NULL;
+}
+
 Abarrote::Abarrote(Perecedero* ptrP,Fecha* ptrFI, string eN,bool n, double p, string c, string nC, string d, double pC, string cat, int e, int l)
 {
     ptrFechaIng = ptrFI;
@@ -41,6 +57,7 @@ Abarrote::~Abarrote()
     if (ptrPer != nullptr) {
         delete ptrPer;
     }
+    cout << "Borrando Abarrote" << endl;
 }
 
 string Abarrote::getEmpresaNombre()
@@ -118,7 +135,7 @@ string Abarrote::getnombreComecial()
     return nombreComercial;
 }
 
-string Abarrote::getCodigo()
+string Abarrote::getCodigo()const
 {
     return codigo;
 }
@@ -188,6 +205,15 @@ void Abarrote::setLimite(int l)
     limite = l;
 }
 
+
+void Abarrote::setFechaIng(Fecha* f){
+    this->ptrFechaIng = new Fecha(*f);
+}
+
+void Abarrote::SetFechaPer(Perecedero* f){
+    this->ptrPer = new Perecedero(*f);
+}
+
 double Abarrote::ganancia()
 {
     Categoria c;
@@ -253,3 +279,42 @@ ostream& operator<<(ostream& s, Abarrote& abarrote){
     s << abarrote.toString();
     return s;
 }
+
+
+istream& operator>>(istream& is, Abarrote& A)
+{
+    string op;
+    cout<< "Ingreso de datos Producto Abarrote: " << endl;
+    Fecha* fI = new Fecha();
+    is >> *fI;
+    A.setFechaIng(fI);
+    Perecedero* p = new Perecedero();
+    is >> *p;
+    A.SetFechaPer(p);    
+    cout << "Nombre empresa procedencia: " << endl;
+    is >> A.empresaNombre;
+    cout << "Nombre Comercial: " << endl;
+    is >> A.nombreComercial;
+    cout << "Descripcion: " << endl;
+    is >> A.descripcion;
+    cout << "Categoria: " << endl;
+    is >> A.categoria;
+    cout << "Precio: " << endl;
+    is >> A.precioCosto;
+    cout << "Peso: " << endl;
+    is >> A.peso;
+    cout << "Existencia de producto: " << endl;
+    is >> A.existencia;
+    cout << "Limite de compra: " << endl;
+    is >> A.limite;
+    cout << "Nacional (N)No || (S):Si " << endl;
+    cin >> op;
+    if (op == "S" || op == "s") {
+        A.setNacional(true);
+    }
+    else {
+        A.setNacional(false);
+    }
+    return is;
+}
+

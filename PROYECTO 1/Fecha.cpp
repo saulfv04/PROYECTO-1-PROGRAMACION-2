@@ -1,5 +1,12 @@
 #include "Fecha.h"
 
+Fecha::Fecha()
+{
+    this->anio = 0;
+    this->mes = 0;
+    this->dia = 0;
+}
+
 Fecha::Fecha(int d, int m, int a)
 {
     dia = d;
@@ -14,7 +21,10 @@ Fecha::Fecha(const Fecha& copia)
     this->dia = copia.dia;
 }
 
-Fecha::~Fecha(){}
+Fecha::~Fecha(){
+    cout << "Borrando fecha" << endl;
+
+}
 
 int Fecha::getFecha()
 {
@@ -59,4 +69,16 @@ ostream& operator<<(ostream& s, Fecha& fec)
 {
     s << fec.toString();
     return s;
+}
+
+istream& operator>>(istream& i, Fecha& f)
+{
+    cout << "Agregar fecha: "<<endl;
+    cout << "Anno: " << endl;
+    i >> f.anio;
+    cout << "Mes: " << endl;
+    i >> f.mes;
+    cout << "Dia: " << endl;
+    i >> f.dia;
+    return i;
 }

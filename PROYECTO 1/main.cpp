@@ -11,7 +11,7 @@
 #include "DecoradorConserva.h"
 #include "DecoradorEmbutido.h"
 #include "Carrito.h"
-#include "BaseCarrito.h"
+#include "ComponenteAbstracto.h"
 #include <iostream>
 #include "Persona.h"
 
@@ -40,9 +40,6 @@ int main() {
    //     //Fecha* ptrF, bool en, string c, string nC, string d, double pC, string cat, int e, int l
     Producto* prod2 = new Conserva(fechaIng1, true, "1299903", "Atun en agua", "Conserva sin fcha limite de vencimiento", 3.99, "03", 2000, 15);
    ///* cout << "Producto Conserva" << endl << prod1->toString() << endl; */
-
-
-
    //  //Perecedero* ptrP,Fecha* ptrFI, string eN,bool n, double p, string c, string nC, string d, double pC, string cat, int e, int l
     Producto* prod3 = new Abarrote(pere2, fechaIng2, "Dos pinos", true, 0.9, "134564", "Helado de vainilla", "Contiene chocolate derretido en su interior", 8.99, "02", 88, 4);
     //cout << "Producto Abarrote" << endl << prod3->toString() << endl;
@@ -66,30 +63,31 @@ int main() {
     //cout << CE1->toString();
 
 
-    BaseCarrito* carrito = new Carrito();
-    DecoradorAbarrote* abarrote = new DecoradorAbarrote((BaseCarrito*)carrito, pere2, "Dos pinos", "134564", "Helado de vainilla", "Contiene chocolate derretido en su interior", true, 0.9, 8.99);
+    ComponenteAbstracto* carrito = new Carrito();
+    DecoradorAbarrote* abarrote = new DecoradorAbarrote((ComponenteAbstracto*)carrito, pere2, "Dos pinos", "134564", "Helado de vainilla", "Contiene chocolate derretido en su interior", true, 0.9, 8.99);
    /* BaseCarrito* conserva = new DecoradorConserva((BaseCarrito*)abarrote, "Atun en agua", "1299903", "Conserva sin fcha limite de vencimiento", 3.99, true);
     BaseCarrito* embutido = new DecoradorEmbutido((BaseCarrito*)conserva, empaque, pere1, "SABEMAS", "124331", "COSTILLA AHUMADA", "Procedencia Japonesa", "VACUNO", "COSTILLA", 2.1, 60.99, false);*/
 
     Fecha* fechaV = new Fecha(11, 12, 2010);
 
-    Venta* v1 = new Venta(abarrote, p1, fechaV, "4321231231");
+    Venta* v1 = new Venta(abarrote, p1->getCodigo(), fechaV, "4321231231");
 
     Lista<Venta>* ventas = new Lista<Venta>();
 
 
     ventas->agregarInicio(v1);
 
-    cout << *ventas;
+
+    Lista<Producto>* p = new Lista<Producto>();
+    p->agregarInicio(prod1);
+    p->agregarInicio(prod2);
+    /*cout << *p;*/
+
+    /*cout << *ventas;*/
+
+    /*cout << ventas->buscar("4321231231")->obtenerInfo()->toString();*/ //Método buscar venta por su código
 
 
-    /*Lista<BaseCarrito>* CE2 = new Lista<BaseCarrito>();
-
-    CE2->agregarInicio(abarrote);
-
-    cout<< *CE2;*/
-   
-    
     system("pause");
     return 0;
 }

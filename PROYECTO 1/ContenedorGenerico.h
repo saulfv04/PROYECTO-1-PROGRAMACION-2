@@ -17,9 +17,10 @@ public:
 	void agregarInicio(T*);
 	void agregarFinal(T*);
 	T* eliminar(); // Eliminar primero, que devuelve lo que se borro
-	string toString()const;
 	void eliminarTodos();//elimina los elementos de la lista
 	void invierteLista();
+	Nodo<T>* buscar(string);
+	string toString() const;
 	//Nuevos metodos;
 	int size();
 	T* getElemento(unsigned int i);
@@ -27,7 +28,7 @@ public:
 	void removeInicio();
 	bool isEmpty();
 
-	//Heredados
+	//Clonación
 	virtual Lista<T>* clonar()const;
 
 	friend ostream& operator<<(ostream& o, Lista& l) { return o << l.toString(); }
@@ -75,6 +76,7 @@ Lista<T>& Lista<T>::operator=(const Lista& l) {
 template<class T>
 Lista<T>::~Lista() {
 	eliminarTodos();
+	cout << "Borrando Lista" << endl;
 
 }
 
@@ -85,8 +87,7 @@ bool Lista<T>::isEmpty()
 }
 
 template<class T>
-inline Lista<T>* Lista<T>::clonar() const
-{
+ Lista<T>* Lista<T>::clonar() const{
 	return new Lista<T>(*this);
 }
 
@@ -110,18 +111,18 @@ int Lista<T>::size()
 }
 
 template<class T>
-inline T* Lista<T>::getElemento(unsigned int i)
+ T* Lista<T>::getElemento(unsigned int i)
 {
 	return nullptr;
 }
 
 template<class T>
-inline void Lista<T>::remove(int p)
+ void Lista<T>::remove(int p)
 {
 }
 
 template<class T>
-inline void Lista<T>::removeInicio()
+ void Lista<T>::removeInicio()
 {
 }
 
@@ -161,8 +162,7 @@ T* Lista<T>::eliminar() {
  }
 
 template<class T>
-string Lista<T>::toString() const
-{
+string Lista<T>::toString() const{
 	Nodo<T>* pAct = primero;
 	stringstream s;
 	while (pAct) {
@@ -194,4 +194,19 @@ void Lista<T>::invierteLista(){
 		pAct = pSig;
 	}
 	primero = pAnt;	
+}
+
+template<class T>
+Nodo<T>* Lista<T>::buscar(string codigo){
+	Nodo<T>* aux = NULL;
+	Nodo<T>* pAct = primero;
+	if (!isEmpty()) {
+	while (pAct) {
+		if (pAct->getCodigo()==codigo) {
+			return pAct;
+		}
+		pAct = pAct->obtenerSig();
+	}
+	}
+	return aux;
 }
