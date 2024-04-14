@@ -45,6 +45,7 @@ class ProdPerecedero:public Producto {
 
 		//Archivos 
 		virtual void guardarProducto(ofstream&) = 0;
+		virtual void leerDatos(istream&) = 0;
 
 
 };

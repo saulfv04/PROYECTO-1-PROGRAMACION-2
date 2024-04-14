@@ -219,6 +219,43 @@ double Abarrote::ganancia()
     return precioCosto * c.porceganancia(categoria);
 }
 
+void Abarrote::leerDatos(istream& s)
+{
+    string op;
+	cout << "Ingreso de datos Producto Abarrote: " << endl;
+    Perecedero* p = new Perecedero();
+    s >> *p;
+    this->SetFechaPer(p);
+	Fecha* fI = new Fecha();
+	s >> *fI;
+	this->setFechaIng(fI);
+	cout << "Nombre empresa procedencia: " << endl;
+	s >> empresaNombre;
+    cout << "Nacional (N)No || (S):Si " << endl;
+    cin >> op;
+    if (op == "S" || op == "s") {
+        this->setNacional(true);
+    }
+    else {
+        this->setNacional(false);
+    }
+	cout << "Nombre Comercial: " << endl;
+	s >> nombreComercial;
+	cout << "Descripcion: " << endl;
+	s >> descripcion;
+	cout << "Categoria: " << endl;
+	s >> categoria;
+	cout << "Precio: " << endl;
+	s >> precioCosto;
+	cout << "Peso: " << endl;
+	s >> peso;
+	cout << "Existencia de producto: " << endl;
+	s >> existencia;
+	cout << "Limite de compra: " << endl;
+	s >> limite;   
+   
+}
+
 void Abarrote::guardarProducto(ofstream& file)
 {
     string Nacional;
