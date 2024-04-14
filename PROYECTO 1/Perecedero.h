@@ -15,6 +15,7 @@ class Perecedero
 		Perecedero(const Perecedero&);
 		virtual ~Perecedero();
 
+		//Información
 		string toString();
 
 		//Accesores
@@ -23,8 +24,11 @@ class Perecedero
 		//Mutadores
 		void setFecha(Fecha*);
 
+		//Archivos
 		virtual void guardarPerecedero(ofstream&);
 		static Perecedero* leerPerecedero(ifstream&);
+
+		//Sobrecargas
 		friend ostream& operator<<(ostream&, Perecedero&);
 		friend istream& operator>>(istream&, Perecedero&);
 

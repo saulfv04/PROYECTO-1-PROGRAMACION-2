@@ -9,7 +9,7 @@ Conserva::Conserva()
     this->existencia = 0;
     this->limite = 0;
     this->nombreComercial = "i";
-    this->ptrFechaIng = new Fecha();
+    this->ptrFechaIng = NULL;
     this->precioCosto = 0;
 }
 
@@ -215,7 +215,7 @@ Conserva* Conserva::leerConserva(ifstream& file){
 
 void Conserva::leerDatos(istream& s)
 {
-    string op;
+    string env;
     cout << "Ingreso de datos Producto Conserva: " << endl;
     Fecha* f = new Fecha();
     s >> *f;
@@ -235,9 +235,8 @@ void Conserva::leerDatos(istream& s)
     cout << "Limite de compra: " << endl;
     s >> limite;
     cout << "Envasado (N)No  (S):Si " << endl;
-    cin >> op;
-
-    if (op == "S" || op == "s") {
+    cin >> env;
+    if (env== "S" || env == "s") {
         setEnvasado(true);
     }
     else {

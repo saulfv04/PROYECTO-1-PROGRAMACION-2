@@ -46,7 +46,6 @@ Abarrote::Abarrote(const Abarrote& copia)
     this->categoria = copia.categoria;
     this->existencia = copia.existencia;
     this->limite = copia.limite;
-
 }
 
 Abarrote::~Abarrote()

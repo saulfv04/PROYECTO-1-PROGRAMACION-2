@@ -25,6 +25,27 @@
     <Filter Include="Header Files\Decorador">
       <UniqueIdentifier>{cdd6fc1a-5ee8-49d7-a56b-640f6701b8ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Controlador">
+      <UniqueIdentifier>{cefa1a12-68cd-43ba-8dc9-627f6174288f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Ventas">
+      <UniqueIdentifier>{1fd6dffd-5173-49d9-8b22-7d6f129939df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decorador">
+      <UniqueIdentifier>{ecab7ad8-3002-40de-9c59-a549cd141ff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Persona">
+      <UniqueIdentifier>{04c70751-795f-4225-8f74-dbd27e52cd89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Persona">
+      <UniqueIdentifier>{d31c2857-8904-4e8c-9be5-5188ad1467c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controlador">
+      <UniqueIdentifier>{c983e7ea-dcc7-4bdf-8011-c29c33bd1c63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ventas">
+      <UniqueIdentifier>{0010563d-e665-481c-aabd-ae154cfb52bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Conserva.h">
@@ -54,12 +75,6 @@
     <ClInclude Include="Categoria.h">
       <Filter>Header Files\Producto</Filter>
     </ClInclude>
-    <ClInclude Include="Persona.h">
-      <Filter>Header Files\Producto</Filter>
-    </ClInclude>
-    <ClInclude Include="Venta.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Nodo.h">
       <Filter>Header Files\Contenedor</Filter>
     </ClInclude>
@@ -84,8 +99,23 @@
     <ClInclude Include="ProductoDecorador.h">
       <Filter>Header Files\Decorador</Filter>
     </ClInclude>
+    <ClInclude Include="Venta.h">
+      <Filter>Header Files\Ventas</Filter>
+    </ClInclude>
+    <ClInclude Include="Persona.h">
+      <Filter>Header Files\Persona</Filter>
+    </ClInclude>
+    <ClInclude Include="Minisuper.h">
+      <Filter>Header Files\Controlador</Filter>
+    </ClInclude>
     <ClInclude Include="Producto.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Producto</Filter>
+    </ClInclude>
+    <ClInclude Include="Controlador.h">
+      <Filter>Header Files\Controlador</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaz.h">
+      <Filter>Header Files\Controlador</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,31 +143,43 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Producto.cpp">
+      <Filter>Source Files\Producto-cpp</Filter>
+    </ClCompile>
     <ClCompile Include="Carrito.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ProductoDecorador.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DecoradorConserva.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorador</Filter>
     </ClCompile>
     <ClCompile Include="DecoradorAbarrote.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorador</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoradorConserva.cpp">
+      <Filter>Source Files\Decorador</Filter>
     </ClCompile>
     <ClCompile Include="DecoradorEmbutido.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Persona.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorador</Filter>
     </ClCompile>
     <ClCompile Include="BaseCarrito.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorador</Filter>
+    </ClCompile>
+    <ClCompile Include="ProductoDecorador.cpp">
+      <Filter>Source Files\Decorador</Filter>
+    </ClCompile>
+    <ClCompile Include="Persona.cpp">
+      <Filter>Source Files\Persona</Filter>
+    </ClCompile>
+    <ClCompile Include="Minisuper.cpp">
+      <Filter>Source Files\Controlador</Filter>
     </ClCompile>
     <ClCompile Include="Venta.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Ventas</Filter>
     </ClCompile>
-    <ClCompile Include="Producto.cpp">
+    <ClCompile Include="Controlador.cpp">
+      <Filter>Source Files\Controlador</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaz.cpp">
+      <Filter>Source Files\Controlador</Filter>
+    </ClCompile>
+    <ClCompile Include="Principal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

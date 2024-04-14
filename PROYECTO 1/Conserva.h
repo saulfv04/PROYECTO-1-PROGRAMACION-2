@@ -39,13 +39,15 @@ class Conserva : public Producto
 		virtual void setLimite(int);
 		virtual void setFechaIng(Fecha*);
 
-		virtual double ganancia();
 		virtual void guardarProducto(ofstream&);
 		static Conserva* leerConserva(ifstream&);
+
+		//Sobrecarga
 		friend ostream& operator <<(ostream& s, Conserva&);
 		virtual void leerDatos(istream&);
 
-
+		//Método de cálculo
+		virtual double ganancia();
 
 };
 

@@ -8,6 +8,8 @@ class Embutido :public Carne
 		string marca;
 		Empaque* ptrEmpaque;
 	public:
+		//Constructores y Destructores
+		Embutido();
 		Embutido(Empaque*, string, string, string, Perecedero*, Fecha*, bool, double, string, string, string, double, string, int, int);
 		Embutido(const Embutido& e);
 		virtual ~Embutido();
@@ -51,14 +53,13 @@ class Embutido :public Carne
 		virtual double ganancia();
 		virtual  Producto* clonar()const;
 
-
+		//Archivos
 		virtual void guardarProducto(ofstream&);
 		static Embutido* leerEmbutido(ifstream&);
 
-
+		//Sobrecarga
 		friend ostream& operator <<(ostream&, Embutido&);
 		friend istream& operator >>(istream&, Embutido&);
-
 		virtual void leerDatos(istream&);
 };
 

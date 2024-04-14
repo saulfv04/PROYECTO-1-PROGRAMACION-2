@@ -53,6 +53,7 @@ public:
 	//heredados
 	virtual  Producto* clonar()const = 0;
 
+	//Sobrecargas
 	friend ostream& operator <<(ostream& s, Producto&);
 	friend istream& operator >>(istream&, Producto&);
 	virtual void leerDatos(istream&);

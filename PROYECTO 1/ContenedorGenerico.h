@@ -45,7 +45,7 @@ public:
 template<class T>
 Lista<T>::Lista()
 {
-	primero = NULL;
+	primero = nullptr;
 }
 
 template<class T>
@@ -141,16 +141,16 @@ void Lista<T>::agregarInicio(T* dat) {
 
 template<class T>
 void Lista<T>::agregarFinal(T* dat){
-	T* dato1 = new T(*dat);
+	T* dato1 = dat->clonar();
 	if (primero == NULL) {
-		primero = new Nodo<T>(NULL, *dato1);
+		primero = new Nodo<T>(nullptr, dato1);
 	}
 	else {
 		Nodo<T>* pAct = primero;
 		while (pAct->obtenerSig() != NULL) {
 			pAct = pAct->obtenerSig();
 		}
-		pAct->setSig(new Nodo<T>(NULL, *dato1));
+		pAct->setSig(new Nodo<T>(nullptr, dato1));
 	}
 }
 
@@ -163,9 +163,10 @@ T* Lista<T>::eliminar() {
 
 template<class T>
 string Lista<T>::toString() const{
-	Nodo<T>* pAct = primero;
 	stringstream s;
-	while (pAct) {
+	Nodo<T>* pAct = primero;
+	s << "INFORMACION LISTA" << endl;
+	while (pAct!=nullptr) {
 		s << *pAct->obtenerInfo()<< endl;
 		pAct = pAct->obtenerSig();
 	}
