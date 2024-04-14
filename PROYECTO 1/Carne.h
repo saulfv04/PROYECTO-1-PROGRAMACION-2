@@ -50,6 +50,8 @@ class Carne :public ProdPerecedero
 		//Archivos
 		virtual void guardarProducto(ofstream&) = 0;
 
+		
+
 
 
 };
