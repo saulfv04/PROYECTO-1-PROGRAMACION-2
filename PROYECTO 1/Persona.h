@@ -16,7 +16,7 @@ public:
 	~Persona();
 
 	//
-	string getCedula();
+	string getCodigo()const;
 
 	string toString()const;
 

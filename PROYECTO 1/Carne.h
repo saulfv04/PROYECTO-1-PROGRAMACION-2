@@ -27,7 +27,7 @@ class Carne :public ProdPerecedero
 		virtual  Producto* clonar()const = 0;
 		//Accesores y Mutadores heredados
 		virtual string getnombreComecial() = 0;
-		virtual string getCodigo() = 0;
+		virtual string getCodigo()const = 0;
 		virtual string getDescripcion() = 0;
 		virtual double getprecioCosto() = 0;
 		virtual string getCategoria() = 0;
@@ -42,10 +42,14 @@ class Carne :public ProdPerecedero
 		virtual void setCategoria(string) = 0;
 		virtual void setExistencia(int) = 0;
 		virtual void setLimite(int) = 0;
+		virtual void setFechaIng(Fecha*) = 0;
 
+		//Métodos de cálculo
 		virtual double ganancia()=0;
+
+		//Archivos
 		virtual void guardarProducto(ofstream&) = 0;
-		/*virtual void print(ostream& s) = 0;*/
+
 
 
 };

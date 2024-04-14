@@ -32,7 +32,7 @@ class Embutido :public Carne
 		virtual int getFechaPer();
 		virtual string toString()const;
 		virtual string getnombreComecial();
-		virtual string getCodigo();
+		virtual string getCodigo()const;
 		virtual string getDescripcion();
 		virtual double getprecioCosto();
 		virtual string getCategoria();
@@ -45,11 +45,18 @@ class Embutido :public Carne
 		virtual void setCategoria(string);
 		virtual void setExistencia(int);
 		virtual void setLimite(int);
+		virtual void setFechaIng(Fecha*);
+		virtual void SetFechaPer(Perecedero*);
+
 		virtual double ganancia();
 		virtual  Producto* clonar()const;
+
+
 		virtual void guardarProducto(ofstream&);
 		static Embutido* leerEmbutido(ifstream&);
-		friend ostream& operator <<(ostream& s, Embutido&);
-	
+
+
+		friend ostream& operator <<(ostream&, Embutido&);
+		friend istream& operator >>(istream&, Embutido&);
 };
 

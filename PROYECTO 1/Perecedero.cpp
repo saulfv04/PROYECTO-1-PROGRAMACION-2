@@ -1,5 +1,9 @@
 #include "Perecedero.h"
 
+Perecedero::Perecedero(){
+	this->ptrFechaPer = new Fecha();
+}
+
 Perecedero::Perecedero(Fecha* fP)
 {
 	ptrFechaPer = fP;
@@ -14,6 +18,8 @@ Perecedero::~Perecedero()
 	if (ptrFechaPer != nullptr) {
 		delete ptrFechaPer;
 	}
+	cout << "Borrando Perecedero" << endl;
+
 }
 
 string Perecedero::toString()
@@ -24,6 +30,10 @@ string Perecedero::toString()
 int Perecedero::getFechaPer()
 {
 	return ptrFechaPer->getFecha();
+}
+
+void Perecedero::setFecha(Fecha* f){
+	this->ptrFechaPer = new Fecha(*f);
 }
 
 void Perecedero::guardarPerecedero(ofstream& file)
@@ -46,4 +56,12 @@ ostream& operator<<(ostream& s, Perecedero& per)
 {
 	s << per.toString();
 	return s;
+}
+
+istream& operator>>(istream& i, Perecedero& p){
+	Fecha* f = new Fecha();
+	cout << "vencimiento: " << endl;
+	i >> *f;
+	p.setFecha(f);
+	return i;
 }

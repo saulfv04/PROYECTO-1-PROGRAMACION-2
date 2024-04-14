@@ -1,6 +1,6 @@
-#include "BaseCarrito.h"
+#include "ComponenteAbstracto.h"
 
-ostream& operator<<(ostream& o, BaseCarrito& c)
+ostream& operator<<(ostream& o, ComponenteAbstracto& c)
 {
     o << c.toString();
     return o;

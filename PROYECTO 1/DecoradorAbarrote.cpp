@@ -1,6 +1,6 @@
 #include "DecoradorAbarrote.h"
 
-DecoradorAbarrote::DecoradorAbarrote(BaseCarrito* carro, Perecedero* ptrPere, string eN, string c, string nC, string d, bool n, double p, double pre)
+DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* carro, Perecedero* ptrPere, string eN, string c, string nC, string d, bool n, double p, double pre)
 {
     this->ptrCarrito = carro;
     this->ptrPer = ptrPere;
@@ -31,12 +31,12 @@ DecoradorAbarrote::~DecoradorAbarrote(){
 	}
 }
 
-BaseCarrito* DecoradorAbarrote::getSiguiente()
+ComponenteAbstracto* DecoradorAbarrote::getSiguiente()
 {
     return ptrCarrito;
 }
 
-void DecoradorAbarrote::setSiguiente(BaseCarrito* ptrCarro)
+void DecoradorAbarrote::setSiguiente(ComponenteAbstracto* ptrCarro)
 {
     ptrCarrito = ptrCarro;
 }
@@ -59,7 +59,7 @@ string DecoradorAbarrote::toString() const{
     s << "fecha vecimiento: " << this->ptrPer->toString() << " ";
     s << "precio: " << this->precioCosto;
     s << endl;
-    s << ptrCarrito->toString();
+    s << *ptrCarrito;
     return s.str();
 }
 
@@ -68,7 +68,7 @@ double DecoradorAbarrote::getTotal()
     return this->precioCosto + ptrCarrito->getTotal();
 }
 
-BaseCarrito* DecoradorAbarrote::clonar() const
+ComponenteAbstracto* DecoradorAbarrote::clonar() const
 {
     return new DecoradorAbarrote(*this);
 }

@@ -1,6 +1,6 @@
 #include "DecoradorConserva.h"
 
-DecoradorConserva::DecoradorConserva(BaseCarrito* ptrCarro, string n, string c, string d, double p, bool e)
+DecoradorConserva::DecoradorConserva(ComponenteAbstracto* ptrCarro, string n, string c, string d, double p, bool e)
 {
     this->ptrCarrito = ptrCarro;
     this->nombre = n;
@@ -24,12 +24,12 @@ DecoradorConserva::~DecoradorConserva(){
 
 }
 
-BaseCarrito* DecoradorConserva::getSiguiente()
+ComponenteAbstracto* DecoradorConserva::getSiguiente()
 {
     return ptrCarrito;
 }
 
-void DecoradorConserva::setSiguiente(BaseCarrito* conserva)
+void DecoradorConserva::setSiguiente(ComponenteAbstracto* conserva)
 {
     ptrCarrito = conserva;
 }
@@ -49,7 +49,7 @@ string DecoradorConserva::toString() const{
     }
     s << "precio: " << this->precio;
     s << endl;
-    s<<ptrCarrito->toString();
+    s<< *ptrCarrito;
     return s.str();
 }
 
@@ -58,7 +58,7 @@ double DecoradorConserva::getTotal()
     return this->precio + ptrCarrito->getTotal();
 }
 
-BaseCarrito* DecoradorConserva::clonar() const
+ComponenteAbstracto* DecoradorConserva::clonar() const
 {
     return new DecoradorConserva(*this);
 }
