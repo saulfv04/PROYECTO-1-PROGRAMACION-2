@@ -58,5 +58,7 @@ class Embutido :public Carne
 
 		friend ostream& operator <<(ostream&, Embutido&);
 		friend istream& operator >>(istream&, Embutido&);
+
+		virtual void leerDatos(istream&);
 };
 

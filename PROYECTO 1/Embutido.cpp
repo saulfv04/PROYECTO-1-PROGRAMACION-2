@@ -315,6 +315,9 @@ Embutido* Embutido::leerEmbutido(ifstream& file)
 
     return new Embutido(emp,marcaF,nombreAnimalF,parteDelAnimalF,fecPer,fec,nac,pe, codigoF, nombreComercialF, descripcionF, precioCost, categoriaF, exist, limit);
 }
+void Embutido::leerDatos(istream& s)
+{
+}
 ostream& operator<<(ostream& s, Embutido& e)
 {
     s << e.toString();
