@@ -68,7 +68,7 @@ int main() {
    /* BaseCarrito* conserva = new DecoradorConserva((BaseCarrito*)abarrote, "Atun en agua", "1299903", "Conserva sin fcha limite de vencimiento", 3.99, true);
     BaseCarrito* embutido = new DecoradorEmbutido((BaseCarrito*)conserva, empaque, pere1, "SABEMAS", "124331", "COSTILLA AHUMADA", "Procedencia Japonesa", "VACUNO", "COSTILLA", 2.1, 60.99, false);*/
 
-    Fecha* fechaV = new Fecha(11, 12, 2010);
+    /*Fecha* fechaV = new Fecha(11, 12, 2010);
 
     Venta* v1 = new Venta(abarrote, p1->getCodigo(), fechaV, "4321231231");
 
@@ -80,13 +80,19 @@ int main() {
 
     Lista<Producto>* p = new Lista<Producto>();
     p->agregarInicio(prod1);
-    p->agregarInicio(prod2);
+    p->agregarInicio(prod2);*/
     /*cout << *p;*/
 
     /*cout << *ventas;*/
 
     /*cout << ventas->buscar("4321231231")->obtenerInfo()->toString();*/ //Método buscar venta por su código
 
+
+    cin >> *prod2;
+
+    cout << endl;
+
+    cout<< *prod2;
 
     system("pause");
     return 0;

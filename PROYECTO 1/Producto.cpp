@@ -6,3 +6,12 @@ ostream& operator<<(ostream& s, Producto& p)
     return s;
 }
 
+istream& operator>>(istream& in, Producto& p)
+{
+    p.leerDatos(in);
+    return in;
+}
+
+void Producto::leerDatos(istream&)
+{
+}

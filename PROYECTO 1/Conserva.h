@@ -43,7 +43,7 @@ class Conserva : public Producto
 		virtual void guardarProducto(ofstream&);
 		static Conserva* leerConserva(ifstream&);
 		friend ostream& operator <<(ostream& s, Conserva&);
-		friend istream& operator >>(istream& s, Conserva&);
+		virtual void leerDatos(istream&);
 
 
 

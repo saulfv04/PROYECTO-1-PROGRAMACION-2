@@ -213,38 +213,41 @@ Conserva* Conserva::leerConserva(ifstream& file){
     return new Conserva(fec,env,codigoF,nombreComercialF,descripcionF,precioCost,categoriaF,exist,limit);
 }
 
+void Conserva::leerDatos(istream& s)
+{
+    string op;
+    cout << "Ingreso de datos Producto Conserva: " << endl;
+    Fecha* f = new Fecha();
+    s >> *f;
+    setFechaIng(f);
+    cout << "Codigo: " << endl;
+    s >> categoria;
+    cout << "Nombre: " << endl;
+    s >> nombreComercial;
+    cout << "Descripcion: " << endl;
+    s >> descripcion;
+    cout << "Categoria: " << endl;
+    s >> categoria;
+    cout << "Precio: " << endl;
+    s >> precioCosto;
+    cout << "Existencia de producto: " << endl;
+    s >> existencia;
+    cout << "Limite de compra: " << endl;
+    s >> limite;
+    cout << "Envasado (N)No  (S):Si " << endl;
+    cin >> op;
+
+    if (op == "S" || op == "s") {
+        setEnvasado(true);
+    }
+    else {
+        setEnvasado(false);
+    }
+}
+
 ostream& operator<<(ostream& s, Conserva& c)
 {
     s << c.toString();
     return s;
 }
-istream& operator>>(istream& s, Conserva& c) {
-    string op;
-    cout << "Ingreso de datos Producto Conserva: " << endl;
-    Fecha* f = new Fecha();
-    s >> *f;
-    c.setFechaIng(f);
-    cout << "Codigo: " << endl;
-    s >> c.categoria;
-    cout << "Nombre: " << endl;
-    s >> c.nombreComercial;
-    cout << "Descripcion: " << endl;
-    s >> c.descripcion;
-    cout << "Categoria: " << endl;
-    s >> c.categoria;
-    cout << "Precio: " << endl;
-    s >> c.precioCosto;
-    cout << "Existencia de producto: " << endl;
-    s >> c.existencia;
-    cout << "Limite de compra: " << endl;
-    s >> c.limite;
-    cout << "Envasado (N)No || (S):Si " << endl;
-    cin >> op;
-    if (op=="S"||op=="s") {
-         c.setEnvasado(true);
-    }else{
-        c.setEnvasado(false);
-    }
 
-    return s;
-}
