@@ -21,6 +21,7 @@ class Fecha
 		//Accesor
 		int getFecha();
 
+		//Información
 		string toString();
 
 

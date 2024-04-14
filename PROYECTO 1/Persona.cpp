@@ -45,8 +45,10 @@ ostream& operator<<(ostream& o, Persona& p)
 	return o;
 }
 
-ifstream& operator>>(ifstream& i, Persona& p)
+istream& operator>>(istream& i, Persona& p)
 {
+	cout << "Creando Persona" << endl;
+	cout << "Ingresar Cedula:" << endl;
 	i  >>  p.cedula;
 	return i;
 }

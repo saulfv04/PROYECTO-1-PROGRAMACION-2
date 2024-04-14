@@ -7,6 +7,7 @@ class Carne :public ProdPerecedero
 		string nombreAnimal;
 		string parteDelAnimal;
 	public:
+		//Destructor
 		virtual ~Carne(){}
 
 		//Accesores y Mutadores de la propia clase

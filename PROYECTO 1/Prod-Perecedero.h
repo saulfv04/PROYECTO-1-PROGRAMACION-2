@@ -8,6 +8,7 @@ class ProdPerecedero:public Producto {
 		double peso;
 		Perecedero* ptrPer;
 	public:
+		//Destructor
 		virtual ~ProdPerecedero(){}
 
 
@@ -42,7 +43,7 @@ class ProdPerecedero:public Producto {
 		virtual void setFechaIng(Fecha*) = 0;
 		virtual void SetFechaPer(Perecedero*)=0;
 
-
+		//Archivos 
 		virtual void guardarProducto(ofstream&) = 0;
 
 

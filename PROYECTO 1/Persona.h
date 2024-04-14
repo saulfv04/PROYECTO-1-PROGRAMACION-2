@@ -9,19 +9,20 @@ private:
 	string cedula;
 
 public:
-	//c
+	//Contructores y Desctructor
 	Persona();
 	Persona(string);
 	Persona(const Persona&);
-	~Persona();
+	virtual ~Persona();
 
-	//
+	//Accesores
 	string getCodigo()const;
 
+	//Información clase
 	string toString()const;
 
-	//Heredado
+	//Sobrecargas clase Persona
 	virtual  Persona* clonar()const;
 	friend ostream& operator<<(ostream&, Persona&);
-	friend ifstream& operator>>(ifstream&, Persona&);
+	friend istream& operator>>(istream&, Persona&);
 };
