@@ -16,15 +16,18 @@ private:
     bool nacional;
 public:
 
-    DecoradorEmbutido(BaseCarrito*, Empaque*, Perecedero*, string, string, string, string, string, string, double, double, bool);
+    DecoradorEmbutido(ComponenteAbstracto*, Empaque*, Perecedero*, string, string, string, string, string, string, double, double, bool);
 	DecoradorEmbutido(const DecoradorEmbutido&);
 	virtual ~DecoradorEmbutido();
-	virtual BaseCarrito* getSiguiente();
-	virtual void setSiguiente(BaseCarrito*);
+	virtual ComponenteAbstracto* getSiguiente();
+	virtual void setSiguiente(ComponenteAbstracto*);
 	virtual string toString() const;
-	friend ostream& operator<<(ostream& o, DecoradorEmbutido&);
     virtual double getTotal();
     /*virtual int getCantidad();*/
-    virtual BaseCarrito* clonar() const;
+    virtual ComponenteAbstracto* clonar() const;
+
+    //Sobrecargas
+    friend ostream& operator<<(ostream& o, DecoradorEmbutido&);
+
 };
 

@@ -5,6 +5,8 @@ class Abarrote :public ProdPerecedero
 	private:
 		string empresaNombre;
 	public:
+		//Constructores y Destructor
+		Abarrote();
 		Abarrote(Perecedero*,Fecha*, string,bool, double, string, string, string, double, string, int, int);
 		Abarrote(const Abarrote&);
 		virtual ~Abarrote();
@@ -24,7 +26,7 @@ class Abarrote :public ProdPerecedero
 		virtual int getFechaPer();
 		virtual string toString()const;
 		virtual string getnombreComecial();
-		virtual string getCodigo();
+		virtual string getCodigo()const;
 		virtual string getDescripcion();
 		virtual double getprecioCosto();
 		virtual string getCategoria();
@@ -39,10 +41,13 @@ class Abarrote :public ProdPerecedero
 		virtual void setCategoria(string);
 		virtual void setExistencia(int);
 		virtual void setLimite(int);
+		virtual void setFechaIng(Fecha*);
+		virtual void SetFechaPer(Perecedero*);
 
 		virtual double ganancia();
 		virtual void guardarProducto(ofstream&);
 		static Abarrote* leerAbarrote(ifstream&);
 		friend ostream& operator <<(ostream& s,Abarrote&);
+		friend istream& operator >>(istream&, Abarrote&);
 };
 

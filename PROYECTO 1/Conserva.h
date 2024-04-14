@@ -5,6 +5,8 @@ class Conserva : public Producto
 	private:
 		bool envasado;
 	public:
+		//Constructores y destructor
+		Conserva();
 		Conserva(Fecha*,bool,string,string,string,double,string,int,int);
 		Conserva(const Conserva&);
 		virtual ~Conserva();
@@ -20,7 +22,7 @@ class Conserva : public Producto
 		virtual  Producto* clonar()const;
 		//Accesores
 		virtual string getnombreComecial();
-		virtual string getCodigo();
+		virtual string getCodigo()const;
 		virtual string getDescripcion();
 		virtual double getprecioCosto();
 		virtual string getCategoria();
@@ -35,12 +37,13 @@ class Conserva : public Producto
 		virtual void setCategoria(string);
 		virtual void setExistencia(int);
 		virtual void setLimite(int);
-
+		virtual void setFechaIng(Fecha*);
 
 		virtual double ganancia();
 		virtual void guardarProducto(ofstream&);
 		static Conserva* leerConserva(ifstream&);
-	/*	friend ostream& operator <<(ostream& s, Conserva&);*/
+		friend ostream& operator <<(ostream& s, Conserva&);
+		friend istream& operator >>(istream& s, Conserva&);
 
 
 

@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 class Producto {
 protected:
 	string codigo;
@@ -18,12 +17,16 @@ protected:
 	int limite;
 	Fecha* ptrFechaIng;
 public:
+
+	//Destrcutor
 	virtual ~Producto() {}
+
+
 	virtual string toString()const = 0;
 
 	//Accesores
 	virtual string getnombreComecial() = 0;
-	virtual string getCodigo() = 0;
+	virtual string getCodigo()const = 0;
 	virtual string getDescripcion() = 0;
 	virtual double getprecioCosto() = 0;
 	virtual string getCategoria() = 0;
@@ -39,12 +42,18 @@ public:
 	virtual void setCategoria(string) = 0;
 	virtual void setExistencia(int) = 0;
 	virtual void setLimite(int) = 0;
+	virtual void setFechaIng(Fecha*)=0;
+
+	//Métodos de cálculo
 	virtual double ganancia() = 0;
+
+	//Guardar y leer de archivos
 	virtual void guardarProducto(ofstream&) = 0;
 
 	//heredados
 	virtual  Producto* clonar()const = 0;
 
-
+	friend ostream& operator <<(ostream& s, Producto&);
+	/*friend istream& operator >>(istream&, Producto&);*/
 
 };

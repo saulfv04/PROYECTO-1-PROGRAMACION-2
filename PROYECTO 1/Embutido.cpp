@@ -49,6 +49,8 @@ Embutido::~Embutido()
     if (ptrEmpaque != nullptr) {
         delete ptrEmpaque;
     }
+    cout << "Borrando Embutido" << endl;
+
 }
 
 string Embutido::getMarca()
@@ -161,7 +163,7 @@ string Embutido::getnombreComecial()
     return nombreComercial;
 }
 
-string Embutido::getCodigo()
+string Embutido::getCodigo()const
 {
     return codigo;
 }
@@ -224,6 +226,16 @@ void Embutido::setExistencia(int e)
 void Embutido::setLimite(int l)
 {
     limite = l;
+}
+
+void Embutido::setFechaIng(Fecha* f)
+{
+    this->ptrFechaIng = new Fecha(*f);
+}
+
+void Embutido::SetFechaPer(Perecedero* f)
+{
+    this->ptrPer = new Perecedero(*f);
 }
 
 double Embutido::ganancia()
@@ -308,3 +320,7 @@ ostream& operator<<(ostream& s, Embutido& e)
     s << e.toString();
     return s;
 }
+
+//istream& operator>>(istream&, Embutido&){
+//
+//}

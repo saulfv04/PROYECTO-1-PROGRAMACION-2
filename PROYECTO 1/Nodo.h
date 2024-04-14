@@ -15,6 +15,11 @@ public:
 	virtual~Nodo();
 	Nodo<T>* obtenerSig()const;
 	T* obtenerInfo()const;
+
+	//Métodos get
+	string getCodigo()const;
+
+	//Métodos set
 	void setInfo(T*);
 	void setSig(Nodo<T>*);
 
@@ -29,7 +34,7 @@ Nodo<T>::~Nodo()
 {
 	if (dato)//Esto depende de la aplicacion
 		delete dato;
-
+	cout << "Borrando Datos" << endl;
 }
 
 template<class T>
@@ -42,6 +47,11 @@ template<class T>
 T* Nodo<T>::obtenerInfo() const
 {
 	return dato;
+}
+
+template<class T>
+string Nodo<T>::getCodigo() const{
+	return dato->getCodigo();
 }
 
 template<class T>

@@ -9,9 +9,6 @@ class Categoria {
 	public:
 		Categoria();
 		virtual ~Categoria();
-		double porceganancia(string cat);
-
-
-
+		double porceganancia(string);
 
 };

@@ -8,27 +8,25 @@ using namespace std;
 class Venta{
 	private:
 		ProductoDecorador* carrito;
-		Persona* persona;
+		string nombreCliente;
 		string codigo;
 		Fecha* fVenta;
 	public:
 
 		//Constructores y Destructor
-		Venta(ProductoDecorador*,Persona*,Fecha*,string);
+		Venta(ProductoDecorador*,string,Fecha*,string);  
 		Venta(const Venta&);
 		virtual ~Venta();
 
 
 		//Accesores
-		string getCodigo();
-		Persona* getPersona();
-		BaseCarrito* getCarrito();
+		string getCodigo()const;
+		string getPersona();
+		ComponenteAbstracto* getCarrito();
 		Fecha* getFecha();
 
 		//Mutadores
-		void setCodigo(string);
 		void setCarrito(ProductoDecorador*);
-		void setPersona(Persona*);
 		void setFecha(Fecha*);
 
 

@@ -6,6 +6,7 @@ Carrito::Carrito()
 
 Carrito::~Carrito()
 {
+    cout << "Borrando Carrito" << endl;
 
 }
 
@@ -13,19 +14,19 @@ Carrito::Carrito(const Carrito& p) {
  
 }
 
-BaseCarrito* Carrito::getSiguiente()
+ComponenteAbstracto* Carrito::getSiguiente()
 {
     return nullptr;
 }
 
-void Carrito::setSiguiente(BaseCarrito*)
+void Carrito::setSiguiente(ComponenteAbstracto*)
 {
 }
 
 string Carrito::toString() const
 {
     stringstream s;
-    s << endl << "------------CARRITO COMPRAS------------" << endl;
+    s << endl << "|  -------------------------CARRITO COMPRAS------------------------------- |" << endl;
     return s.str();
 }
 
@@ -34,7 +35,7 @@ double Carrito::getTotal()
     return 0.0;
 }
 
-BaseCarrito* Carrito::clonar() const
+ComponenteAbstracto* Carrito::clonar() const
 {
     return NULL;
 }

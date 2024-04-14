@@ -9,15 +9,18 @@ private:
 	double precio;
 	bool envasado;
 public:
-	DecoradorConserva(BaseCarrito*, string,string,string,double,bool);
+	DecoradorConserva(ComponenteAbstracto*, string,string,string,double,bool);
 	DecoradorConserva(const DecoradorConserva&);
 	virtual ~DecoradorConserva();
-	virtual BaseCarrito* getSiguiente();
-	virtual void setSiguiente(BaseCarrito*);
+	virtual ComponenteAbstracto* getSiguiente();
+	virtual void setSiguiente(ComponenteAbstracto*);
 	virtual string toString() const;
-	friend ostream& operator<<(ostream&, DecoradorConserva&);
 	virtual double getTotal();
 	/*virtual int getCantidad();*/
-	virtual BaseCarrito* clonar() const;
+	virtual ComponenteAbstracto* clonar() const;
+
+	//Sobrecargas
+	friend ostream& operator<<(ostream&, DecoradorConserva&);
+
 };
 
