@@ -142,20 +142,40 @@ int Interfaz::menuEliminarProducto(){
 void Interfaz::Eliminacion(Minisuper* mini)
 {
     string op;
+    string borrado;
     system("cls");
     cout << endl;
-    cout << "------------ELIMINACION PRODUCTO----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>   Cod.Producto.               " << endl;
-    cout << "   Digite la opcion: ";
+    cout << "__________________________________________" << endl;
+    cout << "|         -ELIMINACION PRODUCTO-         |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                OPCIONES                |" << endl << endl;
+    cout << "|                                        |" << endl;
+    cout << "|    <1>   Cod.Producto.                 |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "    Digite la opcion: ";    
     cin >> op;
-    if (mini->buscarProducto(op)!=nullptr) {
+    Producto* aux = mini->eliminarProductoEspecifico(op);
+    if (aux!=nullptr) {
         cout <<"Producto Encontrado" << endl;
+        cout << "El produto encontrado es el deseado..." << endl;
+        cout << *aux;
+        cout << "Desea borrar el producto de forma definitiva... " << endl;
+        cout << "         (S)BORRAR          (N)Conservar        "<< endl;
+        cout << "Digite la opcion : ";
+        cin >> borrado;
+        if (borrado=="S"||borrado=="s") {
+            cout << "PRODUCTO BORRADO CON EXITO..." << endl;
+        }
+        else {
+            mini->agregarProducto(aux);
+            cout << "PRODUCTO DISPONIBLE EN MINISUPER." << endl;
+        }
     }
     else {
         cout << "Producto no encontrado en minisuper" << endl;
     }
+    system("pause");
 }
 
 int Interfaz::menuMantClientes(){
@@ -171,6 +191,7 @@ int Interfaz::menuMantClientes(){
     cout << "   Digite la opcion: ";
     cin >> op;
     return op;
+    system("pause");
 }
 
 void Interfaz::menuMantAgregarClientes(Minisuper* mini)
@@ -180,6 +201,36 @@ void Interfaz::menuMantAgregarClientes(Minisuper* mini)
     cout << *p;
     mini->agregarPersona(p);
     cout << "Persona ingresada..." << endl;
+}
+
+int Interfaz::menuReporteClientes()
+{
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "__________________________________________" << endl;
+    cout << "|       -REPORTE DE CLIENTES TOTAL-      |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                OPCIONES                |" << endl << endl;
+    cout << "|                                        |" << endl;
+    cout << "|    <1>   Ver.Clientes.                 |" << endl;
+    cout << "|    <2>   Regresar.                     |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "    Digite la opcion: ";
+    cin >> op;
+    system("pause");
+    return op;
+}
+
+void Interfaz::ReporteClientes(Minisuper* mini){
+    system("cls");
+    cout << "__________________________________________" << endl;
+    cout << "|          -CLIENTES MINISUPER-          |" << endl;
+    cout << "|                                        |" << endl;
+    cout <<"'------------------------------------------" << endl;
+    cout << mini->toStringListClientes();
+    system("pause");
 }
 
 int Interfaz::menuReportesPrincipal()
@@ -195,7 +246,8 @@ int Interfaz::menuReportesPrincipal()
     cout << "    <3>  Reporte productos por debajo de su minimo (Limite).                           " << endl;
     cout << "    <4>  Reporte facturas de cliente especifico.                           " << endl;
     cout << "    <5>  Reporte 5 mejores clientes.                           " << endl;
-    cout << "    <6>  Regresar.                           " << endl;
+    cout << "    <6>  Reporte Clientes Totales.                           " << endl;
+    cout << "    <7>  Regresar.                           " << endl;
     cout << "-----------------------------------------" << endl;
     cout << "   Digite la opcion: ";
     cin >> op;

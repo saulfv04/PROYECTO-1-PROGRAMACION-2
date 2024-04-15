@@ -31,10 +31,14 @@ public:
 
 
 	Nodo<Producto>* buscarProducto(string);
+	Producto* eliminarProductoEspecifico(string);
+	
 
 	Nodo<Producto>* getProducto();
 
 
 	string toStringListProd();
+	string toStringListClientes();
+
 };
 
