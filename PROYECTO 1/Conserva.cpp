@@ -221,7 +221,7 @@ void Conserva::leerDatos(istream& s)
     s >> *f;
     setFechaIng(f);
     cout << "Codigo: " << endl;
-    s >> categoria;
+    s >> codigo;
     cout << "Nombre: " << endl;
     s >> nombreComercial;
     cout << "Descripcion: " << endl;

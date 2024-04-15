@@ -52,6 +52,8 @@ public:
 	void control3_3();//Reporte por debajo del minimo (Límite)
 	void control3_4();//Reporte de las facturas de un cliente determinadas por su cédula
 	void control3_5();//Reporte de cédulas de los mejores 5 cliente del minisuper
+	void control3_6();//Reporte de todos los clientes
+	void control3_6_1();//Mostrar Clientes por su cédula
 
 
 	void control4_1();//Mantenimiento de Clientes (Ingreso de cliente)

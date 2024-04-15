@@ -89,13 +89,16 @@ void Controlador::control3(){
             control3_5();
             break;
         case 6:
+            control3_6();
+            break;
+        case 7:
             cout << "Regresando..." << endl;
             break;
         default:
             cout << "Opcion no disponible" << endl;
             break;
         }
-    } while (op != 6);
+    } while (op != 7);
 }
 
 void Controlador::control4()
@@ -127,7 +130,6 @@ void Controlador::control1_1(){
             break;
         case 2:
             cout << "Regresando..." << endl;
-            this->control1();
         default:
             cout << "Opcion no disponible" << endl;
             break;
@@ -182,7 +184,6 @@ void Controlador::control1_2_1(){
             break;
         case 4:
             cout << "Regresando..." << endl;
-            system("pause");
             break;
         default:
             cout << "Opcion no disponible" << endl;
@@ -276,11 +277,34 @@ void Controlador::control3_3()
 {
 }
 
-void Controlador::control3_4()
+void Controlador::control3_5()
 {
 }
 
-void Controlador::control3_5()
+void Controlador::control3_6()
+{
+    int opC;
+    do {
+        opC = controlReportProductoCategoria();
+        switch (opC) {
+        case 1:
+            control3_6_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 2);
+}
+
+void Controlador::control3_6_1()
+{
+    Interfaz::ReporteClientes(minisuper);
+}
+
+void Controlador::control3_4()
 {
 }
 
