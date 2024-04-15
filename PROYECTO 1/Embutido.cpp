@@ -345,6 +345,7 @@ void Embutido::leerDatos(istream& s)
     s >> *p;
     SetFechaPer(p);
     Fecha* f = new Fecha();
+    cout << "Ingreso: " << endl;
     s >> *f;
     setFechaIng(f);
     cout<<"Marca: "<<endl;
@@ -353,6 +354,7 @@ void Embutido::leerDatos(istream& s)
 	s >> nombreAnimal;
 	cout << "Parte del animal ";
 	s >> parteDelAnimal;
+    cin >> nac;
 	cout << "Nacional (N)No  (S):Si ";
     if (nac == "S" || nac == "s") {
         setNacional(true);

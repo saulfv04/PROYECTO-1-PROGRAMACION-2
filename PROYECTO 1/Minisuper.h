@@ -12,7 +12,7 @@ using namespace std;
 #include "Venta.h"
 class Minisuper
 {
-private:
+protected:
 	Lista<Persona>* listPersona;
 	Lista<Producto>* listProducto;
 	Lista<Venta>* listVenta;
@@ -31,6 +31,9 @@ public:
 
 
 	Nodo<Producto>* buscarProducto(string);
+
+	Nodo<Producto>* getProducto();
+
 
 	string toStringListProd();
 };

@@ -52,15 +52,21 @@ int Interfaz::menuMantenimientoVentas()
     return op;
 }
 
-string Interfaz::retornoFacturas()
-{
+void Interfaz::menuFacturas(Minisuper* mini){
     string op;
     system("cls");
     cout << endl;
     cout << "------------Digite el numero de factura deseado----------" << endl;
     cin >> op;
-    return op;
+    if (mini->getFactura(op) != nullptr) {
+        cout << "Factura encontrada" << endl;
+    }
+    else {
+        cout << "Ninguna venta asociada al codigo proporcionado" << endl;
+    }
+    system("pause");
 }
+
 
 int Interfaz::menuMantenimientoProductos()
 {
@@ -106,17 +112,17 @@ void Interfaz::agregarProductoConserva(Minisuper* mini){
 }
 
 void Interfaz::agregarProductoEmbutido(Minisuper* mini){
-    /*Producto* c = new Embutido();
+    Producto* c = new Embutido();
     cin >> *c;
-    cout << "Producto tipo conserva ingresado" << endl;
-    mini->agregarProducto(c);*/
+    cout << "Producto tipo embutido ingresado" << endl;
+    mini->agregarProducto(c);
 }
 
 void Interfaz::agregarProductoAbarrote(Minisuper* mini){
- /*   Producto* c = new Abarrote();
+    Producto* c = new Abarrote();
     cin >> *c;
-    cout << "Producto tipo conserva ingresado" << endl;
-    mini->agregarProducto(c);*/
+    cout << "Producto tipo abarrote ingresado" << endl;
+    mini->agregarProducto(c);
 }
 
 int Interfaz::menuEliminarProducto(){
@@ -164,7 +170,6 @@ int Interfaz::menuMantClientes(){
     cout << "-----------------------------------------" << endl;
     cout << "   Digite la opcion: ";
     cin >> op;
-    system("cls");
     return op;
 }
 
@@ -174,7 +179,7 @@ void Interfaz::menuMantAgregarClientes(Minisuper* mini)
     cin >> *p;
     cout << *p;
     mini->agregarPersona(p);
-    cout << "Persona ingresada" << endl;
+    cout << "Persona ingresada..." << endl;
 }
 
 int Interfaz::menuReportesPrincipal()
@@ -202,5 +207,65 @@ void Interfaz::menuReportesProductos(Minisuper* mini){
     cout << endl;
     cout << "------------PRODUCTOS MINISUPER----------" << endl;
     cout << mini->toStringListProd();
+    system("pause");
+}
+
+int Interfaz::menuReportesProductosEspecificos(){
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "------------GESTION REPORTES PRODUCTO POR CATEGORIA----------" << endl;
+    cout << "-------------------------------------------" << endl;
+    cout << "-------------------MENU------------------" << endl << endl;
+    cout << "    <1>  Reporte. Prod. Conserva.                     " << endl;
+    cout << "    <2>  Reporte. Prod. Abarrote.                     " << endl;
+    cout << "    <3>  Reporte. Prod. Embutido.                     " << endl;
+    cout << "    <4>  Regresar.                           " << endl;
+    cout << "-----------------------------------------" << endl;
+    cout << "   Digite la opcion: ";
+    cin >> op;
+    return op;
+    system("pause");
+}
+
+void Interfaz::menuReportesProdConserva(Minisuper* mini){
+    system("cls");
+    cout << "PRODUCTO LISTADOS DE CONSERVA" << endl;
+    Nodo <Producto>* tmp = mini->getProducto();
+    while (tmp!=nullptr) {
+        Conserva* con= dynamic_cast<Conserva*>(tmp);
+        if (tmp!=nullptr) {
+            cout << tmp->obtenerInfo()->toString()<< endl;
+        }
+        tmp = tmp->obtenerSig();
+    }
+    system("pause");
+}
+
+void Interfaz::menuReportesProdAbarrote(Minisuper* mini){
+    system("cls");
+    cout << "PRODUCTO LISTADOS DE ABARROTE" << endl;
+    Nodo <Producto>* tmp = mini->getProducto();
+    while (tmp != nullptr) {
+        Abarrote* con = dynamic_cast<Abarrote*>(tmp);
+        if (tmp != nullptr) {
+            cout << tmp->obtenerInfo()->toString() << endl;
+        }
+        tmp = tmp->obtenerSig();
+    }
+    system("pause");
+}
+
+void Interfaz::menuReportesProdEmbutido(Minisuper* mini){
+    system("cls");
+    cout << "PRODUCTO LISTADOS DE EMBUTIDO" << endl;
+    Nodo <Producto>* tmp = mini->getProducto();
+    while (tmp != nullptr) {
+        Embutido* con = dynamic_cast<Embutido*>(tmp);
+        if (tmp != nullptr) {
+            cout << tmp->obtenerInfo()->toString() << endl;
+        }
+        tmp = tmp->obtenerSig();
+    }
     system("pause");
 }

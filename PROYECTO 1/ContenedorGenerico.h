@@ -23,6 +23,7 @@ public:
 	string toString() const;
 	//Nuevos metodos;
 	int size();
+	Nodo<T>* getPrimero();
 	T* getElemento(unsigned int i);
 	void remove(int p);
 	void removeInicio();
@@ -108,6 +109,12 @@ int Lista<T>::size()
 	}
 
 	return size;
+}
+
+template<class T>
+ Nodo<T>* Lista<T>::getPrimero()
+{
+	return this->primero;
 }
 
 template<class T>

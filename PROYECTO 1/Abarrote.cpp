@@ -322,6 +322,7 @@ istream& operator>>(istream& is, Abarrote& A)
     string op;
     cout<< "Ingreso de datos Producto Abarrote: " << endl;
     Fecha* fI = new Fecha();
+    cout << "Ingreso: " << endl;
     is >> *fI;
     A.setFechaIng(fI);
     Perecedero* p = new Perecedero();
