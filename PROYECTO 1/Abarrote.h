@@ -54,6 +54,7 @@ class Abarrote :public ProdPerecedero
 
 		//Métodos de cálculo
 		virtual double ganancia();
+		virtual void leerDatos(istream&);
 
 };
 

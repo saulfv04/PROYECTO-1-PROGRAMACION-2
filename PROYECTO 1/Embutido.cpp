@@ -336,6 +336,46 @@ Embutido* Embutido::leerEmbutido(ifstream& file)
 }
 void Embutido::leerDatos(istream& s)
 {
+    string nac;
+    cout<<"Ingreso de datos Producto Embutido: "<<endl;
+    Empaque* emp = new Empaque();
+    s >> *emp;
+    setEmpaque(emp);
+    Perecedero* p = new Perecedero();
+    s >> *p;
+    SetFechaPer(p);
+    Fecha* f = new Fecha();
+    s >> *f;
+    setFechaIng(f);
+    cout<<"Marca: "<<endl;
+	s >> marca;
+	cout << "Nombre del animal: ";
+	s >> nombreAnimal;
+	cout << "Parte del animal ";
+	s >> parteDelAnimal;
+	cout << "Nacional (N)No  (S):Si ";
+    if (nac == "S" || nac == "s") {
+        setNacional(true);
+    }
+    else {
+        setNacional(false);
+    }
+	cout << "Peso: ";
+	s >> peso;
+	cout << "Codigo: ";
+	s >> codigo;
+	cout << "Nombre comercial: ";
+	s >> nombreComercial;
+	cout << "Descripcion: ";
+	s >> descripcion;
+	cout << "Precio de costo: ";
+	s >> precioCosto;
+	cout << "Categoria: ";
+	s >> categoria;
+	cout << "Existencia: ";
+	s >> existencia;
+	cout << "Limite: ";
+	s >> limite;
 }
 ostream& operator<<(ostream& s, Embutido& e)
 {

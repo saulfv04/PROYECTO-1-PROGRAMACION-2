@@ -56,7 +56,7 @@ public:
 	//Sobrecargas
 	friend ostream& operator <<(ostream& s, Producto&);
 	friend istream& operator >>(istream&, Producto&);
-	virtual void leerDatos(istream&);
+	virtual void leerDatos(istream&) = 0;
 
 
 };
