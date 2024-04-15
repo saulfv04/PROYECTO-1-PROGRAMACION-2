@@ -42,6 +42,11 @@ Nodo<Producto>* Minisuper::buscarProducto(string c){
 	return this->listProducto->buscar(c);
 }
 
+Nodo<Producto>* Minisuper::getProducto()
+{
+	return this->listProducto->getPrimero();
+}
+
 string Minisuper::toStringListProd()
 {
 	stringstream s;

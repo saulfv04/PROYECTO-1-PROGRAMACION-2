@@ -7,7 +7,7 @@ public:
 
 	static int menuMantenimiento();
 	static int menuMantenimientoVentas();
-	static string retornoFacturas();
+	static void menuFacturas(Minisuper*);
 
 	static int menuMantenimientoProductos();
 
@@ -26,6 +26,10 @@ public:
 
 	static int menuReportesPrincipal();
 	static void menuReportesProductos(Minisuper*);
+	static int menuReportesProductosEspecificos();
+	static void menuReportesProdConserva(Minisuper*);
+	static void menuReportesProdAbarrote(Minisuper*);
+	static void menuReportesProdEmbutido(Minisuper*);
 	static int menuReportProdMinimo(Minisuper*);
 	static int menuReportesClienteEspecifico(Minisuper*);
 	static int menuReportesTopClientes(Minisuper*);

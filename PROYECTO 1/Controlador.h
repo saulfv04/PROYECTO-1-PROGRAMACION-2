@@ -33,7 +33,7 @@ public:
 	void control1_2_1_3();//Ingreso Prod.Abarrote
 
 	void control1_2_2();//Mantemiento Productos (Eliminar producto)
-	void control1_2_2_2();
+	void control1_2_2_2();//Eliminacion de producto específico
 	void control1_2_3();//Mantemiento Productos (Modificación producto)
 
 
@@ -46,6 +46,9 @@ public:
 	//REPORTES
 	void control3_1();//Reporte todos los productos del minisuper
 	void control3_2();//Reporte de productos por su categoría
+	void control3_2_1();//Reporte de productos (Conserva)
+	void control3_2_2();//Reporte de productos (Abarrote)
+	void control3_2_3();//Reporte de productos (Embutido)
 	void control3_3();//Reporte por debajo del minimo (Límite)
 	void control3_4();//Reporte de las facturas de un cliente determinadas por su cédula
 	void control3_5();//Reporte de cédulas de los mejores 5 cliente del minisuper
@@ -59,15 +62,17 @@ public:
 
 	int controlMantenimientos();
 	int controlMantenimientoFacturas();
-	string controlRetornoFacturas();
 
 
 	int controlMantemientoProductos();
 	int controlMntIngresoProductos();
+	int controlMntEliminarProducto();
 
 	int controlMntIngresoClientes();
 
 
 	int controlReport();
+	int controlReportProductoCategoria();
+
 };
 
