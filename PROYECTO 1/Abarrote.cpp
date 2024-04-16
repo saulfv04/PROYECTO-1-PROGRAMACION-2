@@ -245,6 +245,8 @@ void Abarrote::leerDatos(istream& s)
 	s >> descripcion;
 	cout << "Categoria: " << endl;
 	s >> categoria;
+    cout << "Codigo: " << endl;
+    s >> codigo;
 	cout << "Precio: " << endl;
 	s >> precioCosto;
 	cout << "Peso: " << endl;

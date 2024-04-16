@@ -352,10 +352,10 @@ void Embutido::leerDatos(istream& s)
 	s >> marca;
 	cout << "Nombre del animal: ";
 	s >> nombreAnimal;
-	cout << "Parte del animal ";
+	cout << "Parte del animal: ";
 	s >> parteDelAnimal;
+    cout << "Nacional (N)No  (S):Si ";
     cin >> nac;
-	cout << "Nacional (N)No  (S):Si ";
     if (nac == "S" || nac == "s") {
         setNacional(true);
     }

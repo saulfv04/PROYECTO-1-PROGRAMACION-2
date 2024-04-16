@@ -42,7 +42,6 @@ public:
 	void control2_1();//Control Creación de Ventas
 
 
-
 	//REPORTES
 	void control3_1();//Reporte todos los productos del minisuper
 	void control3_2();//Reporte de productos por su categoría
@@ -51,6 +50,7 @@ public:
 	void control3_2_3();//Reporte de productos (Embutido)
 	void control3_3();//Reporte por debajo del minimo (Límite)
 	void control3_4();//Reporte de las facturas de un cliente determinadas por su cédula
+	void control3_4_1();//Reporte VENTAS cliente específico
 	void control3_5();//Reporte de cédulas de los mejores 5 cliente del minisuper
 	void control3_6();//Reporte de todos los clientes
 	void control3_6_1();//Mostrar Clientes por su cédula
@@ -71,10 +71,16 @@ public:
 	int controlMntEliminarProducto();
 
 	int controlMntIngresoClientes();
+	int controlReportClientes();
 
 
 	int controlReport();
 	int controlReportProductoCategoria();
+	int controlReportVentasClienteEspecifico();
+
+
+	//Ventas
+	int controlCreancionVentas();
 
 };
 
