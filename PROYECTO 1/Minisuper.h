@@ -34,6 +34,7 @@ public:
 
 
 	Nodo<Venta>* getFactura(string);
+	Nodo<Persona>* getCliente(string);
 
 
 	Nodo<Producto>* buscarProducto(string);
