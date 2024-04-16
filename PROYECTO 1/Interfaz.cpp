@@ -60,13 +60,22 @@ void Interfaz::menuFacturas(Minisuper* mini){
     string op;
     system("cls");
     cout << endl;
-    cout << "------------Digite el numero de factura deseado----------" << endl;
+    cout << "___________________________________________________________" << endl;
+    cout << "|           -Digite el numero de factura deseado-         |" << endl;
+    cout << "|_________________________________________________________|" << endl;
     cin >> op;
-    if (mini->getFactura(op) != nullptr) {
-        cout << "Factura encontrada" << endl;
+    Nodo < Venta >* pAct = mini->getFactura(op);
+    if (pAct != nullptr) {
+        Venta* facturaBuscada = pAct->obtenerInfo();
+        cout << "____________________" << endl;
+        cout << "|Factura encontrada|" << endl;
+        cout << "|__________________|" << endl << endl;
+        cout << *facturaBuscada << endl;
     }
     else {
-        cout << "Ninguna venta asociada al codigo proporcionado" << endl;
+        cout << "________________________________________________" << endl;
+        cout << "|Ninguna venta asociada al codigo proporcionado|" << endl;
+        cout << "|______________________________________________|" << endl;
     }
     system("pause");
 }
@@ -115,14 +124,18 @@ void Interfaz::agregarProductoConserva(Minisuper* mini){
     Producto* c = new Conserva();
     cin >> *c;
     mini->agregarProducto(c);
-    cout << "Producto tipo conserva ingresado" << endl;
+    cout << "__________________________________" << endl;
+    cout << "|Producto tipo Conserva ingresado|" << endl;
+    cout << "|________________________________|" << endl;
     system("pause");
 }
 
 void Interfaz::agregarProductoEmbutido(Minisuper* mini){
     Producto* c = new Embutido();
     cin >> *c;
-    cout << "Producto tipo embutido ingresado" << endl;
+    cout << "__________________________________" << endl;
+    cout << "|Producto tipo Embutido ingresado|" << endl;
+    cout << "|________________________________|" << endl;
     mini->agregarProducto(c);
     system("pause");
 }
@@ -130,7 +143,9 @@ void Interfaz::agregarProductoEmbutido(Minisuper* mini){
 void Interfaz::agregarProductoAbarrote(Minisuper* mini){
     Producto* c = new Abarrote();
     cin >> *c;
-    cout << "Producto tipo abarrote ingresado" << endl;
+    cout << "__________________________________" << endl;
+    cout << "|Producto tipo Abarrote ingresado|" << endl;
+    cout << "|________________________________|" << endl;
     mini->agregarProducto(c);
     system("pause");
 }
@@ -170,18 +185,22 @@ void Interfaz::Eliminacion(Minisuper* mini)
     cin >> op;
     Producto* aux = mini->eliminarProductoEspecifico(op);
     if (aux!=nullptr) {
-        cout <<"Producto Encontrado" << endl;
+        cout <<"_____________________" << endl;
+        cout <<"|Producto Encontrado|" << endl;
+        cout <<"|___________________|" << endl;
         cout << "El produto encontrado es el deseado..." << endl;
         cout << *aux;
-        cout << "Desea borrar el producto de forma definitiva... " << endl;
+        cout << "Desea borrar el producto de forma definitiva... " << endl << endl;
         cout << "         (S)BORRAR          (N)Conservar        "<< endl;
         cout << "Digite la opcion : ";
         cin >> borrado;
         if (borrado=="S"||borrado=="s") {
+            system("pause");
             cout << "PRODUCTO BORRADO CON EXITO..." << endl;
         }
         else {
             mini->agregarProducto(aux);
+            system("pause");
             cout << "PRODUCTO DISPONIBLE EN MINISUPER." << endl;
         }
     }
@@ -212,9 +231,9 @@ void Interfaz::menuMantAgregarClientes(Minisuper* mini)
 {
     Persona* p = new Persona();
     cin >> *p;
-    cout << *p;
     mini->agregarPersona(p);
     cout << "Persona ingresada..." << endl;
+    system("pause");
 }
 
 int Interfaz::menuReporteClientes()
@@ -256,7 +275,7 @@ void Interfaz::ReporteClienteEspecifico(Minisuper* mini){
     cout << "__________________________________________" << endl;
     cout << "|       -VENTAS CLIENTE ESPECIFICO-      |" << endl;
     cout << "|________________________________________|" << endl;
-    cout << "Digite la opcion: ";
+    cout << "Digite el cliente: ";
     cin >> cedula;
     while (pAct) {
         if (pAct->obtenerInfo()->getPersona() == cedula) {
@@ -287,6 +306,25 @@ int Interfaz::menuCreacionVentas()
 }
 void Interfaz::crearVenta(Minisuper* mini)
 {
+    string persona;
+    system("cls");
+    cout << endl;
+    cout << "__________________________________________" << endl;
+    cout << "|       -VENTAS CLIENTE ESPECIFICO-      |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "Digite el cliente: ";
+    cin >> persona;
+    Nodo <Persona>* personaVenta = mini->getCliente(persona);
+    if (personaVenta != nullptr) {
+        Persona* dato = personaVenta->obtenerInfo();
+        cout << *dato;
+    }
+    else {
+        cout << "Digitar una cedula valida dentro del sistema..." << endl;
+        cout << "El cliente digitado no existe en el minisuper..." << endl;
+    }
+
+    
  /*   string op;*/
    /* ComponenteAbstracto* carrito = new Carrito();
     do {
@@ -295,7 +333,7 @@ void Interfaz::crearVenta(Minisuper* mini)
 
     } while (op!="N"||op!="n");
 */
-
+    system("pause");
 
 }
 //Menu para reporte Facturas por su cédula

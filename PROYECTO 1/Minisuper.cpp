@@ -37,6 +37,11 @@ Nodo<Venta>* Minisuper::getFactura(string c)
 	return listVenta->buscarElemento(c);
 }
 
+Nodo<Persona>* Minisuper::getCliente(string c)
+{
+	return this->listPersona->buscarElemento(c);
+}
+
 Nodo<Producto>* Minisuper::buscarProducto(string c){
 
 	return this->listProducto->buscarElemento(c);
