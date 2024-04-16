@@ -52,6 +52,11 @@ Nodo<Producto>* Minisuper::getProducto()
 	return this->listProducto->getPrimero();
 }
 
+Nodo<Venta>* Minisuper::getVenta()
+{
+	return this->listVenta->getPrimero();
+}
+
 string Minisuper::toStringListProd()
 {
 	stringstream s;

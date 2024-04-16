@@ -10,6 +10,12 @@ using namespace std;
 #include "Abarrote.h"
 #include "Conserva.h"
 #include "Venta.h"
+#include "ComponenteAbstracto.h"
+#include "Carrito.h"
+#include "ProductoDecorador.h"
+#include "DecoradorAbarrote.h"
+#include "DecoradorEmbutido.h"
+#include "DecoradorConserva.h"
 class Minisuper
 {
 protected:
@@ -35,6 +41,7 @@ public:
 	
 
 	Nodo<Producto>* getProducto();
+	Nodo<Venta>* getVenta();
 
 
 	string toStringListProd();

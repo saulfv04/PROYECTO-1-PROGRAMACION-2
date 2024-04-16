@@ -65,7 +65,18 @@ void Controlador::control1()
 
 void Controlador::control2()
 {
- 
+    int op;
+    do {
+        op = controlCreancionVentas();
+        switch (op) {
+        case 1:
+            control2_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        }
+    } while (op != 2);
 }
 
 void Controlador::control3(){
@@ -229,6 +240,7 @@ void Controlador::control1_2_3()
 
 void Controlador::control2_1()
 {
+    Interfaz::crearVenta(minisuper);
 }
 
 void Controlador::control3_1()
@@ -285,13 +297,14 @@ void Controlador::control3_6()
 {
     int opC;
     do {
-        opC = controlReportProductoCategoria();
+        opC = controlReportClientes();
         switch (opC) {
         case 1:
             control3_6_1();
             break;
         case 2:
             cout << "Regresando..." << endl;
+            break;
         default:
             cout << "Opcion no disponible" << endl;
             break;
@@ -306,6 +319,26 @@ void Controlador::control3_6_1()
 
 void Controlador::control3_4()
 {
+    int opC;
+    do {
+        opC = controlReportVentasClienteEspecifico();
+        switch (opC) {
+        case 1:
+            control3_4_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 2);
+}
+
+void Controlador::control3_4_1()
+{
+    Interfaz::ReporteClienteEspecifico(minisuper);
 }
 
 void Controlador::control4_1()
@@ -348,6 +381,21 @@ int Controlador::controlMntEliminarProducto()
 int Controlador::controlMntIngresoClientes()
 {
     return Interfaz::menuMantClientes();
+}
+
+int Controlador::controlReportClientes()
+{
+    return Interfaz::menuReporteClientes();
+}
+
+int Controlador::controlReportVentasClienteEspecifico()
+{
+    return Interfaz::menuReportesClienteEspecifico();
+}
+
+int Controlador::controlCreancionVentas()
+{
+    return Interfaz::menuCreacionVentas();
 }
 
 int Controlador::controlReport()

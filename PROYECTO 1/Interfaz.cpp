@@ -1,53 +1,57 @@
 #include "Interfaz.h"
 
-int Interfaz::menuPrincipalOp()
-{
+int Interfaz::menuPrincipalOp(){
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION DE MINISUPER----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Mantenimiento.                     " << endl;
-    cout << "    <2>  Ventas.                           " << endl;
-    cout << "    <3>  Reportes.                          " << endl;
-    cout << "    <4>  Salir.                             " << endl << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "_________________________________________________" << endl;
+    cout << "|              -GESTION DE MINISUPER-           |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                    OPCIONES                   |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|    <1>  Mantenimiento.                        |" << endl;
+    cout << "|    <2>  Ventas.                               |" << endl;
+    cout << "|    <3>  Reportes.                             |" << endl;
+    cout << "|    <4>  Salir.                                |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
     return op;
 }
 
-int Interfaz::menuMantenimiento()
-{
+int Interfaz::menuMantenimiento(){
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION DE MANTENIMIENTOS----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Mnt.Facturas.                     " << endl;
-    cout << "    <2>  Mnt.Productos.                           " << endl;
-    cout << "    <3>  Clientes.                           " << endl;
-    cout << "    <4>  Regresar.                             " << endl << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "_________________________________________________" << endl;
+    cout << "|           -GESTION DE MANTENIMIENTOS-         |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                   OPCIONES                    |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|    <1>  Mnt.Facturas.                         |" << endl;
+    cout << "|    <2>  Mnt.Productos.                        |" << endl;
+    cout << "|    <3>  Clientes.                             |" << endl;
+    cout << "|    <4>  Regresar.                             |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
     return op;
 }
 
-int Interfaz::menuMantenimientoVentas()
-{
+int Interfaz::menuMantenimientoVentas(){
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION DE VENTAS----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Buscar Factura.                     " << endl;
-    cout << "    <2>  Regresar.                           " << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "_________________________________________________" << endl;
+    cout << "|               -GESTION DE VENTAS-             |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                  OPCIONES                     |" << endl;
+    cout << "|    <1>  Buscar Factura.                       |" << endl;
+    cout << "|    <2>  Regresar.                             |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
     return op;
 }
@@ -66,40 +70,43 @@ void Interfaz::menuFacturas(Minisuper* mini){
     }
     system("pause");
 }
-
-
 int Interfaz::menuMantenimientoProductos()
 {
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION DE PRODUCTOS----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Ingresar Producto.                     " << endl;
-    cout << "    <2>  Eliminar Producto.                     " << endl;
-    cout << "    <3>  Modificar Producto.                     " << endl;
-    cout << "    <4>  Regresar.                           " << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "_________________________________________________" << endl;
+    cout << "|          -GESTION DE PRODUCTOS-               |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                OPCIONES                       |" << endl;
+    cout << "|    <1>  Ingresar Producto.                    |" << endl;
+    cout << "|    <2>  Eliminar Producto.                    |" << endl;
+    cout << "|    <3>  Modificar Producto.                   |" << endl;
+    cout << "|    <4>  Regresar.                             |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
+    system("pause");
     return op;
 }
 
 int Interfaz::menuMantIngresoProductos(){
     int op;
     system("cls");
-    cout << endl;
-    cout << "------------TIPO DE PRODUCTO A INGRESAR----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Prod.Conserva.                     " << endl;
-    cout << "    <2>  Prod.Embutido.                     " << endl;
-    cout << "    <3>  Prod.Abarrote.                      " << endl;
-    cout << "    <4>  Regresar.                           " << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "_________________________________________________" << endl;
+    cout << "|           -TIPO DE PRODUCTO A INGRESAR-       |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                OPCIONES                       |" << endl;
+    cout << "|    <1>  Prod.Conserva.                        |" << endl;
+    cout << "|    <2>  Prod.Embutido.                        |" << endl;
+    cout << "|    <3>  Prod.Abarrote.                        |" << endl;
+    cout << "|    <4>  Regresar.                             |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
+    system("pause");
     return op;
 }
 
@@ -109,6 +116,7 @@ void Interfaz::agregarProductoConserva(Minisuper* mini){
     cin >> *c;
     mini->agregarProducto(c);
     cout << "Producto tipo conserva ingresado" << endl;
+    system("pause");
 }
 
 void Interfaz::agregarProductoEmbutido(Minisuper* mini){
@@ -116,6 +124,7 @@ void Interfaz::agregarProductoEmbutido(Minisuper* mini){
     cin >> *c;
     cout << "Producto tipo embutido ingresado" << endl;
     mini->agregarProducto(c);
+    system("pause");
 }
 
 void Interfaz::agregarProductoAbarrote(Minisuper* mini){
@@ -123,19 +132,23 @@ void Interfaz::agregarProductoAbarrote(Minisuper* mini){
     cin >> *c;
     cout << "Producto tipo abarrote ingresado" << endl;
     mini->agregarProducto(c);
+    system("pause");
 }
 
 int Interfaz::menuEliminarProducto(){
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION BORRADO DE PRODUCTO----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Eliminar.               " << endl;
-    cout << "    <2>  Regresar.               " << endl;
-    cout << "   Digite la opcion: ";
+    cout << "_________________________________________________" << endl;
+    cout << "|         -GESTION BORRADO DE PRODUCTO-         |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                    OPCIONES                   |" << endl;
+    cout << "|    <1>  Eliminar.                             |" << endl;
+    cout << "|    <2>  Regresar.                             |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
+    system("pause");
     return op;
 }
 
@@ -149,11 +162,11 @@ void Interfaz::Eliminacion(Minisuper* mini)
     cout << "|         -ELIMINACION PRODUCTO-         |" << endl;
     cout << "|                                        |" << endl;
     cout << "|                                        |" << endl;
-    cout << "|                OPCIONES                |" << endl << endl;
+    cout << "|                OPCIONES                |" << endl;
     cout << "|                                        |" << endl;
     cout << "|    <1>   Cod.Producto.                 |" << endl;
     cout << "|________________________________________|" << endl;
-    cout << "    Digite la opcion: ";    
+    cout << "Digite la opcion: ";    
     cin >> op;
     Producto* aux = mini->eliminarProductoEspecifico(op);
     if (aux!=nullptr) {
@@ -182,13 +195,14 @@ int Interfaz::menuMantClientes(){
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION MANTENIMIENTOS DE CLIENTES----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Agregar.Clientes.                     " << endl;
-    cout << "    <2>  Regresar.                           " << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "_____________________________________________________" << endl;
+    cout << "|         -GESTION MANTENIMIENTOS DE CLIENTES-      |" << endl;
+    cout << "|                                                   |" << endl;
+    cout << "|                      OPCIONES                     |" << endl;
+    cout << "|    <1>  Agregar.Clientes.                         |" << endl;
+    cout << "|    <2>  Regresar.                                 |" << endl;
+    cout << "|___________________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
     return op;
     system("pause");
@@ -212,12 +226,12 @@ int Interfaz::menuReporteClientes()
     cout << "|       -REPORTE DE CLIENTES TOTAL-      |" << endl;
     cout << "|                                        |" << endl;
     cout << "|                                        |" << endl;
-    cout << "|                OPCIONES                |" << endl << endl;
+    cout << "|                OPCIONES                |" << endl;
     cout << "|                                        |" << endl;
     cout << "|    <1>   Ver.Clientes.                 |" << endl;
     cout << "|    <2>   Regresar.                     |" << endl;
     cout << "|________________________________________|" << endl;
-    cout << "    Digite la opcion: ";
+    cout << "Digite la opcion: ";
     cin >> op;
     system("pause");
     return op;
@@ -228,9 +242,80 @@ void Interfaz::ReporteClientes(Minisuper* mini){
     cout << "__________________________________________" << endl;
     cout << "|          -CLIENTES MINISUPER-          |" << endl;
     cout << "|                                        |" << endl;
-    cout <<"'------------------------------------------" << endl;
+    cout << "|________________________________________|" << endl;
     cout << mini->toStringListClientes();
     system("pause");
+}
+//Reporte Facturas por su cédula
+void Interfaz::ReporteClienteEspecifico(Minisuper* mini){
+
+    string cedula;
+    Nodo <Venta>* pAct = mini->getVenta();
+    system("cls");
+    cout << endl;
+    cout << "__________________________________________" << endl;
+    cout << "|       -VENTAS CLIENTE ESPECIFICO-      |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "Digite la opcion: ";
+    cin >> cedula;
+    while (pAct) {
+        if (pAct->obtenerInfo()->getPersona() == cedula) {
+            cout << *pAct->obtenerInfo() << endl;
+        }
+        pAct = pAct->obtenerSig();
+    }
+    system("pause");
+}
+int Interfaz::menuCreacionVentas()
+{
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "__________________________________________" << endl;
+    cout << "|           -CARRITO DE COMPRAS-         |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                OPCIONES                |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|    <1>   Crear Venta.                  |" << endl;
+    cout << "|    <2>   Regresar.                     |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "Digite la opcion: ";
+    cin >> op;
+    system("pause");
+    return op;
+}
+void Interfaz::crearVenta(Minisuper* mini)
+{
+ /*   string op;*/
+   /* ComponenteAbstracto* carrito = new Carrito();
+    do {
+
+
+
+    } while (op!="N"||op!="n");
+*/
+
+
+}
+//Menu para reporte Facturas por su cédula
+int Interfaz::menuReportesClienteEspecifico(){
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "__________________________________________" << endl;
+    cout << "|      -REPORTE VENTAS POR CLIENTE-      |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                OPCIONES                |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|    <1>   Ver.Clientes.Ced.             |" << endl;
+    cout << "|    <2>   Regresar.                     |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "Digite la opcion: ";
+    cin >> op;
+    system("pause");
+    return op;
 }
 
 int Interfaz::menuReportesPrincipal()
@@ -238,18 +323,21 @@ int Interfaz::menuReportesPrincipal()
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION REPORTES PRINCIPAL----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Reporte de todos los productos del minisuper.                     " << endl;
-    cout << "    <2>  Reporte solo productos por su categoria.                           " << endl;
-    cout << "    <3>  Reporte productos por debajo de su minimo (Limite).                           " << endl;
-    cout << "    <4>  Reporte facturas de cliente especifico.                           " << endl;
-    cout << "    <5>  Reporte 5 mejores clientes.                           " << endl;
-    cout << "    <6>  Reporte Clientes Totales.                           " << endl;
-    cout << "    <7>  Regresar.                           " << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "______________________________________________________________________" << endl;
+    cout << "|                    -GESTION REPORTES PRINCIPAL-                    |" << endl;
+    cout << "|                                                                    |" << endl;
+    cout << "|                                                                    |" << endl;
+    cout << "|                                                                    |" << endl;
+    cout << "|                            OPCIONES                                |" << endl;
+    cout << "|    <1>  Reporte de todos los productos del minisuper.              |" << endl;
+    cout << "|    <2>  Reporte solo productos por su categoria.                   |" << endl;
+    cout << "|    <3>  Reporte productos por debajo de su minimo (Limite).        |" << endl;
+    cout << "|    <4>  Reporte facturas de cliente especifico.                    |" << endl;
+    cout << "|    <5>  Reporte 5 mejores clientes.                                |" << endl;
+    cout << "|    <6>  Reporte Clientes Totales.                                  |" << endl;
+    cout << "|    <7>  Regresar.                                                  |" << endl;
+    cout << "|____________________________________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
     return op;
 }
@@ -266,15 +354,17 @@ int Interfaz::menuReportesProductosEspecificos(){
     int op;
     system("cls");
     cout << endl;
-    cout << "------------GESTION REPORTES PRODUCTO POR CATEGORIA----------" << endl;
-    cout << "-------------------------------------------" << endl;
-    cout << "-------------------MENU------------------" << endl << endl;
-    cout << "    <1>  Reporte. Prod. Conserva.                     " << endl;
-    cout << "    <2>  Reporte. Prod. Abarrote.                     " << endl;
-    cout << "    <3>  Reporte. Prod. Embutido.                     " << endl;
-    cout << "    <4>  Regresar.                           " << endl;
-    cout << "-----------------------------------------" << endl;
-    cout << "   Digite la opcion: ";
+    cout << "______________________________________________________________________" << endl;
+    cout << "|           -GESTION REPORTES PRODUCTO POR CATEGORIA-                |" << endl;
+    cout << "|                                                                    |" << endl;
+    cout << "|                                                                    |" << endl;
+    cout << "|                            OPCIONES                                |" << endl;
+    cout << "|    <1>  Reporte. Prod. Conserva.                                   | "<< endl;
+    cout << "|    <2>  Reporte. Prod. Abarrote.                                   |" << endl;
+    cout << "|    <3>  Reporte. Prod. Embutido.                                   |" << endl;
+    cout << "|    <4>  Regresar.                                                  |" << endl;
+    cout << "|____________________________________________________________________|" << endl;
+    cout << "Digite la opcion: ";
     cin >> op;
     return op;
     system("pause");
@@ -282,12 +372,14 @@ int Interfaz::menuReportesProductosEspecificos(){
 
 void Interfaz::menuReportesProdConserva(Minisuper* mini){
     system("cls");
-    cout << "PRODUCTO LISTADOS DE CONSERVA" << endl;
+    cout << "_________________________________________" << endl;
+    cout << "|     PRODUCTO LISTADOS DE CONSERVA     |" << endl;
+    cout << "|_______________________________________|" << endl;
     Nodo <Producto>* tmp = mini->getProducto();
     while (tmp!=nullptr) {
-        Conserva* con= dynamic_cast<Conserva*>(tmp);
-        if (tmp!=nullptr) {
-            cout << tmp->obtenerInfo()->toString()<< endl;
+        Conserva* con= dynamic_cast<Conserva*>(tmp->obtenerInfo());
+        if (con!=nullptr) {
+            cout << *tmp->obtenerInfo()<< endl;
         }
         tmp = tmp->obtenerSig();
     }
@@ -296,12 +388,14 @@ void Interfaz::menuReportesProdConserva(Minisuper* mini){
 
 void Interfaz::menuReportesProdAbarrote(Minisuper* mini){
     system("cls");
-    cout << "PRODUCTO LISTADOS DE ABARROTE" << endl;
+    cout << "_________________________________________" << endl;
+    cout << "|     PRODUCTO LISTADOS DE ABARROTE     |" << endl;
+    cout << "|_______________________________________|" << endl;
     Nodo <Producto>* tmp = mini->getProducto();
     while (tmp != nullptr) {
-        Abarrote* con = dynamic_cast<Abarrote*>(tmp);
-        if (tmp != nullptr) {
-            cout << tmp->obtenerInfo()->toString() << endl;
+        Abarrote* con = dynamic_cast<Abarrote*>(tmp->obtenerInfo());
+        if (con!= nullptr) {
+            cout << *tmp->obtenerInfo() << endl;
         }
         tmp = tmp->obtenerSig();
     }
@@ -310,12 +404,14 @@ void Interfaz::menuReportesProdAbarrote(Minisuper* mini){
 
 void Interfaz::menuReportesProdEmbutido(Minisuper* mini){
     system("cls");
-    cout << "PRODUCTO LISTADOS DE EMBUTIDO" << endl;
+    cout << "_________________________________________" << endl;
+    cout << "|     PRODUCTO LISTADOS DE EMBUTIDO     |" << endl;
+    cout << "|_______________________________________|" << endl;
     Nodo <Producto>* tmp = mini->getProducto();
     while (tmp != nullptr) {
-        Embutido* con = dynamic_cast<Embutido*>(tmp);
-        if (tmp != nullptr) {
-            cout << tmp->obtenerInfo()->toString() << endl;
+        Embutido* con = dynamic_cast<Embutido*>(tmp->obtenerInfo());
+        if (con != nullptr) {
+            cout << *tmp->obtenerInfo() << endl;
         }
         tmp = tmp->obtenerSig();
     }

@@ -48,9 +48,13 @@ public:
 	//Reporte clientes.
 	static int  menuReporteClientes();
 	static void ReporteClientes(Minisuper*);
-	static int  menuReportesClienteEspecifico(Minisuper*);
+	static int  menuReportesClienteEspecifico();
+	static void ReporteClienteEspecifico(Minisuper*);
 	static int  menuReportesTopClientes(Minisuper*);
 
+	//Menú Creación de ventas
+	static int menuCreacionVentas();
+	static void crearVenta(Minisuper*);
 
 };
 
