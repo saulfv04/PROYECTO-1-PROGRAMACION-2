@@ -71,7 +71,9 @@ string Conserva::toString()const
         s << "(Falso)" << endl;
     }
     s << "Descripcion:  " << this->descripcion<< endl;
-    s << "Precio costo:  $" << this->precioCosto << endl;
+    s << "Precio costo:  " << this->precioCosto << endl;
+    s << "Existencia:  " << this->existencia << endl;
+    s << "Limite:  " << this->limite << endl;
     return s.str();
 }
 

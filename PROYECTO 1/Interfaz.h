@@ -27,12 +27,18 @@ public:
 	static void agregarProductoEmbutido(Minisuper*);
 	static void agregarProductoAbarrote(Minisuper*);
 
+	//Modificación Prod. Específico
+	static int menuMantModifProd();
+	static void mantModifProd(Minisuper*);
+	static int menuOpcionesModificicado();
+
 	//Reportes.
 	static void menuReportesProductos(Minisuper*);
 	static void menuReportesProdConserva(Minisuper*);
 	static void menuReportesProdAbarrote(Minisuper*);
 	static void menuReportesProdEmbutido(Minisuper*);
-	static int  menuReportProdMinimo(Minisuper*);
+	static int  menuReportProdMinimo();
+	static void reportProdEscasoz(Minisuper*);
 	static int  menuReportesProductosEspecificos();
 
 	//Menú eliminación Productos.
