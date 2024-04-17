@@ -405,10 +405,13 @@ int Interfaz::menuReportesTopClientes()
     system("pause");
     return op;
 }
-void Interfaz::reporteTopClientes(Minisuper* mini)
-{
-
+void Interfaz::reporteTopClientesdelos5mejoresclientesconsufacturacantidaddeFacturas(Minisuper* mini) {
+    system("cls");
+  
+	system("pause");
 }
+
+
 int Interfaz::menuCreacionVentas()
 {
     int op;
