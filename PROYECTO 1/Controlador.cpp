@@ -328,6 +328,25 @@ void Controlador::control3_3_1()
 
 void Controlador::control3_5()
 {
+    int opC;
+    do {
+        opC = controlTopClientes();
+        switch (opC) {
+        case 1:
+            control3_5_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 2);
+}
+
+void Controlador::control3_5_1(){
+    Interfaz::reporteTopClientes(minisuper);
 }
 
 void Controlador::control3_6()
@@ -438,6 +457,11 @@ int Controlador::controlReportVentasClienteEspecifico()
 int Controlador::controlCreancionVentas()
 {
     return Interfaz::menuCreacionVentas();
+}
+
+int Controlador::controlTopClientes()
+{
+    return Interfaz::menuReportesTopClientes();
 }
 
 int Controlador::controlReport()

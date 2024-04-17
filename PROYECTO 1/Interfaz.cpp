@@ -386,6 +386,29 @@ void Interfaz::ReporteClienteEspecifico(Minisuper* mini){
     }
     system("pause");
 }
+int Interfaz::menuReportesTopClientes()
+{
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "__________________________________________" << endl;
+    cout << "|         -TOP CLIENTES POR VENTAS-      |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|                OPCIONES                |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|    <1>   Top.Clientes.                  |" << endl;
+    cout << "|    <2>   Regresar.                     |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "Digite la opcion: ";
+    cin >> op;
+    system("pause");
+    return op;
+}
+void Interfaz::reporteTopClientes(Minisuper* mini)
+{
+
+}
 int Interfaz::menuCreacionVentas()
 {
     int op;
@@ -432,7 +455,6 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
     cin >> persona;
     Nodo <Persona>* personaVenta = mini->getCliente(persona);
     if (personaVenta != nullptr) {
-		ComponenteAbstracto* carrito = new Carrito();
         do {
             carrito = crearVenta(mini, *carrito);
             system("pause");
@@ -442,12 +464,22 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
         cout << endl;
         ventaNueva->setCliente(persona);
         ventaNueva->setFecha(fNueva);
-        cout << carrito->toString();
+        ventaNueva->setCodigo(codVenta);
+        ProductoDecorador* pd = dynamic_cast<ProductoDecorador*>(carrito);
+        if (pd!=nullptr) {
+            ventaNueva->setCarrito(pd);
+        }
+        else {
+            cout << "Su carrito no pudo generarse..." << endl;
+        }
         system("pause");
 	}
     else {
 		cout << "Cliente no encontrado..." << endl;
 	}
+    cout << *ventaNueva;
+    mini->agregarVenta(ventaNueva);
+    system("pause");
 }
 ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& c)
 {
