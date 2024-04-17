@@ -56,13 +56,13 @@ public:
 	static void ReporteClientes(Minisuper*);
 	static int  menuReportesClienteEspecifico();
 	static void ReporteClienteEspecifico(Minisuper*);
-	static int  menuReportesTopClientes(Minisuper*);
+	static int  menuReportesTopClientes();
+	static void reporteTopClientes(Minisuper*);
 
 	//Menú Creación de ventas
 	static int menuCreacionVentas();
 	static void agregarProductoVenta(Minisuper*);
 	static ComponenteAbstracto* crearVenta(Minisuper*, ComponenteAbstracto&);
-	
 
 };
 

@@ -69,14 +69,14 @@ void Venta::setCliente(string c)
 
 string Venta::toString()const{
     stringstream s;
-    s<<"----------------------------------------" <<"|"<<  endl;
-    s<<"|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << this->codigo << "|" << endl;
-    s << "|" << "\t" << "\t" << "CLIENTE: " << this->cedulaCliente << "|" << endl;
-    s << "|" << "\t" << "\t" << "FECHA: " << *this->fVenta << "|" << endl;
-    s << "|" << "DETALLE DE COMPRA" << "|" << endl;
-    s << "|" << *this->carrito;
-    s << "|" << "  TOTAL BRUTO: $" << totalbruto()<< "  "<< "   IMPORTE %13: $" << totalIVa() << "      TOTAL NETO: $" << totalneto() << " " << endl;
-    s << "|  ----------------------------------------------------------------------- "<<"|" << endl;
+    s<<" ___________________________________________________________________________________________________________________________________________"<<  endl;
+    s<< "|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << this->codigo << "                                                                       |" << endl;
+    s <<"|" << "\t" << "\t" << "CLIENTE: " << this->cedulaCliente << "                                                                             |" << endl;
+    s <<"|" << "\t" << "\t" << "FECHA: " << *this->fVenta << "                                                                                     |" << endl;
+    s <<"|" << "DETALLE DE COMPRA" << "                                                                                                            |" << endl;
+    s <<"|" << *this->carrito;
+    s <<"|" << "  TOTAL BRUTO: $" << totalbruto()<< "  "<< "   IMPORTE %13: $" << totalIVa() << "      TOTAL NETO: $" << totalneto() << " " << endl;
+    s <<"|_________________________________________________________________________________________________________________________________________|" << endl;
     return s.str();
 }
 
