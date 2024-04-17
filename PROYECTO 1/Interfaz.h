@@ -60,7 +60,9 @@ public:
 
 	//Menú Creación de ventas
 	static int menuCreacionVentas();
-	static void crearVenta(Minisuper*);
+	static void agregarProductoVenta(Minisuper*);
+	static ComponenteAbstracto* crearVenta(Minisuper*, ComponenteAbstracto&);
+	
 
 };
 

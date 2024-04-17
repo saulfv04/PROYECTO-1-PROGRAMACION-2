@@ -405,13 +405,14 @@ int Interfaz::menuCreacionVentas()
     system("pause");
     return op;
 }
-void Interfaz::crearVenta(Minisuper* mini)
+void Interfaz::agregarProductoVenta(Minisuper* mini)
 {
-    Venta* ventaNueva = new Venta();
-    string persona,continuar;
-    string codProd,codVenta;
-    Fecha* fNueva = new Fecha();
     ComponenteAbstracto* carrito = new Carrito();
+    Venta* ventaNueva = new Venta();
+    string persona, continuar;
+    string codVenta;
+    Fecha* fNueva = new Fecha();
+
     system("cls");
     cout << endl;
     cout << "_____________________________" << endl;
@@ -430,50 +431,66 @@ void Interfaz::crearVenta(Minisuper* mini)
     cout << "Digite el cliente: ";
     cin >> persona;
     Nodo <Persona>* personaVenta = mini->getCliente(persona);
-    Nodo <Producto>* productoIngresado;
     if (personaVenta != nullptr) {
-        Persona* dato = personaVenta->obtenerInfo();
+		ComponenteAbstracto* carrito = new Carrito();
         do {
-            cout << *dato;
-            cout << "_______________________________________" << endl;
-            cout << "|       -COD PRODUCTO A COMPRAR-      |" << endl;
-            cout << "|_____________________________________|" << endl;
-            cout << "Digite el codigo: ";
-            cin >> codProd;
-            productoIngresado = mini->buscarProducto(codProd);
-        if (productoIngresado !=nullptr) {
+            carrito = crearVenta(mini, *carrito);
+            system("pause");
+            cout<<"Desea agregar otro producto al carrito (S)SI  (N)NO"<<endl;
+            cin>>continuar;
+        } while(continuar == "S" || continuar == "s");
+        cout << endl;
+        ventaNueva->setCliente(persona);
+        ventaNueva->setFecha(fNueva);
+        cout << carrito->toString();
+        system("pause");
+	}
+    else {
+		cout << "Cliente no encontrado..." << endl;
+	}
+}
+ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& c)
+{
+    string codProd, continuar;
+    Nodo <Producto>* productoIngresado; 
+      cout << "_______________________________________" << endl;
+      cout << "|       -COD PRODUCTO A COMPRAR-      |" << endl;
+      cout << "|_____________________________________|" << endl;
+      cout << "Digite el codigo: ";
+      cin >> codProd;
+      productoIngresado = mini->buscarProducto(codProd);
+      if (productoIngresado == NULL) {
+         cout<<"Producto no existe en el minisuper..." << endl;
+         return &c;
+      }
+      if (productoIngresado->obtenerInfo()->getExistencia() <= 0) {
+         cout << "Producto sin existencia en el minisuper..." << endl;
+         return &c;
+      }
+      if (productoIngresado !=nullptr) {
             Abarrote* aba = dynamic_cast<Abarrote*>(productoIngresado->obtenerInfo());
             Embutido* emb = dynamic_cast<Embutido*>(productoIngresado->obtenerInfo());
             Conserva* con = dynamic_cast<Conserva*>(productoIngresado->obtenerInfo());
-           /* BaseCarrito* conserva = new DecoradorConserva((BaseCarrito*)abarrote, "Atun en agua", "1299903", "Conserva sin fcha limite de vencimiento", 3.99, true);*/
             if (aba!=nullptr) {
-              
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia()-1);
+                return new DecoradorAbarrote(&c, aba->getPer(), aba->getEmpresaNombre(), aba->getCodigo(), aba->getnombreComecial(), aba->getDescripcion(), aba->getNacional(), aba->getPeso(), aba->getprecioCosto());
             }
             else if(emb!=nullptr) {
-
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - 1);
+                return new DecoradorEmbutido(&c,emb->getEmaqueptr(), emb->getPer(), emb->getMarca(), emb->getNombreAnimal(), emb->getparteDelAnimal(), emb->getCodigo(), emb->getnombreComecial(), emb->getDescripcion(), emb->getPeso(), emb->getprecioCosto(),emb->getNacional());
             }
             else {
-             
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - 1);
+                return new DecoradorConserva(&c, con->getnombreComecial(), con->getCodigo(), con->getDescripcion(), con->getprecioCosto(), con->getEnvasado());
             }
-        }
-        else {
-            cout << "Producto no existe" << endl;
-
-        }
-        system("cls");
-        cout << "Desea continuar su venta (S)SI  (N)NO" << endl;
-        cin >> continuar;
-        } while (continuar != "N" || continuar != "n");
-        ventaNueva->setCliente(persona);
-        ventaNueva->setFecha(fNueva);
-        ventaNueva->setCodigo(codVenta);
-    }
-    else {
-        cout << "Digitar una cedula valida dentro del sistema..." << endl;
-        cout << "El cliente digitado no existe en el minisuper..." << endl;
-    }
-    system("pause");
-
+       }
+      else {
+         cout << "Producto no existe" << endl;
+      }
+      system("cls");
+      cout << "Desea continuar su venta (S)SI  (N)NO" << endl;
+      cin >> continuar;
+      system("pause");
 }
 //Menu para reporte Facturas por su cédula
 int Interfaz::menuReportesClienteEspecifico(){

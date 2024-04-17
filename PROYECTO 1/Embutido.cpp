@@ -257,6 +257,11 @@ void Embutido::SetFechaPer(Perecedero* f)
     this->ptrPer = new Perecedero(*f);
 }
 
+Empaque* Embutido::getEmaqueptr()
+{
+    return ptrEmpaque;
+}
+
 double Embutido::ganancia()
 {
     Categoria c;

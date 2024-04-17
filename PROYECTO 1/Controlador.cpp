@@ -257,7 +257,7 @@ void Controlador::control1_2_3_1()
 
 void Controlador::control2_1()
 {
-    Interfaz::crearVenta(minisuper);
+    Interfaz::agregarProductoVenta(minisuper);
 }
 
 void Controlador::control3_1()
