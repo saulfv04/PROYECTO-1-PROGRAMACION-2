@@ -16,6 +16,17 @@ int Interfaz::menuPrincipalOp(){
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 4) {
+        throw ERS(op,4,1);
+    }
+    if (op < 1) {
+        throw ERI(op, 4, 1);
+    }
     return op;
 }
 
@@ -36,6 +47,17 @@ int Interfaz::menuMantenimiento(){
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 4) {
+        throw ERS(op, 4, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 4, 1);
+    }
     return op;
 }
 
@@ -53,6 +75,17 @@ int Interfaz::menuMantenimientoVentas(){
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     return op;
 }
 
@@ -96,6 +129,17 @@ int Interfaz::menuMantenimientoProductos()
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 4) {
+        throw ERS(op, 4, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 4, 1);
+    }
     system("pause");
     return op;
 }
@@ -115,6 +159,17 @@ int Interfaz::menuMantIngresoProductos(){
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 4) {
+        throw ERS(op, 4, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 4, 1);
+    }
     system("pause");
     return op;
 }
@@ -123,30 +178,51 @@ int Interfaz::menuMantIngresoProductos(){
 void Interfaz::agregarProductoConserva(Minisuper* mini){
     Producto* c = new Conserva();
     cin >> *c;
+    if (mini->getProducto(c->getCodigo())==nullptr) {
     mini->agregarProducto(c);
     cout << "__________________________________" << endl;
     cout << "|Producto tipo Conserva ingresado|" << endl;
     cout << "|________________________________|" << endl;
+    }
+    else {
+        cout << "_________________________________________" << endl;
+        cout << "| El Producto esta ingresado actualmente|" << endl;
+        cout << "|_______________________________________|" << endl;
+    }
     system("pause");
 }
 
 void Interfaz::agregarProductoEmbutido(Minisuper* mini){
     Producto* c = new Embutido();
     cin >> *c;
+    if (mini->getProducto(c->getCodigo()) == nullptr) {
     cout << "__________________________________" << endl;
     cout << "|Producto tipo Embutido ingresado|" << endl;
     cout << "|________________________________|" << endl;
     mini->agregarProducto(c);
+    }
+    else {
+        cout << "_________________________________________" << endl;
+        cout << "| El Producto esta ingresado actualmente|" << endl;
+        cout << "|_______________________________________|" << endl;
+    }
     system("pause");
 }
 
 void Interfaz::agregarProductoAbarrote(Minisuper* mini){
     Producto* c = new Abarrote();
     cin >> *c;
+    if (mini->getProducto(c->getCodigo()) == nullptr) {
     cout << "__________________________________" << endl;
     cout << "|Producto tipo Abarrote ingresado|" << endl;
     cout << "|________________________________|" << endl;
     mini->agregarProducto(c);
+    }
+    else {
+        cout << "_________________________________________" << endl;
+        cout << "| El Producto esta ingresado actualmente|" << endl;
+        cout << "|_______________________________________|" << endl;
+    }
     system("pause");
 }
 
@@ -164,6 +240,17 @@ int Interfaz::menuMantModifProd()
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     system("pause");
     return op;
 }
@@ -247,6 +334,17 @@ int Interfaz::menuOpcionesModificicado()
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 6) {
+        throw ERS(op, 6, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 6, 1);
+    }
     return op;
     system("pause");
 }
@@ -264,6 +362,17 @@ int Interfaz::menuEliminarProducto(){
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     system("pause");
     return op;
 }
@@ -324,6 +433,17 @@ int Interfaz::menuMantClientes(){
     cout << "|___________________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     return op;
     system("pause");
 }
@@ -332,8 +452,13 @@ void Interfaz::menuMantAgregarClientes(Minisuper* mini)
 {
     Persona* p = new Persona();
     cin >> *p;
+    if (mini->getCliente(p->getCodigo())==nullptr) {
     mini->agregarPersona(p);
-    cout << "Persona ingresada..." << endl;
+    cout << "Cliente ingresada..." << endl;
+    }
+    else {
+        cout << "El cliente no existe en nuestro sistema actual..." << endl;
+    }
     system("pause");
 }
 
@@ -353,6 +478,17 @@ int Interfaz::menuReporteClientes()
     cout << "|________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     system("pause");
     return op;
 }
@@ -402,6 +538,17 @@ int Interfaz::menuReportesTopClientes()
     cout << "|________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     system("pause");
     return op;
 }
@@ -428,6 +575,17 @@ int Interfaz::menuCreacionVentas()
     cout << "|________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     system("pause");
     return op;
 }
@@ -438,14 +596,14 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
     string persona, continuar;
     string codVenta;
     Fecha* fNueva = new Fecha();
-
     system("cls");
     cout << endl;
     cout << "_____________________________" << endl;
     cout << "|       -CODIGO VENTA-      |" << endl;
     cout << "|___________________________|" << endl;
     cout << "Digite el codigo de la venta actual: ";
-    cin >> codVenta;//Agregar akl final de la creación de VEnta
+    cin >> codVenta;
+    if (mini->getFactura(codVenta)==nullptr) {
     cout << "____________________________" << endl;
     cout << "|       -FECHA VENTA-      |" << endl;
     cout << "|__________________________|" << endl;
@@ -471,17 +629,20 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
         ProductoDecorador* pd = dynamic_cast<ProductoDecorador*>(carrito);
         if (pd!=nullptr) {
             ventaNueva->setCarrito(pd);
+            cout << *ventaNueva;
+            mini->agregarVenta(ventaNueva);
         }
         else {
             cout << "Su carrito no pudo generarse..." << endl;
         }
-        system("pause");
 	}
     else {
 		cout << "Cliente no encontrado..." << endl;
 	}
-    cout << *ventaNueva;
-    mini->agregarVenta(ventaNueva);
+    }
+    else {
+        cout << "Codigo de factura existente..." << endl;
+    }
     system("pause");
 }
 ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& c)
@@ -543,6 +704,17 @@ int Interfaz::menuReportesClienteEspecifico(){
     cout << "|________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     system("pause");
     return op;
 }
@@ -568,6 +740,17 @@ int Interfaz::menuReportesPrincipal()
     cout << "|____________________________________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 7) {
+        throw ERS(op, 7, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 7, 1);
+    }
     return op;
 }
 
@@ -595,6 +778,17 @@ int Interfaz::menuReportesProductosEspecificos(){
     cout << "|____________________________________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 4) {
+        throw ERS(op, 4, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 4, 1);
+    }
     return op;
     system("pause");
 }
@@ -662,6 +856,17 @@ int Interfaz::menuReportProdMinimo()
     cout << "|__________________________________________________________________________|" << endl;
     cout << "Digite la opcion: ";
     cin >> op;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    if (op > 2) {
+        throw ERS(op, 2, 1);
+    }
+    if (op < 1) {
+        throw ERI(op, 2, 1);
+    }
     return op;
 }
 

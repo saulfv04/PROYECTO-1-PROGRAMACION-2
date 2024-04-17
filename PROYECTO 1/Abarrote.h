@@ -50,7 +50,6 @@ class Abarrote :public ProdPerecedero
 
 		//Sobrecargas
 		friend ostream& operator <<(ostream& s,Abarrote&);
-		friend istream& operator >>(istream&, Abarrote&);
 
 		//Métodos de cálculo
 		virtual double ganancia();

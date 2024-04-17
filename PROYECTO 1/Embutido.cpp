@@ -369,6 +369,9 @@ void Embutido::leerDatos(istream& s)
     }
 	cout << "Peso: ";
 	s >> peso;
+    if (peso <= 0) {
+        throw ERI(peso, 0, 0);
+    }
 	cout << "Codigo: ";
 	s >> codigo;
 	cout << "Nombre comercial: ";
@@ -377,19 +380,22 @@ void Embutido::leerDatos(istream& s)
 	s >> descripcion;
 	cout << "Precio de costo: ";
 	s >> precioCosto;
-	cout << "Categoria: ";
-	s >> categoria;
+    if (precioCosto <= 0) {
+        throw ERI(precioCosto, 0, 0);
+    }
 	cout << "Existencia: ";
 	s >> existencia;
 	cout << "Limite: ";
 	s >> limite;
+    this->setCategoria("3");
+    if (s.fail()) {
+        s.clear();
+        s.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
 }
 ostream& operator<<(ostream& s, Embutido& e)
 {
     s << e.toString();
     return s;
 }
-
-//istream& operator>>(istream&, Embutido&){
-//
-//}

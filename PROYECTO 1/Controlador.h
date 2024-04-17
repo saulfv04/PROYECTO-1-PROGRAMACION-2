@@ -1,6 +1,9 @@
 #pragma once
 #include "Minisuper.h"
 #include "Interfaz.h"
+#include "ExcepcionRango.h"
+#include "ERI.h"
+#include "ERS.h"
 class Controlador{
 private:
 	Minisuper* minisuper;
