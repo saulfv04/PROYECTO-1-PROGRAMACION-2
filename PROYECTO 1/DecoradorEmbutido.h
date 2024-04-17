@@ -26,6 +26,7 @@ public:
     /*virtual int getCantidad();*/
     virtual ComponenteAbstracto* clonar() const;
 
+
     //Sobrecargas
     friend ostream& operator<<(ostream& o, DecoradorEmbutido&);
 

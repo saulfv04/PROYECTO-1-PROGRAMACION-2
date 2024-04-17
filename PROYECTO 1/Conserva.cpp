@@ -5,7 +5,7 @@ Conserva::Conserva()
     this->categoria = "i";
     this->codigo = "i";
     this->descripcion = "i";
-    this->envasado = true;
+    this->envasado = false;
     this->existencia = 0;
     this->limite = 0;
     this->nombreComercial = "i";
@@ -239,10 +239,10 @@ void Conserva::leerDatos(istream& s)
     cout << "Envasado (N)No  (S):Si " << endl;
     cin >> env;
     if (env== "S" || env == "s") {
-        setEnvasado(true);
+        envasado = true;
     }
     else {
-        setEnvasado(false);
+        envasado = false;
     }
 }
 
