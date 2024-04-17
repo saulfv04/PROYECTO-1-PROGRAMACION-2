@@ -15,8 +15,9 @@ Controlador::~Controlador()
 }
 
 void Controlador::control0(){
-    int op;
+    int op=0;
     do {
+        try {
       op=  controlmenuPrincipal();
     switch (op){
     case 1:
@@ -35,13 +36,29 @@ void Controlador::control0(){
         cout <<"Opcion no disponible" << endl;
         break;
     }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            op = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString()<< endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            op = 0;
+        }
     } while (op != 4);
 }
 
 void Controlador::control1()
 {
-    int op;
+    int op=0;
     do {
+        try {
       op= controlMantenimientos();
         switch (op) {
         case 1:
@@ -60,13 +77,29 @@ void Controlador::control1()
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            op = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            op = 0;
+        }
     } while (op != 4);
 }
 
 void Controlador::control2()
 {
-    int op;
+    int op=0;
     do {
+        try {
         op = controlCreancionVentas();
         switch (op) {
         case 1:
@@ -76,12 +109,28 @@ void Controlador::control2()
             cout << "Regresando..." << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            op = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            op = 0;
+        }
     } while (op != 2);
 }
 
 void Controlador::control3(){
-    int op;
+    int op=0;
     do {
+        try {
         op= controlReport();
         switch (op) {
         case 1:
@@ -109,13 +158,29 @@ void Controlador::control3(){
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            op = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            op = 0;
+        }
     } while (op != 7);
 }
 
 void Controlador::control4()
 {
-    int person;
+    int person=0;
     do {
+        try {
         person= controlMntIngresoClientes();
         switch (person) {
         case 1:
@@ -128,12 +193,28 @@ void Controlador::control4()
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            person = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            person = 0;
+        }
     } while (person != 2);
 }
 
 void Controlador::control1_1(){
-    int op;
+    int op=0;
     do {
+        try {
        op= controlMantenimientoFacturas();
         switch (op) {
         case 1:
@@ -145,6 +226,21 @@ void Controlador::control1_1(){
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            op = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            op = 0;
+        }
     } while (op != 2);
 }
 
@@ -155,8 +251,9 @@ void Controlador::control1_1_1()
 
 void Controlador::control1_2()
 {
-    int op;
+    int op=0;
     do {
+        try {
         op= controlMantemientoProductos();
         switch (op) {
         case 1:
@@ -175,13 +272,29 @@ void Controlador::control1_2()
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            op = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            op = 0;
+        }
     } while (op != 4);
 
 }
 
 void Controlador::control1_2_1(){
-    int type;
+    int type=0;
     do {
+        try {
         type= controlMntIngresoProductos();
         switch (type) {
         case 1:
@@ -200,6 +313,22 @@ void Controlador::control1_2_1(){
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            system("cls");
+            cout << msj << endl;
+            system("pause");
+            type = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            type = 0;
+        }
     } while (type != 4);
 }
 
@@ -216,8 +345,9 @@ void Controlador::control1_2_1_3(){
 }
 
 void Controlador::control1_2_2(){
-    int op;
+    int op=0;
    do{
+       try {
        op = controlMntEliminarProducto();
     switch (op){
     case 1:
@@ -227,6 +357,21 @@ void Controlador::control1_2_2(){
         cout << "Regresando..." << endl;
         break;
     }
+       }
+       catch (string msj) {
+           cout << msj << endl;
+           system("pause");
+           op = 0;
+       }
+       catch (ExcepcionRango& excp) {
+           cout << excp.what() << endl;
+           cout << excp.toString() << endl;
+           system("pause");
+       }
+       catch (...) {
+           cout << "Error irreconocible" << endl;
+           op = 0;
+       }
     }while (op != 2);
 }
 
@@ -236,8 +381,9 @@ void Controlador::control1_2_2_2(){
 
 void Controlador::control1_2_3()
 {
-    int op;
+    int op=0;
     do {
+        try {
         op = contrlMntModificacionProducto();
         switch (op) {
         case 1:
@@ -246,6 +392,21 @@ void Controlador::control1_2_3()
         case 2:
             cout << "Regresando..." << endl;
             break;
+        }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            op = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            op = 0;
         }
     } while (op != 2);
 }
@@ -267,8 +428,9 @@ void Controlador::control3_1()
 
 void Controlador::control3_2()
 {
-    int opC;
+    int opC=0;
     do {
+        try {
         opC = controlReportProductoCategoria();
         switch (opC) {
         case 1:
@@ -287,6 +449,21 @@ void Controlador::control3_2()
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            opC = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            opC = 0;
+        }
     } while (opC != 4);
 }
 
@@ -304,8 +481,9 @@ void Controlador::control3_2_3(){
 
 void Controlador::control3_3()
 {
-    int opC;
+    int opC=0;
     do {
+        try {
         opC = controlReportEscasezProducto();
         switch (opC) {
         case 1:
@@ -318,6 +496,21 @@ void Controlador::control3_3()
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            opC = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            opC = 0;
+        }
     } while (opC != 2);
 }
 
@@ -328,8 +521,9 @@ void Controlador::control3_3_1()
 
 void Controlador::control3_5()
 {
-    int opC;
+    int opC=0;
     do {
+        try {
         opC = controlTopClientes();
         switch (opC) {
         case 1:
@@ -342,17 +536,33 @@ void Controlador::control3_5()
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            opC = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            opC = 0;
+        }
     } while (opC != 2);
 }
 
 void Controlador::control3_5_1(){
-    Interfaz::reporteTopClientes(minisuper);
+    Interfaz::reporteTopClientesdelos5mejoresclientesconsufacturacantidaddeFacturas(minisuper);
 }
 
 void Controlador::control3_6()
 {
-    int opC;
+    int opC=0;
     do {
+        try {
         opC = controlReportClientes();
         switch (opC) {
         case 1:
@@ -365,6 +575,21 @@ void Controlador::control3_6()
             cout << "Opcion no disponible" << endl;
             break;
         }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            opC = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            opC = 0;
+        }
     } while (opC != 2);
 }
 
@@ -375,8 +600,9 @@ void Controlador::control3_6_1()
 
 void Controlador::control3_4()
 {
-    int opC;
+    int opC=0;
     do {
+        try {
         opC = controlReportVentasClienteEspecifico();
         switch (opC) {
         case 1:
@@ -388,6 +614,21 @@ void Controlador::control3_4()
         default:
             cout << "Opcion no disponible" << endl;
             break;
+        }
+        }
+        catch (string msj) {
+            cout << msj << endl;
+            system("pause");
+            opC = 0;
+        }
+        catch (ExcepcionRango& excp) {
+            cout << excp.what() << endl;
+            cout << excp.toString() << endl;
+            system("pause");
+        }
+        catch (...) {
+            cout << "Error irreconocible" << endl;
+            opC = 0;
         }
     } while (opC != 2);
 }

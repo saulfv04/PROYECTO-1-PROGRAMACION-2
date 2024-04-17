@@ -60,7 +60,6 @@ class Embutido :public Carne
 
 		//Sobrecarga
 		friend ostream& operator <<(ostream&, Embutido&);
-		friend istream& operator >>(istream&, Embutido&);
 		virtual void leerDatos(istream&);
 };
 
