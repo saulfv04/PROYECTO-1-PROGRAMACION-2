@@ -236,6 +236,23 @@ void Controlador::control1_2_2_2(){
 
 void Controlador::control1_2_3()
 {
+    int op;
+    do {
+        op = contrlMntModificacionProducto();
+        switch (op) {
+        case 1:
+            control1_2_3_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        }
+    } while (op != 2);
+}
+
+void Controlador::control1_2_3_1()
+{
+    Interfaz::mantModifProd(minisuper);
 }
 
 void Controlador::control2_1()
@@ -287,6 +304,26 @@ void Controlador::control3_2_3(){
 
 void Controlador::control3_3()
 {
+    int opC;
+    do {
+        opC = controlReportEscasezProducto();
+        switch (opC) {
+        case 1:
+            control3_3_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 2);
+}
+
+void Controlador::control3_3_1()
+{
+    Interfaz::reportProdEscasoz(minisuper);
 }
 
 void Controlador::control3_5()
@@ -378,6 +415,11 @@ int Controlador::controlMntEliminarProducto()
     return Interfaz::menuEliminarProducto();
 }
 
+int Controlador::contrlMntModificacionProducto()
+{
+    return Interfaz::menuMantModifProd(); ;
+}
+
 int Controlador::controlMntIngresoClientes()
 {
     return Interfaz::menuMantClientes();
@@ -401,6 +443,11 @@ int Controlador::controlCreancionVentas()
 int Controlador::controlReport()
 {
     return Interfaz::menuReportesPrincipal();
+}
+
+int Controlador::controlReportEscasezProducto()
+{
+    return Interfaz::menuReportProdMinimo();
 }
 
 int Controlador::controlReportProductoCategoria()

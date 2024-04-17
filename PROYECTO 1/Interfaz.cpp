@@ -150,15 +150,116 @@ void Interfaz::agregarProductoAbarrote(Minisuper* mini){
     system("pause");
 }
 
+int Interfaz::menuMantModifProd()
+{
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "_________________________________________________" << endl;
+    cout << "|       -GESTION MODIFICACION DE PRODUCTO-      |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                    OPCIONES                   |" << endl;
+    cout << "|    <1>  Modificiar.Prod.                      |" << endl;
+    cout << "|    <2>  Regresar.                             |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
+    cin >> op;
+    system("pause");
+    return op;
+}
+
+void Interfaz::mantModifProd(Minisuper* mini)
+{
+    string prod,descrip,nombreC;
+    int opModificacion,p;
+    double precio;
+    cout << "____________________________________________" << endl;
+    cout << "Ingresar el codigo de producto a modificar:";
+    cin >> prod;
+    Nodo <Producto>* aux = mini->buscarProducto(prod);
+    if (aux!=nullptr) {
+        Producto* modificar = aux->obtenerInfo();
+        do {
+            opModificacion = menuOpcionesModificicado();
+            cout << "-Producto a modificar-" << endl;
+            cout << *modificar;
+        switch (opModificacion)
+        {
+        case 1:
+            cout << "____________________________________________" << endl;
+            cout << "Ingresar nuevo nombre para producto:";
+            cin >> nombreC;
+            modificar->setnombreComercial(nombreC);
+            break;
+        case 2:
+            cout << "____________________________________________" << endl;
+            cout << "Ingresar nueva descripcion para producto:";
+            cin >> descrip;
+            modificar->setDescripcion(descrip);
+            break;
+        case 3:
+            cout << "____________________________________________" << endl;
+            cout << "Ingresar nuevo precio producto:";
+            cin >> precio;
+            modificar->setprecioCosto(precio);
+            break;
+        case 4:
+            cout << "____________________________________________" << endl;
+            cout << "Ingresar nueva cantidad de existencia del producto:";
+            cin >> p;
+            modificar->setExistencia(p);
+            break;
+        case 5:
+            cout << "____________________________________________" << endl;
+            cout << "Ingresar nuevo limite del producto:";
+            cin >> p;
+            modificar->setLimite(p);
+            break;
+        case 6:
+            cout << "Regresando...";
+            break;
+        default:
+            break;
+        }
+        } while (opModificacion!=6);
+    }
+    else {
+        cout << "El producto a modificar no existe en nuestro almacen actual" << endl;
+    }
+    system("pause");
+}
+
+int Interfaz::menuOpcionesModificicado()
+{
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "_________________________________________________" << endl;
+    cout << "|       -OPCIONES  MODIFICADO  PRODUCTO-        |" << endl;
+    cout << "|                                               |" << endl;
+    cout << "|                    OPCIONES                   |" << endl;
+    cout << "|    <1>  Nombre comecial.                      |" << endl;
+    cout << "|    <2>  Descripcion.                          |" << endl;
+    cout << "|    <3>  Precio Costo.                         |" << endl;
+    cout << "|    <4>  Existencia.                           |" << endl;
+    cout << "|    <5>  Limite.                               |" << endl;
+    cout << "|    <6>  Terminar Modificacion.                |" << endl;
+    cout << "|_______________________________________________|" << endl;
+    cout << "Digite la opcion: ";
+    cin >> op;
+    return op;
+    system("pause");
+}
+
 int Interfaz::menuEliminarProducto(){
     int op;
     system("cls");
     cout << endl;
     cout << "_________________________________________________" << endl;
-    cout << "|         -GESTION BORRADO DE PRODUCTO-         |" << endl;
+    cout << "|         -GESTION ELIMINACION PRODUCTIO-       |" << endl;
     cout << "|                                               |" << endl;
     cout << "|                    OPCIONES                   |" << endl;
-    cout << "|    <1>  Eliminar.                             |" << endl;
+    cout << "|    <1>  Eliminar.Prod.                        |" << endl;
     cout << "|    <2>  Regresar.                             |" << endl;
     cout << "|_______________________________________________|" << endl;
     cout << "Digite la opcion: ";
@@ -306,33 +407,71 @@ int Interfaz::menuCreacionVentas()
 }
 void Interfaz::crearVenta(Minisuper* mini)
 {
-    string persona;
+    Venta* ventaNueva = new Venta();
+    string persona,continuar;
+    string codProd,codVenta;
+    Fecha* fNueva = new Fecha();
+    ComponenteAbstracto* carrito = new Carrito();
     system("cls");
     cout << endl;
+    cout << "_____________________________" << endl;
+    cout << "|       -CODIGO VENTA-      |" << endl;
+    cout << "|___________________________|" << endl;
+    cout << "Digite el codigo de la venta actual: ";
+    cin >> codVenta;//Agregar akl final de la creación de VEnta
+    cout << "____________________________" << endl;
+    cout << "|       -FECHA VENTA-      |" << endl;
+    cout << "|__________________________|" << endl;
+    cout << "Digite Fecha de venta: ";
+    cin >> *fNueva;
     cout << "__________________________________________" << endl;
     cout << "|       -VENTAS CLIENTE ESPECIFICO-      |" << endl;
     cout << "|________________________________________|" << endl;
     cout << "Digite el cliente: ";
     cin >> persona;
     Nodo <Persona>* personaVenta = mini->getCliente(persona);
+    Nodo <Producto>* productoIngresado;
     if (personaVenta != nullptr) {
         Persona* dato = personaVenta->obtenerInfo();
-        cout << *dato;
+        do {
+            cout << *dato;
+            cout << "_______________________________________" << endl;
+            cout << "|       -COD PRODUCTO A COMPRAR-      |" << endl;
+            cout << "|_____________________________________|" << endl;
+            cout << "Digite el codigo: ";
+            cin >> codProd;
+            productoIngresado = mini->buscarProducto(codProd);
+        if (productoIngresado !=nullptr) {
+            Abarrote* aba = dynamic_cast<Abarrote*>(productoIngresado->obtenerInfo());
+            Embutido* emb = dynamic_cast<Embutido*>(productoIngresado->obtenerInfo());
+            Conserva* con = dynamic_cast<Conserva*>(productoIngresado->obtenerInfo());
+           /* BaseCarrito* conserva = new DecoradorConserva((BaseCarrito*)abarrote, "Atun en agua", "1299903", "Conserva sin fcha limite de vencimiento", 3.99, true);*/
+            if (aba!=nullptr) {
+              
+            }
+            else if(emb!=nullptr) {
+
+            }
+            else {
+             
+            }
+        }
+        else {
+            cout << "Producto no existe" << endl;
+
+        }
+        system("cls");
+        cout << "Desea continuar su venta (S)SI  (N)NO" << endl;
+        cin >> continuar;
+        } while (continuar != "N" || continuar != "n");
+        ventaNueva->setCliente(persona);
+        ventaNueva->setFecha(fNueva);
+        ventaNueva->setCodigo(codVenta);
     }
     else {
         cout << "Digitar una cedula valida dentro del sistema..." << endl;
         cout << "El cliente digitado no existe en el minisuper..." << endl;
     }
-
-    
- /*   string op;*/
-   /* ComponenteAbstracto* carrito = new Carrito();
-    do {
-
-
-
-    } while (op!="N"||op!="n");
-*/
     system("pause");
 
 }
@@ -452,6 +591,39 @@ void Interfaz::menuReportesProdEmbutido(Minisuper* mini){
             cout << *tmp->obtenerInfo() << endl;
         }
         tmp = tmp->obtenerSig();
+    }
+    system("pause");
+}
+
+int Interfaz::menuReportProdMinimo()
+{
+    int op;
+    system("cls");
+    cout << endl;
+    cout << "____________________________________________________________________________" << endl;
+    cout << "|    -REPORTE DE PRODUCTOS POR DEBAJO DE SU MINIMO (LIMITE EXISTENCIA)-    |" << endl;
+    cout << "|                                                                          |" << endl;
+    cout << "|                                                                          |" << endl;
+    cout << "|                            OPCIONES                                      |" << endl;
+    cout << "|    <1>  Reporte. Productos.                                              | " << endl;
+    cout << "|    <2>  Regresar.                                                        |" << endl;
+    cout << "|__________________________________________________________________________|" << endl;
+    cout << "Digite la opcion: ";
+    cin >> op;
+    return op;
+}
+
+void Interfaz::reportProdEscasoz(Minisuper* mini)
+{
+    Nodo <Producto>* pAct = mini->getProducto();
+    cout << "_______________________________" << endl;
+    cout << "|PRODUCTOS CON BAJA EXISTENCIA|" << endl;
+    cout << "|_____________________________|" << endl;
+    while (pAct) {
+        if (pAct->obtenerInfo()->getLimite() > pAct->obtenerInfo()->getExistencia()) {
+            cout << *pAct->obtenerInfo();
+        }
+        pAct = pAct->obtenerSig();
     }
     system("pause");
 }
