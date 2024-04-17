@@ -65,7 +65,18 @@ void Controlador::control1()
 
 void Controlador::control2()
 {
- 
+    int op;
+    do {
+        op = controlCreancionVentas();
+        switch (op) {
+        case 1:
+            control2_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        }
+    } while (op != 2);
 }
 
 void Controlador::control3(){
@@ -89,13 +100,16 @@ void Controlador::control3(){
             control3_5();
             break;
         case 6:
+            control3_6();
+            break;
+        case 7:
             cout << "Regresando..." << endl;
             break;
         default:
             cout << "Opcion no disponible" << endl;
             break;
         }
-    } while (op != 6);
+    } while (op != 7);
 }
 
 void Controlador::control4()
@@ -117,8 +131,7 @@ void Controlador::control4()
     } while (person != 2);
 }
 
-void Controlador::control1_1()
-{
+void Controlador::control1_1(){
     int op;
     do {
        op= controlMantenimientoFacturas();
@@ -128,7 +141,6 @@ void Controlador::control1_1()
             break;
         case 2:
             cout << "Regresando..." << endl;
-            this->control1();
         default:
             cout << "Opcion no disponible" << endl;
             break;
@@ -138,13 +150,7 @@ void Controlador::control1_1()
 
 void Controlador::control1_1_1()
 {
-    string op = controlRetornoFacturas();
-    if (this->minisuper->getFactura(op) != nullptr) {
-        cout << "Factura encontrada" << endl;
-    }
-    else {
-        cout << "Ninguna venta asociada al codigo proporcionado" << endl;
-    }
+    Interfaz::menuFacturas(minisuper);
 }
 
 void Controlador::control1_2()
@@ -189,7 +195,6 @@ void Controlador::control1_2_1(){
             break;
         case 4:
             cout << "Regresando..." << endl;
-            system("pause");
             break;
         default:
             cout << "Opcion no disponible" << endl;
@@ -213,7 +218,7 @@ void Controlador::control1_2_1_3(){
 void Controlador::control1_2_2(){
     int op;
    do{
-     op=  Interfaz::menuEliminarProducto();
+       op = controlMntEliminarProducto();
     switch (op){
     case 1:
         control1_2_2_2();
@@ -231,10 +236,28 @@ void Controlador::control1_2_2_2(){
 
 void Controlador::control1_2_3()
 {
+    int op;
+    do {
+        op = contrlMntModificacionProducto();
+        switch (op) {
+        case 1:
+            control1_2_3_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        }
+    } while (op != 2);
+}
+
+void Controlador::control1_2_3_1()
+{
+    Interfaz::mantModifProd(minisuper);
 }
 
 void Controlador::control2_1()
 {
+    Interfaz::crearVenta(minisuper);
 }
 
 void Controlador::control3_1()
@@ -244,18 +267,115 @@ void Controlador::control3_1()
 
 void Controlador::control3_2()
 {
+    int opC;
+    do {
+        opC = controlReportProductoCategoria();
+        switch (opC) {
+        case 1:
+            control3_2_1();
+            break;
+        case 2:
+            control3_2_2();
+            break;
+        case 3:
+            control3_2_3();
+            break;
+        case 4:
+            cout << "Regresando..." << endl;
+            break;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 4);
+}
+
+void Controlador::control3_2_1(){
+    Interfaz::menuReportesProdConserva(minisuper);
+}
+
+void Controlador::control3_2_2(){
+    Interfaz::menuReportesProdAbarrote(minisuper);
+}
+
+void Controlador::control3_2_3(){
+    Interfaz::menuReportesProdEmbutido(minisuper);
 }
 
 void Controlador::control3_3()
 {
+    int opC;
+    do {
+        opC = controlReportEscasezProducto();
+        switch (opC) {
+        case 1:
+            control3_3_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 2);
 }
 
-void Controlador::control3_4()
+void Controlador::control3_3_1()
 {
+    Interfaz::reportProdEscasoz(minisuper);
 }
 
 void Controlador::control3_5()
 {
+}
+
+void Controlador::control3_6()
+{
+    int opC;
+    do {
+        opC = controlReportClientes();
+        switch (opC) {
+        case 1:
+            control3_6_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 2);
+}
+
+void Controlador::control3_6_1()
+{
+    Interfaz::ReporteClientes(minisuper);
+}
+
+void Controlador::control3_4()
+{
+    int opC;
+    do {
+        opC = controlReportVentasClienteEspecifico();
+        switch (opC) {
+        case 1:
+            control3_4_1();
+            break;
+        case 2:
+            cout << "Regresando..." << endl;
+            break;
+        default:
+            cout << "Opcion no disponible" << endl;
+            break;
+        }
+    } while (opC != 2);
+}
+
+void Controlador::control3_4_1()
+{
+    Interfaz::ReporteClienteEspecifico(minisuper);
 }
 
 void Controlador::control4_1()
@@ -278,10 +398,7 @@ int Controlador::controlMantenimientoFacturas()
     return Interfaz::menuMantenimientoVentas();
 }
 
-string Controlador::controlRetornoFacturas()
-{
-    return Interfaz::retornoFacturas();
-}
+
 
 int Controlador::controlMantemientoProductos()
 {
@@ -293,12 +410,47 @@ int Controlador::controlMntIngresoProductos()
     return Interfaz::menuMantIngresoProductos();
 }
 
+int Controlador::controlMntEliminarProducto()
+{
+    return Interfaz::menuEliminarProducto();
+}
+
+int Controlador::contrlMntModificacionProducto()
+{
+    return Interfaz::menuMantModifProd(); ;
+}
+
 int Controlador::controlMntIngresoClientes()
 {
     return Interfaz::menuMantClientes();
 }
 
+int Controlador::controlReportClientes()
+{
+    return Interfaz::menuReporteClientes();
+}
+
+int Controlador::controlReportVentasClienteEspecifico()
+{
+    return Interfaz::menuReportesClienteEspecifico();
+}
+
+int Controlador::controlCreancionVentas()
+{
+    return Interfaz::menuCreacionVentas();
+}
+
 int Controlador::controlReport()
 {
     return Interfaz::menuReportesPrincipal();
+}
+
+int Controlador::controlReportEscasezProducto()
+{
+    return Interfaz::menuReportProdMinimo();
+}
+
+int Controlador::controlReportProductoCategoria()
+{
+    return Interfaz::menuReportesProductosEspecificos();
 }

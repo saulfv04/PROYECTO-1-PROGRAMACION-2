@@ -18,11 +18,13 @@ public:
 	void agregarFinal(T*);
 	T* eliminar(); // Eliminar primero, que devuelve lo que se borro
 	void eliminarTodos();//elimina los elementos de la lista
+	T* eliminarEspecifico(string);
 	void invierteLista();
-	Nodo<T>* buscar(string);
+	Nodo<T>* buscarElemento(string);
 	string toString() const;
 	//Nuevos metodos;
 	int size();
+	Nodo<T>* getPrimero();
 	T* getElemento(unsigned int i);
 	void remove(int p);
 	void removeInicio();
@@ -111,6 +113,12 @@ int Lista<T>::size()
 }
 
 template<class T>
+ Nodo<T>* Lista<T>::getPrimero()
+{
+	return this->primero;
+}
+
+template<class T>
  T* Lista<T>::getElemento(unsigned int i)
 {
 	return nullptr;
@@ -185,6 +193,35 @@ void Lista<T>::eliminarTodos() {
 }
 
 template<class T>
+T* Lista<T>::eliminarEspecifico(string codigo) {
+	Nodo<T>* busqueda = buscarElemento(codigo);
+	if (busqueda == nullptr) {
+		return nullptr;
+	}
+	Nodo<T>* pAct = primero;
+	T* dato = busqueda->obtenerInfo(); // Almacenar el dato antes de borrar el nodo
+
+	// Si el nodo a eliminar es el primero
+	if (busqueda == primero) {
+		primero = primero->obtenerSig(); // Avanzar el primero al siguiente nodo
+		return dato; // Retornar el dato del nodo eliminado
+		delete busqueda; // Liberar la memoria del nodo eliminado
+	}
+	// Encontrar el nodo anterior al que se desea eliminar
+	while (pAct != nullptr && pAct->obtenerSig() != busqueda) {
+		pAct = pAct->obtenerSig();
+	}
+	// Si no se encontró el nodo anterior porque el nodo a eliminar no está en la lista
+	if (pAct == nullptr) {
+		return nullptr;
+	}
+	// Desvincular el nodo encontrado de la lista
+	pAct->setSig(busqueda->obtenerSig());
+	return dato; // Retornar el dato del nodo eliminado
+	delete busqueda; // Liberar la memoria del nodo eliminado
+}
+
+template<class T>
 void Lista<T>::invierteLista(){
 	Nodo<T>* pAct = primero;
 	Nodo<T>* pAnt = NULL;
@@ -198,8 +235,7 @@ void Lista<T>::invierteLista(){
 }
 
 template<class T>
-Nodo<T>* Lista<T>::buscar(string codigo){
-	Nodo<T>* aux = NULL;
+Nodo<T>* Lista<T>::buscarElemento(string codigo){
 	Nodo<T>* pAct = primero;
 	if (!isEmpty()) {
 	while (pAct) {
@@ -209,5 +245,5 @@ Nodo<T>* Lista<T>::buscar(string codigo){
 		pAct = pAct->obtenerSig();
 	}
 	}
-	return aux;
+	return nullptr;
 }

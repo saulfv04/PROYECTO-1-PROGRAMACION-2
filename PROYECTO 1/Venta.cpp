@@ -4,6 +4,14 @@ Venta::Venta(ProductoDecorador* carr, string per, Fecha* f, string cod) :carrito
 
 
 
+Venta::Venta()
+{
+    this->carrito = nullptr;
+    this->codigo = "i";
+    this->cedulaCliente = "i";
+    this->fVenta = nullptr;
+}
+
 Venta::Venta(const Venta& ven) {
 
     this->carrito = static_cast<ProductoDecorador*>(ven.carrito->clonar());
@@ -49,6 +57,15 @@ void Venta::setFecha(Fecha* f)
 {
     fVenta = f;
 }
+void Venta::setCodigo(string c)
+{
+    this->codigo = c;
+}
+void Venta::setCliente(string c)
+{
+    this->cedulaCliente = c;
+}
+
 
 string Venta::toString()const{
     stringstream s;

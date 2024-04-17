@@ -34,18 +34,45 @@ void Minisuper::agregarVenta(Venta* vt){
 
 Nodo<Venta>* Minisuper::getFactura(string c)
 {
-	return listVenta->buscar(c);
+	return listVenta->buscarElemento(c);
+}
+
+Nodo<Persona>* Minisuper::getCliente(string c)
+{
+	return this->listPersona->buscarElemento(c);
 }
 
 Nodo<Producto>* Minisuper::buscarProducto(string c){
 
-	return this->listProducto->buscar(c);
+	return this->listProducto->buscarElemento(c);
+}
+
+Producto* Minisuper::eliminarProductoEspecifico(string c)
+{
+	return this->listProducto->eliminarEspecifico(c);
+}
+
+Nodo<Producto>* Minisuper::getProducto()
+{
+	return this->listProducto->getPrimero();
+}
+
+Nodo<Venta>* Minisuper::getVenta()
+{
+	return this->listVenta->getPrimero();
 }
 
 string Minisuper::toStringListProd()
 {
 	stringstream s;
 	s << listProducto->toString();
+	return s.str();
+}
+
+string Minisuper::toStringListClientes()
+{
+	stringstream s;
+	s << listPersona->toString();
 	return s.str();
 }
 

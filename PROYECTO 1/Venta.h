@@ -1,6 +1,5 @@
 #pragma once
 #include "ProductoDecorador.h"
-#include "Persona.h"
 #include "Fecha.h"
 using namespace std;
 
@@ -14,6 +13,7 @@ class Venta{
 	public:
 
 		//Constructores y Destructor
+		Venta();
 		Venta(ProductoDecorador*,string,Fecha*,string);  
 		Venta(const Venta&);
 		virtual ~Venta();
@@ -28,7 +28,8 @@ class Venta{
 		//Mutadores
 		void setCarrito(ProductoDecorador*);
 		void setFecha(Fecha*);
-
+		void setCliente(string);
+		void setCodigo(string);
 		//Información 
 		string toString()const;//Factura
 

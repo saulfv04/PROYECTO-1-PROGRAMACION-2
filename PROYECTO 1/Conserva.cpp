@@ -71,7 +71,9 @@ string Conserva::toString()const
         s << "(Falso)" << endl;
     }
     s << "Descripcion:  " << this->descripcion<< endl;
-    s << "Precio costo:  $" << this->precioCosto << endl;
+    s << "Precio costo:  " << this->precioCosto << endl;
+    s << "Existencia:  " << this->existencia << endl;
+    s << "Limite:  " << this->limite << endl;
     return s.str();
 }
 
@@ -221,7 +223,7 @@ void Conserva::leerDatos(istream& s)
     s >> *f;
     setFechaIng(f);
     cout << "Codigo: " << endl;
-    s >> categoria;
+    s >> codigo;
     cout << "Nombre: " << endl;
     s >> nombreComercial;
     cout << "Descripcion: " << endl;

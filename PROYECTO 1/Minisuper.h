@@ -10,9 +10,15 @@ using namespace std;
 #include "Abarrote.h"
 #include "Conserva.h"
 #include "Venta.h"
+#include "ComponenteAbstracto.h"
+#include "Carrito.h"
+#include "ProductoDecorador.h"
+#include "DecoradorAbarrote.h"
+#include "DecoradorEmbutido.h"
+#include "DecoradorConserva.h"
 class Minisuper
 {
-private:
+protected:
 	Lista<Persona>* listPersona;
 	Lista<Producto>* listProducto;
 	Lista<Venta>* listVenta;
@@ -28,10 +34,19 @@ public:
 
 
 	Nodo<Venta>* getFactura(string);
+	Nodo<Persona>* getCliente(string);
 
 
 	Nodo<Producto>* buscarProducto(string);
+	Producto* eliminarProductoEspecifico(string);
+	
+
+	Nodo<Producto>* getProducto();
+	Nodo<Venta>* getVenta();
+
 
 	string toStringListProd();
+	string toStringListClientes();
+
 };
 
