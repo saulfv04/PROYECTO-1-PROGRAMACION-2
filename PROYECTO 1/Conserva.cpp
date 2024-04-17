@@ -228,8 +228,6 @@ void Conserva::leerDatos(istream& s)
     s >> nombreComercial;
     cout << "Descripcion: " << endl;
     s >> descripcion;
-    cout << "Categoria: " << endl;
-    s >> categoria;
     cout << "Precio: " << endl;
     s >> precioCosto;
     cout << "Existencia de producto: " << endl;
@@ -244,6 +242,13 @@ void Conserva::leerDatos(istream& s)
     else {
         envasado = false;
     }
+    this->setCategoria("1");
+    if(s.fail()) {
+        s.clear();
+        s.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+
 }
 
 ostream& operator<<(ostream& s, Conserva& c)

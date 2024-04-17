@@ -140,6 +140,9 @@
     <ClInclude Include="DecoradorEmbutido.h" />
     <ClInclude Include="Embutido.h" />
     <ClInclude Include="Empaque.h" />
+    <ClInclude Include="ERI.h" />
+    <ClInclude Include="ERS.h" />
+    <ClInclude Include="ExcepcionRango.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Minisuper.h" />
@@ -163,6 +166,9 @@
     <ClCompile Include="DecoradorEmbutido.cpp" />
     <ClCompile Include="Embutido.cpp" />
     <ClCompile Include="Empaque.cpp" />
+    <ClCompile Include="ERI.cpp" />
+    <ClCompile Include="ERS.cpp" />
+    <ClCompile Include="ExcepcionRango.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="main.cpp" />

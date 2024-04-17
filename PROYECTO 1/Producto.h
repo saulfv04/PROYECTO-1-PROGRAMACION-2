@@ -3,7 +3,9 @@
 #include <sstream>
 #include "Fecha.h"
 #include "Categoria.h"
-
+#include "ExcepcionRango.h"
+#include "ERI.h"
+#include "ERS.h"
 using namespace std;
 
 class Producto {

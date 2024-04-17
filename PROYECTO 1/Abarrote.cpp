@@ -30,6 +30,7 @@ Abarrote::Abarrote(Perecedero* ptrP,Fecha* ptrFI, string eN,bool n, double p, st
     categoria = cat;
     existencia = e;
     limite = l;
+
 }
 
 Abarrote::Abarrote(const Abarrote& copia)
@@ -243,19 +244,28 @@ void Abarrote::leerDatos(istream& s)
 	s >> nombreComercial;
 	cout << "Descripcion: " << endl;
 	s >> descripcion;
-	cout << "Categoria: " << endl;
-	s >> categoria;
     cout << "Codigo: " << endl;
     s >> codigo;
 	cout << "Precio: " << endl;
 	s >> precioCosto;
+    if (precioCosto <= 0) {
+        throw ERI(precioCosto, 0, 0);
+    }
 	cout << "Peso: " << endl;
 	s >> peso;
+    if (peso <= 0) {
+        throw ERI(precioCosto, 0, 0);
+    }
 	cout << "Existencia de producto: " << endl;
 	s >> existencia;
 	cout << "Limite de compra: " << endl;
 	s >> limite;   
-   
+    if (s.fail()) {
+        s.clear();
+        s.ignore(1);
+        throw string("Se ha digitado un caracter invalido");
+    }
+    this->setCategoria("2");
 }
 
 void Abarrote::guardarProducto(ofstream& file)
@@ -316,44 +326,5 @@ Abarrote* Abarrote::leerAbarrote(ifstream& file)
 ostream& operator<<(ostream& s, Abarrote& abarrote){
     s << abarrote.toString();
     return s;
-}
-
-
-istream& operator>>(istream& is, Abarrote& A)
-{
-    string op;
-    cout<< "Ingreso de datos Producto Abarrote: " << endl;
-    Fecha* fI = new Fecha();
-    cout << "Ingreso: " << endl;
-    is >> *fI;
-    A.setFechaIng(fI);
-    Perecedero* p = new Perecedero();
-    is >> *p;
-    A.SetFechaPer(p);    
-    cout << "Nombre empresa procedencia: " << endl;
-    is >> A.empresaNombre;
-    cout << "Nombre Comercial: " << endl;
-    is >> A.nombreComercial;
-    cout << "Descripcion: " << endl;
-    is >> A.descripcion;
-    cout << "Categoria: " << endl;
-    is >> A.categoria;
-    cout << "Precio: " << endl;
-    is >> A.precioCosto;
-    cout << "Peso: " << endl;
-    is >> A.peso;
-    cout << "Existencia de producto: " << endl;
-    is >> A.existencia;
-    cout << "Limite de compra: " << endl;
-    is >> A.limite;
-    cout << "Nacional (N)No || (S):Si " << endl;
-    cin >> op;
-    if (op == "S" || op == "s") {
-        A.setNacional(true);
-    }
-    else {
-        A.setNacional(false);
-    }
-    return is;
 }
 

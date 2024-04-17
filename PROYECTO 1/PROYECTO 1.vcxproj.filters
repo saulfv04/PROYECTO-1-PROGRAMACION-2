@@ -46,6 +46,12 @@
     <Filter Include="Source Files\Ventas">
       <UniqueIdentifier>{0010563d-e665-481c-aabd-ae154cfb52bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Excepciones">
+      <UniqueIdentifier>{caf13c8c-2801-44d4-b49d-56eb3f6c829e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Excepciones">
+      <UniqueIdentifier>{eada941d-8e84-4f0d-8050-6440454e504f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Conserva.h">
@@ -117,6 +123,15 @@
     <ClInclude Include="Interfaz.h">
       <Filter>Header Files\Controlador</Filter>
     </ClInclude>
+    <ClInclude Include="ExcepcionRango.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ERS.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ERI.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Conserva.cpp">
@@ -181,6 +196,15 @@
     </ClCompile>
     <ClCompile Include="Principal.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcepcionRango.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ERS.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ERI.cpp">
+      <Filter>Source Files\Excepciones</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

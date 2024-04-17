@@ -42,6 +42,11 @@ Nodo<Persona>* Minisuper::getCliente(string c)
 	return this->listPersona->buscarElemento(c);
 }
 
+Nodo<Producto>* Minisuper::getProducto(string c)
+{
+	return this->listProducto->buscarElemento(c);
+}
+
 Nodo<Producto>* Minisuper::buscarProducto(string c){
 
 	return this->listProducto->buscarElemento(c);
