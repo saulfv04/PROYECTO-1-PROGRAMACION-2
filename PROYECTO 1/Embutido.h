@@ -49,6 +49,7 @@ class Embutido :public Carne
 		virtual void setLimite(int);
 		virtual void setFechaIng(Fecha*);
 		virtual void SetFechaPer(Perecedero*);
+		Empaque* getEmaqueptr();
 
 		virtual double ganancia();
 		virtual  Producto* clonar()const;
