@@ -43,6 +43,10 @@ public:
 
 	Nodo<Producto>* getProducto();
 	Nodo<Venta>* getVenta();
+	Nodo<Persona>* getCliente();
+
+	int getSizeVenta();
+	int getSizePersona();
 
 
 	string toStringListProd();

@@ -62,6 +62,21 @@ Nodo<Venta>* Minisuper::getVenta()
 	return this->listVenta->getPrimero();
 }
 
+Nodo<Persona>* Minisuper::getCliente()
+{
+	return this->listPersona->getPrimero();
+}
+
+int Minisuper::getSizeVenta()
+{
+	return this->listVenta->size();
+}
+
+int Minisuper::getSizePersona()
+{
+	return this->listPersona->size();
+}
+
 string Minisuper::toStringListProd()
 {
 	stringstream s;
