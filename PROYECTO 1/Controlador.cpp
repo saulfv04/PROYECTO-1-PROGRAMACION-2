@@ -555,7 +555,7 @@ void Controlador::control3_5()
 }
 
 void Controlador::control3_5_1(){
-    Interfaz::reporteTopClientesdelos5mejoresclientesconsufacturacantidaddeFacturas(minisuper);
+    Interfaz::reporteTopClientes(minisuper);
 }
 
 void Controlador::control3_6()

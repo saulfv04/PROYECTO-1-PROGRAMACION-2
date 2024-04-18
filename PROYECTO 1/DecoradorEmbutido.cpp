@@ -1,4 +1,5 @@
 #include "DecoradorEmbutido.h"
+#include "Categoria.h"
 
 DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, Perecedero* ptrPer, string marca, string nombreAni, string partAni, string codi, string nombre, string desc, double pes, double prec, bool nac)
 {
@@ -14,6 +15,7 @@ DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, P
 	this->nacional = nac;
 	this->peso = pes;
 	this->precioCosto = prec;
+	this->categoria = "3";
 }
 
 
@@ -32,6 +34,7 @@ DecoradorEmbutido::DecoradorEmbutido(const DecoradorEmbutido& copia)
 	this->nacional = copia.nacional;
 	this->peso = copia.peso;
 	this->precioCosto = copia.precioCosto;
+	this->categoria = copia.categoria;
 }
 DecoradorEmbutido::~DecoradorEmbutido()
 {
@@ -85,7 +88,14 @@ string DecoradorEmbutido::toString() const{
 
 double DecoradorEmbutido::getTotal()
 {
-	return this->precioCosto + ptrCarrito->getTotal();
+	Categoria c;
+	return this->precioCosto * (c.porceganancia(categoria)/100) + ptrCarrito->getTotal();
+}
+
+double DecoradorEmbutido::getGanancia()
+{
+	Categoria c;
+	return this->precioCosto * (c.porceganancia(categoria)) + ptrCarrito->getTotal();
 }
 
 ComponenteAbstracto* DecoradorEmbutido::clonar() const

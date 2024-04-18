@@ -13,6 +13,7 @@ public:
 	virtual void setSiguiente(ComponenteAbstracto*)=0;
 	virtual string toString() const =0;
 	virtual double getTotal() = 0;
+	virtual double getGanancia() = 0;
 	/*virtual int getCantidad() = 0;*/
 	virtual ComponenteAbstracto* clonar() const = 0;
 	

@@ -14,6 +14,7 @@ private:
     double peso;
     double precioCosto;
     bool nacional;
+    string categoria;
 public:
 
     DecoradorEmbutido(ComponenteAbstracto*, Empaque*, Perecedero*, string, string, string, string, string, string, double, double, bool);
@@ -23,6 +24,7 @@ public:
 	virtual void setSiguiente(ComponenteAbstracto*);
 	virtual string toString() const;
     virtual double getTotal();
+    virtual double getGanancia();
     /*virtual int getCantidad();*/
     virtual ComponenteAbstracto* clonar() const;
 

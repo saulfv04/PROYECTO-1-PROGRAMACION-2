@@ -81,7 +81,7 @@ string Venta::toString()const{
 }
 
 double Venta::totalbruto()const{
-    return carrito->getTotal();
+    return carrito->getTotal() + carrito->getGanancia();
 }
 
 double Venta::totalIVa()const
