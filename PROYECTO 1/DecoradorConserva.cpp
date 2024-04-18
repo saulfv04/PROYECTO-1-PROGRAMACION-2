@@ -8,6 +8,7 @@ DecoradorConserva::DecoradorConserva(ComponenteAbstracto* ptrCarro, string n, st
     this->descricion = d;
     this->precio = p;
     this->envasado = e;
+    this->categoria = "1";
 }
 
 DecoradorConserva::DecoradorConserva(const DecoradorConserva& copia)
@@ -18,6 +19,7 @@ DecoradorConserva::DecoradorConserva(const DecoradorConserva& copia)
     this->descricion = copia.descricion;
     this->precio = copia.precio;
     this->envasado = copia.envasado;
+    this->categoria = copia.categoria;
 }
 
 DecoradorConserva::~DecoradorConserva(){
@@ -55,7 +57,14 @@ string DecoradorConserva::toString() const{
 
 double DecoradorConserva::getTotal()
 {
-    return this->precio + ptrCarrito->getTotal();
+    Categoria c;
+    return this->precio * (c.porceganancia(categoria) / 100) + ptrCarrito->getTotal();
+}
+
+double DecoradorConserva::getGanancia()
+{
+    Categoria c;
+    return this->precio * (c.porceganancia(categoria)) + ptrCarrito->getTotal();
 }
 
 ComponenteAbstracto* DecoradorConserva::clonar() const

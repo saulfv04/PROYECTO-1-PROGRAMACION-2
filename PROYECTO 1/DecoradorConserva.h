@@ -8,6 +8,7 @@ private:
 	string descricion;
 	double precio;
 	bool envasado;
+	string categoria;
 public:
 	DecoradorConserva(ComponenteAbstracto*, string,string,string,double,bool);
 	DecoradorConserva(const DecoradorConserva&);
@@ -16,6 +17,7 @@ public:
 	virtual void setSiguiente(ComponenteAbstracto*);
 	virtual string toString() const;
 	virtual double getTotal();
+	virtual double getGanancia();
 	/*virtual int getCantidad();*/
 	virtual ComponenteAbstracto* clonar() const;
 

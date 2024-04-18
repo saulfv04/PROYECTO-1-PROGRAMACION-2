@@ -11,6 +11,7 @@ DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* carro, Perecedero* ptr
     this->nacional = n;
     this->peso = p;
     this->precioCosto = pre;
+    categoria = "2";
 }
 DecoradorAbarrote::DecoradorAbarrote(const DecoradorAbarrote& copia)
 {
@@ -23,6 +24,7 @@ DecoradorAbarrote::DecoradorAbarrote(const DecoradorAbarrote& copia)
     this->nacional = copia.nacional;
     this->peso = copia.peso;
     this->precioCosto = copia.precioCosto;
+    this->categoria = copia.categoria;
 }
 
 DecoradorAbarrote::~DecoradorAbarrote(){
@@ -66,6 +68,12 @@ string DecoradorAbarrote::toString() const{
 double DecoradorAbarrote::getTotal()
 {
     return this->precioCosto + ptrCarrito->getTotal();
+}
+
+double DecoradorAbarrote::getGanancia()
+{
+    Categoria c;
+    return this->precioCosto * (c.porceganancia(categoria)) + ptrCarrito->getTotal();
 }
 
 ComponenteAbstracto* DecoradorAbarrote::clonar() const
