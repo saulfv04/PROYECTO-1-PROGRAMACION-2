@@ -188,6 +188,7 @@ void Interfaz::agregarProductoConserva(Minisuper* mini){
         cout << "_________________________________________" << endl;
         cout << "| El Producto esta ingresado actualmente|" << endl;
         cout << "|_______________________________________|" << endl;
+        delete c;
     }
     system("pause");
 }
@@ -205,6 +206,7 @@ void Interfaz::agregarProductoEmbutido(Minisuper* mini){
         cout << "_________________________________________" << endl;
         cout << "| El Producto esta ingresado actualmente|" << endl;
         cout << "|_______________________________________|" << endl;
+        delete c;
     }
     system("pause");
 }
@@ -222,6 +224,7 @@ void Interfaz::agregarProductoAbarrote(Minisuper* mini){
         cout << "_________________________________________" << endl;
         cout << "| El Producto esta ingresado actualmente|" << endl;
         cout << "|_______________________________________|" << endl;
+        delete c;
     }
     system("pause");
 }
@@ -458,6 +461,7 @@ void Interfaz::menuMantAgregarClientes(Minisuper* mini)
     }
     else {
         cout << "El cliente no existe en nuestro sistema actual..." << endl;
+        delete p;
     }
     system("pause");
 }
@@ -552,12 +556,71 @@ int Interfaz::menuReportesTopClientes()
     system("pause");
     return op;
 }
-void Interfaz::reporteTopClientesdelos5mejoresclientesconsufacturacantidaddeFacturas(Minisuper* mini) {
+void Interfaz::reporteTopClientes(Minisuper* mini) {
     system("cls");
-  
-	system("pause");
-}
+    //Recorrer la lista de ventas y ver cuantas veces se repite la cedula de un cliente
+    //Luego se ordena de mayor a menor y se imprime los 5 primeros
+    system("cls");
+    int aux = mini->getSizeVenta();
+    string* cedulas = new string[aux]();
+    int* contador = new int[aux]();
+    for (int i = 0; i < aux; i++) {
+        cedulas[i] = "";
+        contador[i] = 0;
+    }
+    Nodo <Venta>* pAct = mini->getVenta();
+    int i = 0;
+    while (pAct) {
+        cedulas[i] = pAct->obtenerInfo()->getPersona();
+        contador[i] = 0;
+        pAct = pAct->obtenerSig();
+        i++;
+    }
+    for (int i = 0; i < aux; i++) {
+        for (int j = 0; j < aux; j++) {
+            if (cedulas[i] == cedulas[j]) {
+                contador[i]++;
+            }
+        }
+    }
+ 
+    // Eliminar duplicados
+    for (int i = 0; i < aux; i++) {
+        for (int j = i + 1; j < aux; ) {
+            if (cedulas[i] == cedulas[j]) {
+                for (int k = j; k < aux - 1; k++) {
+                    cedulas[k] = cedulas[k + 1];
+                    contador[k] = contador[k + 1];
+                }
+                aux--;
+            }
+            else {
+                j++;
+            }
+        }
+    }
 
+    // Ordenar
+    for (int i = 0; i < aux; i++) {
+        for (int j = 0; j < aux; j++) {
+            if (contador[i] > contador[j]) {
+                swap(contador[i], contador[j]);
+                swap(cedulas[i], cedulas[j]);
+            }
+        }
+    }
+
+    cout << "__________________________________________" << endl;
+    cout << "|          -TOP 5 CLIENTES-              |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|________________________________________|" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << "Cliente: " << cedulas[i] << " Cantidad de Facturas: " << contador[i] << endl;
+    }
+    delete[] cedulas;
+    delete[] contador;
+    system("pause");
+}
 
 int Interfaz::menuCreacionVentas()
 {
@@ -634,6 +697,8 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
         }
         else {
             cout << "Su carrito no pudo generarse..." << endl;
+            delete ventaNueva;
+            delete pd;
         }
 	}
     else {

@@ -248,12 +248,13 @@ void Abarrote::leerDatos(istream& s)
     s >> codigo;
 	cout << "Precio: " << endl;
 	s >> precioCosto;
-    if (precioCosto <= 0) {
+    if (precioCosto <= 0.0) {
         throw ERI(precioCosto, 0, 0);
     }
 	cout << "Peso: " << endl;
 	s >> peso;
-    if (peso <= 0) {
+    if (peso <= 0.0) {
+        
         throw ERI(precioCosto, 0, 0);
     }
 	cout << "Existencia de producto: " << endl;
