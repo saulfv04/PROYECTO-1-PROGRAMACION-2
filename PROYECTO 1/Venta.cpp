@@ -1,4 +1,5 @@
 #include "Venta.h"
+#include <iomanip>
 
 Venta::Venta(ProductoDecorador* carr, string per, Fecha* f, string cod) :carrito(carr), cedulaCliente(per), fVenta(f), codigo(cod){}
 
@@ -69,19 +70,21 @@ void Venta::setCliente(string c)
 
 string Venta::toString()const{
     stringstream s;
-    s<<" ___________________________________________________________________________________________________________________________________________"<<  endl;
-    s<< "|" << "\t" << "\t" << "FACTURA " << "NUMERO: " << this->codigo << "                                                                       |" << endl;
-    s <<"|" << "\t" << "\t" << "CLIENTE: " << this->cedulaCliente << "                                                                             |" << endl;
-    s <<"|" << "\t" << "\t" << "FECHA: " << *this->fVenta << "                                                                                     |" << endl;
-    s <<"|" << "DETALLE DE COMPRA" << "                                                                                                            |" << endl;
-    s <<"|" << *this->carrito;
-    s <<"|" << "  TOTAL BRUTO: $" << totalbruto()<< "  "<< "   IMPORTE %13: $" << totalIVa() << "      TOTAL NETO: $" << totalneto() << " " << endl;
-    s <<"|_________________________________________________________________________________________________________________________________________|" << endl;
+    s << "================================================================================\n";
+    s << "\t\t\tFACTURA: " << this->codigo << "\n";
+    s << "\t\t\tCLIENTE: " << this->cedulaCliente << "\n";
+    s << "\t\t\t"<< *fVenta << "\n";
+    s << "================================================================================\n";
+    s<< "\t CANTIDAD "<<"\t |CONCEPTO"<< "\t|PRECIO" << "\t\t  |IMPORTE" << "\n";
+    s <<this->carrito->toString() << "\n";
+    s << "================================================================================\n";
+    s << "\t TOTAL BRUTO: $" << totalbruto() << " " << "| IMPORTE 13 % : $" << totalIVa() << "| TOTAL NETO: $" << totalneto() << endl;
+    s << "================================================================================\n";
     return s.str();
 }
 
 double Venta::totalbruto()const{
-    return carrito->getTotal();
+    return carrito->getTotal() + carrito->getGanancia();
 }
 
 double Venta::totalIVa()const

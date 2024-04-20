@@ -10,7 +10,7 @@ public:
 	virtual void setSiguiente(ComponenteAbstracto*);
 	virtual string toString() const;
 	virtual double getTotal();
-	/*virtual int getCantidad();*/
+	virtual double getCantidad();
 	virtual ComponenteAbstracto* clonar() const;
 
 	//Sobrecargas

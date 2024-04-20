@@ -188,6 +188,7 @@ void Interfaz::agregarProductoConserva(Minisuper* mini){
         cout << "_________________________________________" << endl;
         cout << "| El Producto esta ingresado actualmente|" << endl;
         cout << "|_______________________________________|" << endl;
+        delete c;
     }
     system("pause");
 }
@@ -205,6 +206,7 @@ void Interfaz::agregarProductoEmbutido(Minisuper* mini){
         cout << "_________________________________________" << endl;
         cout << "| El Producto esta ingresado actualmente|" << endl;
         cout << "|_______________________________________|" << endl;
+        delete c;
     }
     system("pause");
 }
@@ -222,6 +224,7 @@ void Interfaz::agregarProductoAbarrote(Minisuper* mini){
         cout << "_________________________________________" << endl;
         cout << "| El Producto esta ingresado actualmente|" << endl;
         cout << "|_______________________________________|" << endl;
+        delete c;
     }
     system("pause");
 }
@@ -458,6 +461,7 @@ void Interfaz::menuMantAgregarClientes(Minisuper* mini)
     }
     else {
         cout << "El cliente no existe en nuestro sistema actual..." << endl;
+        delete p;
     }
     system("pause");
 }
@@ -552,12 +556,71 @@ int Interfaz::menuReportesTopClientes()
     system("pause");
     return op;
 }
-void Interfaz::reporteTopClientesdelos5mejoresclientesconsufacturacantidaddeFacturas(Minisuper* mini) {
+void Interfaz::reporteTopClientes(Minisuper* mini) {
     system("cls");
-  
-	system("pause");
-}
+    //Recorrer la lista de ventas y ver cuantas veces se repite la cedula de un cliente
+    //Luego se ordena de mayor a menor y se imprime los 5 primeros
+    system("cls");
+    int aux = mini->getSizeVenta();
+    string* cedulas = new string[aux]();
+    int* contador = new int[aux]();
+    for (int i = 0; i < aux; i++) {
+        cedulas[i] = "";
+        contador[i] = 0;
+    }
+    Nodo <Venta>* pAct = mini->getVenta();
+    int i = 0;
+    while (pAct) {
+        cedulas[i] = pAct->obtenerInfo()->getPersona();
+        contador[i] = 0;
+        pAct = pAct->obtenerSig();
+        i++;
+    }
+    for (int i = 0; i < aux; i++) {
+        for (int j = 0; j < aux; j++) {
+            if (cedulas[i] == cedulas[j]) {
+                contador[i]++;
+            }
+        }
+    }
+ 
+    // Eliminar duplicados
+    for (int i = 0; i < aux; i++) {
+        for (int j = i + 1; j < aux; ) {
+            if (cedulas[i] == cedulas[j]) {
+                for (int k = j; k < aux - 1; k++) {
+                    cedulas[k] = cedulas[k + 1];
+                    contador[k] = contador[k + 1];
+                }
+                aux--;
+            }
+            else {
+                j++;
+            }
+        }
+    }
 
+    // Ordenar
+    for (int i = 0; i < aux; i++) {
+        for (int j = 0; j < aux; j++) {
+            if (contador[i] > contador[j]) {
+                swap(contador[i], contador[j]);
+                swap(cedulas[i], cedulas[j]);
+            }
+        }
+    }
+
+    cout << "__________________________________________" << endl;
+    cout << "|          -TOP 5 CLIENTES-              |" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|________________________________________|" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << "Cliente: " << cedulas[i] << " Cantidad de Facturas: " << contador[i] << endl;
+    }
+    delete[] cedulas;
+    delete[] contador;
+    system("pause");
+}
 
 int Interfaz::menuCreacionVentas()
 {
@@ -634,6 +697,8 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
         }
         else {
             cout << "Su carrito no pudo generarse..." << endl;
+            delete ventaNueva;
+            delete pd;
         }
 	}
     else {
@@ -648,6 +713,7 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
 ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& c)
 {
     string codProd, continuar;
+    double cant;
     Nodo <Producto>* productoIngresado; 
       cout << "_______________________________________" << endl;
       cout << "|       -COD PRODUCTO A COMPRAR-      |" << endl;
@@ -664,20 +730,49 @@ ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& 
          return &c;
       }
       if (productoIngresado !=nullptr) {
+          cout << "__________________________________________" << endl;
+          cout << "|       -CANTIDAD QUE QUIERE COMPRAR-    |" << endl;
+          cout << "|________________________________________|" << endl;
+          cout << "Digite la cantidad del procucto que quiere comprar: ";
+          cin >> cant;
             Abarrote* aba = dynamic_cast<Abarrote*>(productoIngresado->obtenerInfo());
             Embutido* emb = dynamic_cast<Embutido*>(productoIngresado->obtenerInfo());
             Conserva* con = dynamic_cast<Conserva*>(productoIngresado->obtenerInfo());
             if (aba!=nullptr) {
-                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia()-1);
-                return new DecoradorAbarrote(&c, aba->getPer(), aba->getEmpresaNombre(), aba->getCodigo(), aba->getnombreComecial(), aba->getDescripcion(), aba->getNacional(), aba->getPeso(), aba->getprecioCosto());
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getLimite() < cant) {
+					cout << "No puede comprar: "<<cant <<" productos, ya que el limite de compra es: "<<mini->buscarProducto(codProd)->obtenerInfo()->getLimite()<< endl;
+					return &c;
+				}
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() < cant) {
+					cout << "No hay suficiente existencia para la cantidad solicitada..." << endl;
+					return &c;
+				}
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia()-cant);
+                return new DecoradorAbarrote(&c, aba->getPer(), aba->getEmpresaNombre(), aba->getCodigo(), aba->getnombreComecial(), aba->getDescripcion(), aba->getNacional(), aba->getPeso(), aba->getprecioCosto(),cant);
             }
             else if(emb!=nullptr) {
-                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - 1);
-                return new DecoradorEmbutido(&c,emb->getEmaqueptr(), emb->getPer(), emb->getMarca(), emb->getNombreAnimal(), emb->getparteDelAnimal(), emb->getCodigo(), emb->getnombreComecial(), emb->getDescripcion(), emb->getPeso(), emb->getprecioCosto(),emb->getNacional());
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getLimite() < cant) {
+                    cout << "No puede comprar: " << cant << " productos, ya que el limite de compra es: " << mini->buscarProducto(codProd)->obtenerInfo()->getLimite() << endl;
+                    return &c;
+                }
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() < cant) {
+                    cout << "No hay suficiente existencia para la cantidad solicitada..." << endl;
+                    return &c;
+                }
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - cant);
+                return new DecoradorEmbutido(&c,emb->getEmaqueptr(), emb->getPer(), emb->getMarca(), emb->getNombreAnimal(), emb->getparteDelAnimal(), emb->getCodigo(), emb->getnombreComecial(), emb->getDescripcion(), emb->getPeso(), emb->getprecioCosto(),emb->getNacional(),cant);
             }
             else {
-                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - 1);
-                return new DecoradorConserva(&c, con->getnombreComecial(), con->getCodigo(), con->getDescripcion(), con->getprecioCosto(), con->getEnvasado());
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getLimite() < cant) {
+                    cout << "No puede comprar: " << cant << " productos, ya que el limite de compra es: " << mini->buscarProducto(codProd)->obtenerInfo()->getLimite() << endl;
+                    return &c;
+                }
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() < cant) {
+                    cout << "No hay suficiente existencia para la cantidad solicitada..." << endl;
+                    return &c;
+                }
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - cant);
+                return new DecoradorConserva(&c, con->getnombreComecial(), con->getCodigo(), con->getDescripcion(), con->getprecioCosto(), con->getEnvasado(),cant);
             }
        }
       else {

@@ -2,7 +2,6 @@
 
 Categoria::Categoria()
 {
-	cout << "Borrando Categoria" << endl;
 
 }
 
