@@ -1,7 +1,7 @@
 #include "DecoradorEmbutido.h"
 #include "Categoria.h"
 
-DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, Perecedero* ptrPer, string marca, string nombreAni, string partAni, string codi, string nombre, string desc, double pes, double prec, bool nac)
+DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, Perecedero* ptrPer, string marca, string nombreAni, string partAni, string codi, string nombre, string desc, double pes, double prec, bool nac,double can)
 {
 	this->ptrCarrito = carro;
 	this->ptrEmpaque = emp;
@@ -16,6 +16,7 @@ DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, P
 	this->peso = pes;
 	this->precioCosto = prec;
 	this->categoria = "3";
+	this->cantidad = can;
 }
 
 
@@ -35,6 +36,7 @@ DecoradorEmbutido::DecoradorEmbutido(const DecoradorEmbutido& copia)
 	this->peso = copia.peso;
 	this->precioCosto = copia.precioCosto;
 	this->categoria = copia.categoria;
+	this->cantidad = copia.cantidad;
 }
 DecoradorEmbutido::~DecoradorEmbutido()
 {
@@ -58,31 +60,8 @@ void DecoradorEmbutido::setSiguiente(ComponenteAbstracto* carro)
 
 string DecoradorEmbutido::toString() const{
 	stringstream s;
-	s << "Embutido: " << " ";
-	s << "marca: " << this->marca<< " ";
-	s << "nombre: " << this->nombreComercial << " ";
-	s << "codigo: " << this->codigo << " ";
-	s << "nombre animal: " << this->nombreAnimal << " ";
-	s << "parte animal: " << this->parteDelAnimal << " ";
-	s << "descripcion: " << this->descripcion << " ";
-	s << "empresa: " << this->nombreComercial << " ";
-	s << "Procedencia: ";
-	if (this->nacional) {
-		s << "nacional " << " ";
-	}
-	else {
-		s << "internacional " << " ";
-	}
-	if (this->ptrEmpaque->getTripa()) {
-		s << "contiene tripa " << " ";
-	}
-	else {
-		s << "no contiene tripa " << " ";
-	}
-	s << "fecha vecimiento: " << this->ptrPer->toString() << " ";
-	s << "precio: " << this->precioCosto;
-	s << endl;
-	s<< *ptrCarrito;
+	s << "\t    " << this->cantidad << "\t\t   " << this->nombreComercial << "\t $" << this->precioCosto << "\t           $" << this->precioCosto * this->cantidad << "\n";
+	s << *ptrCarrito;
 	return s.str();
 }
 
@@ -96,6 +75,11 @@ double DecoradorEmbutido::getGanancia()
 {
 	Categoria c;
 	return this->precioCosto * (c.porceganancia(categoria)) + ptrCarrito->getTotal();
+}
+
+double DecoradorEmbutido::getCantidad()
+{
+	return this->cantidad;
 }
 
 ComponenteAbstracto* DecoradorEmbutido::clonar() const

@@ -25,12 +25,15 @@ void Carrito::setSiguiente(ComponenteAbstracto*)
 
 string Carrito::toString() const
 {
-    stringstream s;
-    s << endl << "|  -------------------------CARRITO COMPRAS------------------------------- |" << endl;
-    return s.str();
+    return "";
 }
 
 double Carrito::getTotal()
+{
+    return 0.0;
+}
+
+double Carrito::getCantidad()
 {
     return 0.0;
 }
