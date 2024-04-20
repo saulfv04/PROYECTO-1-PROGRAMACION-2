@@ -18,8 +18,6 @@ Perecedero::~Perecedero()
 	if (ptrFechaPer != nullptr) {
 		delete ptrFechaPer;
 	}
-	cout << "Borrando Perecedero" << endl;
-
 }
 
 string Perecedero::toString()
@@ -60,7 +58,7 @@ ostream& operator<<(ostream& s, Perecedero& per)
 
 istream& operator>>(istream& i, Perecedero& p){
 	Fecha* f = new Fecha();
-	cout << "vencimiento: " << endl;
+	cout << "Fecha de vencimiento: " << endl;
 	i >> *f;
 	p.setFecha(f);
 	return i;

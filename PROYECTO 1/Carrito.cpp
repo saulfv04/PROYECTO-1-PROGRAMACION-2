@@ -6,8 +6,6 @@ Carrito::Carrito()
 
 Carrito::~Carrito()
 {
-    cout << "Borrando Carrito" << endl;
-
 }
 
 Carrito::Carrito(const Carrito& p) {

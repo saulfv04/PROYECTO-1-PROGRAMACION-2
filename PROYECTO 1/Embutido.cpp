@@ -68,8 +68,6 @@ Embutido::~Embutido()
     if (ptrEmpaque != nullptr) {
         delete ptrEmpaque;
     }
-    cout << "Borrando Embutido" << endl;
-
 }
 
 string Embutido::getMarca()
@@ -341,8 +339,9 @@ Embutido* Embutido::leerEmbutido(ifstream& file)
 }
 void Embutido::leerDatos(istream& s)
 {
+    this->setCategoria("3");
     string nac;
-    cout<<"Ingreso de datos Producto Embutido: "<<endl;
+    cout << "INGRESO DE DATOS DE PRODUCTOS EMBUTIDO" << endl << endl;
     Empaque* emp = new Empaque();
     s >> *emp;
     setEmpaque(emp);
@@ -350,8 +349,13 @@ void Embutido::leerDatos(istream& s)
     s >> *p;
     SetFechaPer(p);
     Fecha* f = new Fecha();
-    cout << "Ingreso: " << endl;
+    cout << "Fecha de ingreso: " << endl;
     s >> *f;
+    if (f->getFecha() > p->getFechaPer()) {
+        throw string("La fecha de ingreso no puede ser mayor a la de vencimiento");
+        delete emp;
+        delete f;
+    }
     setFechaIng(f);
     cout<<"Marca: "<<endl;
 	s >> marca;
@@ -371,6 +375,8 @@ void Embutido::leerDatos(istream& s)
 	s >> peso;
     if (peso <= 0) {
         throw ERI(peso, 0, 0);
+        delete emp;
+        delete f;
     }
 	cout << "Codigo: ";
 	s >> codigo;
@@ -382,16 +388,24 @@ void Embutido::leerDatos(istream& s)
 	s >> precioCosto;
     if (precioCosto <= 0) {
         throw ERI(precioCosto, 0, 0);
+        delete emp;
+        delete f;
     }
 	cout << "Existencia: ";
 	s >> existencia;
 	cout << "Limite: ";
 	s >> limite;
-    this->setCategoria("3");
+    if (existencia < limite) {
+        throw string("La existencia no puede menor al limite disponible de productos");
+        delete emp;
+        delete f;
+    }
     if (s.fail()) {
         s.clear();
         s.ignore(1);
         throw string("Se ha digitado un caracter invalido");
+        delete emp;
+        delete f;
     }
 }
 ostream& operator<<(ostream& s, Embutido& e)

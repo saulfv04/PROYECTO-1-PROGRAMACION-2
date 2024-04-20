@@ -42,8 +42,6 @@ Conserva::~Conserva(){
     if (ptrFechaIng != nullptr) {
         delete ptrFechaIng;
     }
-    cout << "Borrando Conserva" << endl;
-
 }
 
 bool Conserva::getEnvasado()
@@ -217,8 +215,10 @@ Conserva* Conserva::leerConserva(ifstream& file){
 
 void Conserva::leerDatos(istream& s)
 {
+    this->setCategoria("1");
     string env;
-    cout << "Ingreso de datos Producto Conserva: " << endl;
+    cout << "INGRESO DE DATOS PARA PRODUCTO CONSERVA" << endl << endl;
+    cout << "Fecha de ingreso" << endl;
     Fecha* f = new Fecha();
     s >> *f;
     setFechaIng(f);
@@ -228,21 +228,28 @@ void Conserva::leerDatos(istream& s)
     s >> nombreComercial;
     cout << "Descripcion: " << endl;
     s >> descripcion;
-    cout << "Precio: " << endl;
-    s >> precioCosto;
-    cout << "Existencia de producto: " << endl;
-    s >> existencia;
-    cout << "Limite de compra: " << endl;
-    s >> limite;
     cout << "Envasado (N)No  (S):Si " << endl;
     cin >> env;
-    if (env== "S" || env == "s") {
+    if (env == "S" || env == "s") {
         envasado = true;
     }
     else {
         envasado = false;
     }
-    this->setCategoria("1");
+    cout << "Precio: " << endl;
+    s >> precioCosto;
+    if (precioCosto < 0) {
+        throw ERI(precioCosto, 0, 0);
+        delete f;
+    }
+    cout << "Existencia de producto: " << endl;
+    s >> existencia;
+    cout << "Limite de compra: " << endl;
+    s >> limite;
+    if (existencia < limite) {
+        throw string("La existencia no puede menor al limite disponible de productos");
+        delete f;
+    }
     if(s.fail()) {
         s.clear();
         s.ignore(1);

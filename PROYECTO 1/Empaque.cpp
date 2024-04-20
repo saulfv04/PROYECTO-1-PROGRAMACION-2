@@ -16,8 +16,6 @@ Empaque::Empaque(const Empaque& copia)
 
 Empaque::~Empaque()
 {
-    cout << "Borrando Empaque" << endl;
-
 }
 
 bool Empaque::getTripa()
