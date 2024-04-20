@@ -57,7 +57,6 @@ Abarrote::~Abarrote()
     if (ptrPer != nullptr) {
         delete ptrPer;
     }
-    cout << "Borrando Abarrote" << endl;
 }
 
 string Abarrote::getEmpresaNombre()
@@ -222,13 +221,20 @@ double Abarrote::ganancia()
 
 void Abarrote::leerDatos(istream& s)
 {
+    this->setCategoria("2");
     string op;
-	cout << "Ingreso de datos Producto Abarrote: " << endl;
+	cout << "INGRESO DE DATOS DE PRODUCTOS ABARROTE" << endl << endl;
     Perecedero* p = new Perecedero();
     s >> *p;
     this->SetFechaPer(p);
 	Fecha* fI = new Fecha();
+    cout << "Fecha de ingreso" << endl;
 	s >> *fI;
+    if (fI->getFecha() > p->getFechaPer()) {
+        throw string("La fecha de ingreso no puede ser mayor a la de vencimiento");
+        delete p;
+        delete fI;
+    }
 	this->setFechaIng(fI);
 	cout << "Nombre empresa procedencia: " << endl;
 	s >> empresaNombre;
@@ -261,12 +267,16 @@ void Abarrote::leerDatos(istream& s)
 	s >> existencia;
 	cout << "Limite de compra: " << endl;
 	s >> limite;   
+    if (existencia < limite) {
+        throw string("La existencia no puede menor al limite disponible de productos");
+        delete p;
+        delete fI;
+    }
     if (s.fail()) {
         s.clear();
         s.ignore(1);
         throw string("Se ha digitado un caracter invalido");
     }
-    this->setCategoria("2");
 }
 
 void Abarrote::guardarProducto(ofstream& file)

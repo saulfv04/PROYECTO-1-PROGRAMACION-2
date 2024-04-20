@@ -16,8 +16,6 @@ Persona::Persona(const Persona& p){
 }
 
 Persona::~Persona(){
-	cout << "Borrando Persona" << endl;
-
 }
 
 

@@ -171,7 +171,6 @@
     <ClCompile Include="ExcepcionRango.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Interfaz.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Minisuper.cpp" />
     <ClCompile Include="Perecedero.cpp" />
     <ClCompile Include="Persona.cpp" />
