@@ -15,9 +15,10 @@ private:
     double precioCosto;
     bool nacional;
     string categoria;
+    double cantidad;
 public:
 
-    DecoradorEmbutido(ComponenteAbstracto*, Empaque*, Perecedero*, string, string, string, string, string, string, double, double, bool);
+    DecoradorEmbutido(ComponenteAbstracto*, Empaque*, Perecedero*, string, string, string, string, string, string, double, double, bool, double);
 	DecoradorEmbutido(const DecoradorEmbutido&);
 	virtual ~DecoradorEmbutido();
 	virtual ComponenteAbstracto* getSiguiente();
@@ -25,7 +26,7 @@ public:
 	virtual string toString() const;
     virtual double getTotal();
     virtual double getGanancia();
-    /*virtual int getCantidad();*/
+    virtual double getCantidad();
     virtual ComponenteAbstracto* clonar() const;
 
 

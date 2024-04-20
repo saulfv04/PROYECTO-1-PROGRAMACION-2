@@ -9,8 +9,9 @@ private:
 	double precio;
 	bool envasado;
 	string categoria;
+	double cantidad;
 public:
-	DecoradorConserva(ComponenteAbstracto*, string,string,string,double,bool);
+	DecoradorConserva(ComponenteAbstracto*, string,string,string,double,bool,double);
 	DecoradorConserva(const DecoradorConserva&);
 	virtual ~DecoradorConserva();
 	virtual ComponenteAbstracto* getSiguiente();
@@ -18,7 +19,7 @@ public:
 	virtual string toString() const;
 	virtual double getTotal();
 	virtual double getGanancia();
-	/*virtual int getCantidad();*/
+	virtual double getCantidad();
 	virtual ComponenteAbstracto* clonar() const;
 
 	//Sobrecargas

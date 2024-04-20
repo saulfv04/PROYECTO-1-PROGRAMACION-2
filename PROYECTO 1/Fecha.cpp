@@ -41,7 +41,7 @@ int Fecha::getFecha()
 string Fecha::toString()
 {
     stringstream s;
-    s << "Fecha (D/M/A): "  << dia << " / " << mes << " / " << anio;
+    s << "FECHA (D/M/A): "  << dia << " / " << mes << " / " << anio;
     return s.str();
 }
 

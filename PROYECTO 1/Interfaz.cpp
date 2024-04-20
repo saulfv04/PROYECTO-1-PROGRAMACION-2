@@ -713,6 +713,7 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
 ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& c)
 {
     string codProd, continuar;
+    double cant;
     Nodo <Producto>* productoIngresado; 
       cout << "_______________________________________" << endl;
       cout << "|       -COD PRODUCTO A COMPRAR-      |" << endl;
@@ -729,20 +730,49 @@ ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& 
          return &c;
       }
       if (productoIngresado !=nullptr) {
+          cout << "__________________________________________" << endl;
+          cout << "|       -CANTIDAD QUE QUIERE COMPRAR-    |" << endl;
+          cout << "|________________________________________|" << endl;
+          cout << "Digite la cantidad del procucto que quiere comprar: ";
+          cin >> cant;
             Abarrote* aba = dynamic_cast<Abarrote*>(productoIngresado->obtenerInfo());
             Embutido* emb = dynamic_cast<Embutido*>(productoIngresado->obtenerInfo());
             Conserva* con = dynamic_cast<Conserva*>(productoIngresado->obtenerInfo());
             if (aba!=nullptr) {
-                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia()-1);
-                return new DecoradorAbarrote(&c, aba->getPer(), aba->getEmpresaNombre(), aba->getCodigo(), aba->getnombreComecial(), aba->getDescripcion(), aba->getNacional(), aba->getPeso(), aba->getprecioCosto());
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getLimite() < cant) {
+					cout << "No puede comprar: "<<cant <<" productos, ya que el limite de compra es: "<<mini->buscarProducto(codProd)->obtenerInfo()->getLimite()<< endl;
+					return &c;
+				}
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() < cant) {
+					cout << "No hay suficiente existencia para la cantidad solicitada..." << endl;
+					return &c;
+				}
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia()-cant);
+                return new DecoradorAbarrote(&c, aba->getPer(), aba->getEmpresaNombre(), aba->getCodigo(), aba->getnombreComecial(), aba->getDescripcion(), aba->getNacional(), aba->getPeso(), aba->getprecioCosto(),cant);
             }
             else if(emb!=nullptr) {
-                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - 1);
-                return new DecoradorEmbutido(&c,emb->getEmaqueptr(), emb->getPer(), emb->getMarca(), emb->getNombreAnimal(), emb->getparteDelAnimal(), emb->getCodigo(), emb->getnombreComecial(), emb->getDescripcion(), emb->getPeso(), emb->getprecioCosto(),emb->getNacional());
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getLimite() < cant) {
+                    cout << "No puede comprar: " << cant << " productos, ya que el limite de compra es: " << mini->buscarProducto(codProd)->obtenerInfo()->getLimite() << endl;
+                    return &c;
+                }
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() < cant) {
+                    cout << "No hay suficiente existencia para la cantidad solicitada..." << endl;
+                    return &c;
+                }
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - cant);
+                return new DecoradorEmbutido(&c,emb->getEmaqueptr(), emb->getPer(), emb->getMarca(), emb->getNombreAnimal(), emb->getparteDelAnimal(), emb->getCodigo(), emb->getnombreComecial(), emb->getDescripcion(), emb->getPeso(), emb->getprecioCosto(),emb->getNacional(),cant);
             }
             else {
-                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - 1);
-                return new DecoradorConserva(&c, con->getnombreComecial(), con->getCodigo(), con->getDescripcion(), con->getprecioCosto(), con->getEnvasado());
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getLimite() < cant) {
+                    cout << "No puede comprar: " << cant << " productos, ya que el limite de compra es: " << mini->buscarProducto(codProd)->obtenerInfo()->getLimite() << endl;
+                    return &c;
+                }
+                if (mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() < cant) {
+                    cout << "No hay suficiente existencia para la cantidad solicitada..." << endl;
+                    return &c;
+                }
+                mini->buscarProducto(codProd)->obtenerInfo()->setExistencia(mini->buscarProducto(codProd)->obtenerInfo()->getExistencia() - cant);
+                return new DecoradorConserva(&c, con->getnombreComecial(), con->getCodigo(), con->getDescripcion(), con->getprecioCosto(), con->getEnvasado(),cant);
             }
        }
       else {

@@ -1,6 +1,6 @@
 #include "DecoradorAbarrote.h"
 
-DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* carro, Perecedero* ptrPere, string eN, string c, string nC, string d, bool n, double p, double pre)
+DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* carro, Perecedero* ptrPere, string eN, string c, string nC, string d, bool n, double p, double pre, double can)
 {
     this->ptrCarrito = carro;
     this->ptrPer = ptrPere;
@@ -11,7 +11,8 @@ DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* carro, Perecedero* ptr
     this->nacional = n;
     this->peso = p;
     this->precioCosto = pre;
-    categoria = "2";
+    this->categoria = "2";
+    this->cantidad = can;
 }
 DecoradorAbarrote::DecoradorAbarrote(const DecoradorAbarrote& copia)
 {
@@ -25,6 +26,7 @@ DecoradorAbarrote::DecoradorAbarrote(const DecoradorAbarrote& copia)
     this->peso = copia.peso;
     this->precioCosto = copia.precioCosto;
     this->categoria = copia.categoria;
+    this->cantidad = copia.cantidad;
 }
 
 DecoradorAbarrote::~DecoradorAbarrote(){
@@ -45,35 +47,25 @@ void DecoradorAbarrote::setSiguiente(ComponenteAbstracto* ptrCarro)
 
 string DecoradorAbarrote::toString() const{
     stringstream s;
-    s << "Cantidad : 1" << endl;
-    s << "Abarrote: ";
-    s <<"nombre: " << this->nombreComercial << " ";
-    s << "codigo: " << this->codigo << " ";
-    s << "descripcion: " << this->descripcion << " ";
-    s << "empresa: " << this->nombreComercial << " ";
-    s << "Procedencia: ";
-    if (this->nacional) {
-        s << "nacional " << " ";
-    }
-    else {
-        s << "internacional " << " ";
-    }
-    s << "fecha vecimiento: " << this->ptrPer->toString() << " ";
-    s << "precio: " << this->precioCosto;
-    s << endl;
+    s << "\t    " << this->cantidad << "\t\t   " << this->nombreComercial<< "\t $" << this->precioCosto << "\t           $" << this->precioCosto * this->cantidad << "\n";
     s << *ptrCarrito;
     return s.str();
 }
 
 double DecoradorAbarrote::getTotal()
 {
-    return this->precioCosto + ptrCarrito->getTotal();
+    return (this->precioCosto * cantidad) + ptrCarrito->getTotal();
 }
 
 double DecoradorAbarrote::getGanancia()
 {
     Categoria c;
-    return this->precioCosto * (c.porceganancia(categoria)) + ptrCarrito->getTotal();
+    return (this->precioCosto*cantidad) * (c.porceganancia(categoria)/100) + ptrCarrito->getTotal();
+}
+
+double DecoradorAbarrote::getCantidad()
+{
+    return this->cantidad;
 }
 
 ComponenteAbstracto* DecoradorAbarrote::clonar() const

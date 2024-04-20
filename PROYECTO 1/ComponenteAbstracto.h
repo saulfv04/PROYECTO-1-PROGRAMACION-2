@@ -12,7 +12,7 @@ public:
 	virtual string toString() const = 0;
 	virtual double getTotal() = 0;
 	virtual ComponenteAbstracto* clonar() const = 0;
-	/*virtual int getCantidad() = 0;*/
+	virtual double getCantidad() = 0;
 
 	friend ostream& operator<<(ostream&, ComponenteAbstracto&);
 };
