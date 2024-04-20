@@ -78,8 +78,6 @@ Lista<T>& Lista<T>::operator=(const Lista& l) {
 template<class T>
 Lista<T>::~Lista() {
 	eliminarTodos();
-	cout << "Borrando Lista" << endl;
-
 }
 
 template<class T>

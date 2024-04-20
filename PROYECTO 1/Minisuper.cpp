@@ -4,7 +4,6 @@ Minisuper::Minisuper(){
 	this->listPersona = new Lista<Persona>();
 	this->listProducto = new Lista<Producto>();
 	this->listVenta = new Lista<Venta>();
-	cout << "Creando minisuper" << endl;
 }
 
 Minisuper::~Minisuper(){
@@ -17,7 +16,6 @@ Minisuper::~Minisuper(){
 	if (this->listVenta) {
 		delete listVenta;
 	}
-	cout << "Borrando Minisuper" <<endl;
 }
 
 void Minisuper::agregarPersona(Persona* p){

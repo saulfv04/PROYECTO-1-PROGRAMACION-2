@@ -22,8 +22,6 @@ Fecha::Fecha(const Fecha& copia)
 }
 
 Fecha::~Fecha(){
-    cout << "Borrando fecha" << endl;
-
 }
 
 int Fecha::getFecha()
@@ -76,9 +74,18 @@ istream& operator>>(istream& i, Fecha& f)
     cout << "Agregar fecha: "<<endl;
     cout << "Anno: " << endl;
     i >> f.anio;
+    if (f.anio < 2020 ) {
+        throw string("El anno ingresado no es posible...");
+    }
     cout << "Mes: " << endl;
     i >> f.mes;
+    if (f.mes <= 0 && f.mes >=13) {
+        throw string("El mes ingresado no es posible...");
+    }
     cout << "Dia: " << endl;
     i >> f.dia;
+    if (f.dia <= 0 || f.dia >=32) {
+        throw string("El dia ingresado no es posible...");
+    }
     return i;
 }

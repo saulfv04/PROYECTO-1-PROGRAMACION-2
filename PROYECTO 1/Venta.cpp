@@ -26,8 +26,6 @@ Venta::~Venta()
     if (carrito) {
         delete carrito;
     }
-    cout << "Borrando Venta" << endl;
-
 }
 ComponenteAbstracto* Venta::getCarrito(){
     return this->carrito;
