@@ -1,7 +1,7 @@
 #include "DecoradorEmbutido.h"
 #include "Categoria.h"
 
-DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, Perecedero* ptrPer, string marca, string nombreAni, string partAni, string codi, string nombre, string desc, double pes, double prec, bool nac,double can)
+DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, Perecedero* ptrPer, string marca, string nombreAni, string partAni, string codi, string nombre, string desc, double pes, double prec, bool nac,int can)
 {
 	this->ptrCarrito = carro;
 	this->ptrEmpaque = emp;

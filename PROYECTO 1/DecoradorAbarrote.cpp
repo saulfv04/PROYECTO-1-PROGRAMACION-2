@@ -1,6 +1,6 @@
 #include "DecoradorAbarrote.h"
 
-DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* carro, Perecedero* ptrPere, string eN, string c, string nC, string d, bool n, double p, double pre, double can)
+DecoradorAbarrote::DecoradorAbarrote(ComponenteAbstracto* carro, Perecedero* ptrPere, string eN, string c, string nC, string d, bool n, double p, double pre, int can)
 {
     this->ptrCarrito = carro;
     this->ptrPer = ptrPere;

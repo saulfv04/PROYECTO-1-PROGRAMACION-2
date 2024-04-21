@@ -14,5 +14,7 @@ public:
 	virtual ComponenteAbstracto* clonar() const = 0;
 	virtual double getCantidad() = 0;
 
+	//virtual void guardarComponenteAbstracto(ofstream&) = 0;
+
 	friend ostream& operator<<(ostream&, ComponenteAbstracto&);
 };

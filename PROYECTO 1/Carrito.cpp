@@ -41,10 +41,7 @@ ComponenteAbstracto* Carrito::clonar() const
     return NULL;
 }
 
-//int Carrito::getCantidad()
-//{
-//    return 0;
-//}
+
 
 ostream& operator<<(ostream& o, Carrito& ca)
 {

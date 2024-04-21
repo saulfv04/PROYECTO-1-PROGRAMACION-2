@@ -28,15 +28,16 @@ string Persona::getCodigo()const{
 	return this->cedula;
 }
 
-int Persona::getCantVentas() const
+int Persona::getCantVentas()
 {
 	return this->cantVentas;
 }
 
-void Persona::setCantidadVentas(int c)
+void Persona::setCantidadVentas(int n)
 {
-	this->cantVentas = c;
+	this->cantVentas = n;
 }
+
 
 string Persona::toString()const
 {
