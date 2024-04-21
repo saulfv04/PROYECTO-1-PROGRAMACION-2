@@ -7,6 +7,7 @@ using namespace std;
 class Persona{
 private:
 	string cedula;
+	int cantVentas;
 
 public:
 	//Contructores y Desctructor
@@ -15,8 +16,11 @@ public:
 	Persona(const Persona&);
 	virtual ~Persona();
 
+
 	//Accesores
 	string getCodigo()const;
+	int getCantVentas()const;
+	void setCantidadVentas(int);
 
 	//Información clase
 	string toString()const;
