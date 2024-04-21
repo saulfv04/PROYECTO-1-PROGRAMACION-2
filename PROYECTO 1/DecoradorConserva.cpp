@@ -1,7 +1,7 @@
 #include "DecoradorConserva.h"
 
 
-DecoradorConserva::DecoradorConserva(ComponenteAbstracto* ptrCarro, string n, string c, string d, double p, bool e,double can)
+DecoradorConserva::DecoradorConserva(ComponenteAbstracto* ptrCarro, string n, string c, string d, double p, bool e,int can)
 {
     this->ptrCarrito = ptrCarro;
     this->nombre = n;

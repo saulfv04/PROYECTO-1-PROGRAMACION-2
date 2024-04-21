@@ -9,9 +9,9 @@ private:
 	double precio;
 	bool envasado;
 	string categoria;
-	double cantidad;
+	int cantidad;
 public:
-	DecoradorConserva(ComponenteAbstracto*, string,string,string,double,bool,double);
+	DecoradorConserva(ComponenteAbstracto*, string,string,string,double,bool,int);
 	DecoradorConserva(const DecoradorConserva&);
 	virtual ~DecoradorConserva();
 	virtual ComponenteAbstracto* getSiguiente();
@@ -21,6 +21,10 @@ public:
 	virtual double getGanancia();
 	virtual double getCantidad();
 	virtual ComponenteAbstracto* clonar() const;
+
+	//Archivos
+	//virtual void guardarComponenteAbstracto(ofstream&);
+	//static DecoradorConserva* leerDecoAbarrote(ifstream&);
 
 	//Sobrecargas
 	friend ostream& operator<<(ostream&, DecoradorConserva&);

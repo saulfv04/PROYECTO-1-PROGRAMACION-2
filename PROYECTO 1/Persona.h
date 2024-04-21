@@ -19,7 +19,7 @@ public:
 
 	//Accesores
 	string getCodigo()const;
-	int getCantVentas()const;
+	int getCantVentas();
 	void setCantidadVentas(int);
 
 	//Información clase
