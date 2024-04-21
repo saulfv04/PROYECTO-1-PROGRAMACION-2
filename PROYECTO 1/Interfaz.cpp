@@ -597,6 +597,7 @@ void Interfaz::reporteTopClientes(Minisuper* mini) {
 	}
     cout << "Hola";
     cout << "hola";
+    cout << "hola";
     delete listaClientes;
 	system("pause");
 }
