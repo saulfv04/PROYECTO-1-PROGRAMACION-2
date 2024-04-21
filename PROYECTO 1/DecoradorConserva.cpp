@@ -67,6 +67,66 @@ ComponenteAbstracto* DecoradorConserva::clonar() const
     return new DecoradorConserva(*this);
 }
 
+void DecoradorConserva::guardarComponenteAbstracto(ofstream& file)
+{
+    string envasadoF;
+    if (this->envasado)envasadoF = "Envasado";
+    else envasadoF = "No envasado";
+
+    file << "Conserva" 
+        << '\t' << codigo 
+        << '\t' << nombre 
+        << '\t' << descricion 
+        << '\t' << precio 
+        << '\t' << envasadoF 
+        << '\t' << cantidad << '\n';
+    if (ptrCarrito != nullptr) {
+        ptrCarrito->guardarComponenteAbstracto(file);
+    }
+}
+
+DecoradorConserva* DecoradorConserva::leerDecoConserva(ifstream& file)
+{
+    string tipo, cantidadF, envasadoF, codigoF, nombreComercialF, descripcionF, precioCostoF;
+    bool env;
+    double precioCost;
+    int cant;
+    ComponenteAbstracto* car = NULL;
+
+    getline(file, tipo, '\t');
+    getline(file, codigoF, '\t');
+    getline(file, nombreComercialF, '\t');
+    getline(file, descripcionF, '\t');
+    getline(file, precioCostoF, '\t');
+    getline(file, envasadoF, '\t');
+    getline(file, cantidadF, '\n');
+
+
+    precioCost = stod(precioCostoF);
+    cant = stoi(cantidadF);
+
+    if (envasadoF == "Envasado") {
+        env = true;
+    }
+    else {
+        env = false;
+    }
+
+    if (tipo == "Abarrote") {
+        car = DecoradorAbarrote::leerDecoAbarrote(file);
+    }
+    if (tipo == "Embutido") {
+        car = DecoradorEmbutido::leerDecoEmbutido(file);
+    }
+    if (tipo == "Conserva") {
+        car = leerDecoConserva(file);
+    }
+    if (tipo == "Carrito") {
+        car = Carrito::leerCarrito(file);
+    }
+    return new DecoradorConserva(car,nombreComercialF,codigoF,descripcionF, precioCost,env,cant);
+}
+
 ostream& operator<<(ostream& o , DecoradorConserva& con)
 {
     o <<con.toString()<< endl;

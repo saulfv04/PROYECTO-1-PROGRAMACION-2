@@ -34,7 +34,6 @@ Nodo<T>::~Nodo()
 {
 	if (dato)//Esto depende de la aplicacion
 		delete dato;
-	cout << "Borrando Datos" << endl;
 }
 
 template<class T>

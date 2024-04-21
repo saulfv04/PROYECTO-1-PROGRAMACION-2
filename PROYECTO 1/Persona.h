@@ -13,6 +13,7 @@ public:
 	//Contructores y Desctructor
 	Persona();
 	Persona(string);
+	Persona(string, int);
 	Persona(const Persona&);
 	virtual ~Persona();
 
@@ -24,6 +25,10 @@ public:
 
 	//Información clase
 	string toString()const;
+
+	//Archivos
+	virtual void guardarPersona(ofstream&);
+	static Persona* leerPersona(ifstream&);
 
 	//Sobrecargas clase Persona
 	virtual  Persona* clonar()const;

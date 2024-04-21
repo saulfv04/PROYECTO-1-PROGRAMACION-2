@@ -1,6 +1,9 @@
 #pragma once
 #include "ProductoDecorador.h"
 #include "Embutido.h"
+#include "DecoradorAbarrote.h"
+#include "DecoradorConserva.h"
+#include "Carrito.h"
 class DecoradorEmbutido : public ProductoDecorador {
 private:
     Empaque* ptrEmpaque;
@@ -30,8 +33,8 @@ public:
     virtual ComponenteAbstracto* clonar() const;
 
     //Archivos
-    //virtual void guardarComponenteAbstracto(ofstream&);
-    //static DecoradorEmbutido* leerDecoEmbutido(ifstream&);
+    virtual void guardarComponenteAbstracto(ofstream&);
+    static DecoradorEmbutido* leerDecoEmbutido(ifstream&);
 
     //Sobrecargas
     friend ostream& operator<<(ostream& o, DecoradorEmbutido&);
