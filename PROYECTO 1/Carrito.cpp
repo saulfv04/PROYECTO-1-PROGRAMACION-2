@@ -41,6 +41,12 @@ ComponenteAbstracto* Carrito::clonar() const
     return NULL;
 }
 
+void Carrito::guardarComponenteAbstracto(ofstream&){}
+
+Carrito* Carrito::leerCarrito(ifstream&){
+    return new Carrito();
+}
+
 
 
 ostream& operator<<(ostream& o, Carrito& ca)

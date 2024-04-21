@@ -22,7 +22,7 @@ public:
 	virtual ComponenteAbstracto* clonar() const = 0;
 	
 	//Archivos
-	/*virtual void guardarComponenteAbstracto(ofstream&) = 0;*/
+	virtual void guardarComponenteAbstracto(ofstream&) = 0;
 
 };
 
