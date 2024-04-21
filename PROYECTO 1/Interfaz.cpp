@@ -557,69 +557,49 @@ int Interfaz::menuReportesTopClientes()
 }
 void Interfaz::reporteTopClientes(Minisuper* mini) {
     system("cls");
-    //Recorrer la lista de ventas y ver cuantas veces se repite la cedula de un cliente
-    //Luego se ordena de mayor a menor y se imprime los 5 primeros
-    system("cls");
-    int aux = mini->getSizeVenta();
-    string* cedulas = new string[aux]();
-    int* contador = new int[aux]();
-    for (int i = 0; i < aux; i++) {
-        cedulas[i] = "";
-        contador[i] = 0;
-    }
-    Nodo <Venta>* pAct = mini->getVenta();
-    int i = 0;
+    Lista<Persona> *listaClientes = new Lista<Persona>();
+    Nodo <Persona>* pAct = mini->getCliente();
     while (pAct) {
-        cedulas[i] = pAct->obtenerInfo()->getPersona();
-        contador[i] = 0;
-        pAct = pAct->obtenerSig();
-        i++;
-    }
-    for (int i = 0; i < aux; i++) {
-        for (int j = 0; j < aux; j++) {
-            if (cedulas[i] == cedulas[j]) {
-                contador[i]++;
-            }
-        }
-    }
- 
-    // Eliminar duplicados
-    for (int i = 0; i < aux; i++) {
-        for (int j = i + 1; j < aux; ) {
-            if (cedulas[i] == cedulas[j]) {
-                for (int k = j; k < aux - 1; k++) {
-                    cedulas[k] = cedulas[k + 1];
-                    contador[k] = contador[k + 1];
-                }
-                aux--;
-            }
-            else {
-                j++;
-            }
-        }
+		listaClientes->agregarFinal(pAct->obtenerInfo()->clonar());
+		pAct = pAct->obtenerSig();
+	}
+    if (listaClientes->getPrimero() == nullptr || listaClientes->getPrimero()->obtenerSig() == nullptr) {
+        cout<<"Lista esta vacia"<<endl;
     }
 
-    // Ordenar
-    for (int i = 0; i < aux; i++) {
-        for (int j = 0; j < aux; j++) {
-            if (contador[i] > contador[j]) {
-                swap(contador[i], contador[j]);
-                swap(cedulas[i], cedulas[j]);
+    bool intercambio;
+    do {
+        intercambio = false;
+        Nodo<Persona>* actual = listaClientes->getPrimero();
+        while (actual->obtenerSig() != nullptr) {
+            if (actual->obtenerInfo()->getCantVentas() < actual->obtenerSig()->obtenerInfo()->getCantVentas()) {
+                // Intercambiar las personas
+                Persona temp = *actual->obtenerInfo();
+                *actual->obtenerInfo() = *actual->obtenerSig()->obtenerInfo();
+                *actual->obtenerSig()->obtenerInfo() = temp;
+                intercambio = true;
             }
+            actual = actual->obtenerSig();
         }
-    }
+    } while (intercambio);
 
-    cout << "__________________________________________" << endl;
-    cout << "|          -TOP 5 CLIENTES-              |" << endl;
-    cout << "|                                        |" << endl;
-    cout << "|________________________________________|" << endl;
-    for (int i = 0; i < 5; i++) {
-        cout << "Cliente: " << cedulas[i] << " Cantidad de Facturas: " << contador[i] << endl;
-    }
-    delete[] cedulas;
-    delete[] contador;
-    system("pause");
+    if (listaClientes->size() < 5) {
+		cout << "No hay suficientes clientes para mostrar el top 5" << endl;
+		return;
+	}
+
+    Nodo<Persona>* actual = listaClientes->getPrimero();
+    int i = 0;
+    while (actual && i < 5) {
+		cout << *actual->obtenerInfo() << endl;
+		actual = actual->obtenerSig();
+		i++;
+	}
+    delete listaClientes;
+	system("pause");
 }
+
+
 
 int Interfaz::menuCreacionVentas()
 {
@@ -688,6 +668,7 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
         ventaNueva->setCliente(persona);
         ventaNueva->setFecha(fNueva);
         ventaNueva->setCodigo(codVenta);
+        personaVenta->obtenerInfo()->setCantidadVentas(personaVenta->obtenerInfo()->getCantVentas() + 1);
         ProductoDecorador* pd = dynamic_cast<ProductoDecorador*>(carrito);
         if (pd!=nullptr) {
             ventaNueva->setCarrito(pd);
@@ -780,6 +761,7 @@ ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& 
       system("cls");
       cout << "Desea continuar su venta (S)SI  (N)NO" << endl;
       cin >> continuar;
+      return &c;
       system("pause");
 }
 //Menu para reporte Facturas por su cédula

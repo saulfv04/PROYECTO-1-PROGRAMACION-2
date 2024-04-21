@@ -2,16 +2,19 @@
 
 Persona::Persona(){
 	this->cedula = "i";
+	this->cantVentas = 0;
 	
 }
 
 Persona::Persona(string c){
 
 	this->cedula = c;
+	this->cantVentas = 0;
 }
 
 Persona::Persona(const Persona& p){
 	this->cedula = p.cedula;
+	this->cantVentas = p.cantVentas;
 	
 }
 
@@ -25,10 +28,21 @@ string Persona::getCodigo()const{
 	return this->cedula;
 }
 
+int Persona::getCantVentas() const
+{
+	return this->cantVentas;
+}
+
+void Persona::setCantidadVentas(int c)
+{
+	this->cantVentas = c;
+}
+
 string Persona::toString()const
 {
 	stringstream s;
 	s << "Cedula: " << this->cedula << endl;
+	s<< "Cantidad de Ventas: " << this->cantVentas << endl;
 	return s.str();
 }
 
