@@ -100,8 +100,39 @@ Venta* Venta::clonar() const
     return new Venta(*this);
 }
 
+
+void Venta::guardarVenta(ofstream& file){
+
+
+    file << "Conserva"
+        << '\t' << codigo
+        << '\t' << cedulaCliente << '\n';
+  /*  if (this->carrito!=nullptr) {
+        this->carrito->guardarComponenteAbstracto(file);
+    }*/
+    if (fVenta != nullptr) {
+        this->fVenta->guardarFecha(file);
+    }
+}
+Venta* Venta::leerVenta(ifstream& file){
+    string codigoL,cedL;
+    ProductoDecorador* car = NULL;
+    Fecha* f = nullptr;
+
+    getline(file, codigoL, '\t');
+    getline(file, cedL, '\n');
+
+
+    f = Fecha::leerFecha(file);
+
+
+    return new Venta(car,cedL,f,codigoL );
+}
+
 ostream& operator<<(ostream& o , Venta& v)
 {
 	o << v.toString() << endl;
 	return o;
 }
+
+

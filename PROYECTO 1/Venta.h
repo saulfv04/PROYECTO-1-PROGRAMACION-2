@@ -1,8 +1,10 @@
 #pragma once
 #include "ProductoDecorador.h"
 #include "Fecha.h"
-using namespace std;
+#include <iostream>
+#include <sstream>
 
+using namespace std;
 
 class Venta{
 	private:
@@ -41,5 +43,12 @@ class Venta{
 		//Sobrecargas
 		Venta* clonar()const;
 		friend ostream& operator<<(ostream&, Venta&);
+
+
+		//Archivos
+
+		virtual void guardarVenta(ofstream&);
+
+		static Venta* leerVenta(ifstream&);
 };
 

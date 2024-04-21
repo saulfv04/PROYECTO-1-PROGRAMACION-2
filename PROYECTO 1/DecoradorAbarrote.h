@@ -1,6 +1,9 @@
 #pragma once
 #include "ProductoDecorador.h"
 #include "Abarrote.h"
+#include "DecoradorConserva.h"
+#include "DecoradorEmbutido.h"
+#include "Carrito.h"
 class DecoradorAbarrote : public ProductoDecorador{
 private:
 
@@ -13,9 +16,9 @@ private:
 	double peso;
 	double precioCosto;
 	string categoria;
-	double cantidad;
+	int cantidad;
 public:
-	DecoradorAbarrote(ComponenteAbstracto*, Perecedero*, string, string, string, string, bool, double, double,double);
+	DecoradorAbarrote(ComponenteAbstracto*, Perecedero*, string, string, string, string, bool, double, double,int);
 	DecoradorAbarrote(const DecoradorAbarrote&);
 	virtual ~DecoradorAbarrote();
 	virtual ComponenteAbstracto* getSiguiente();
@@ -26,6 +29,9 @@ public:
 	virtual double getCantidad();
 	virtual ComponenteAbstracto* clonar() const;
 
+	//Archivos
+	virtual void guardarComponenteAbstracto(ofstream&);
+	static DecoradorAbarrote* leerDecoAbarrote(ifstream&);
 
 	//Sobrecargas
 	friend ostream& operator<<(ostream&, DecoradorAbarrote&);

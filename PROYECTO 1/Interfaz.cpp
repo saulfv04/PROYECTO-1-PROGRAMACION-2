@@ -564,7 +564,7 @@ void Interfaz::reporteTopClientes(Minisuper* mini) {
 		pAct = pAct->obtenerSig();
 	}
     if (listaClientes->getPrimero() == nullptr || listaClientes->getPrimero()->obtenerSig() == nullptr) {
-        cout<<"Lista esta vacia"<<endl;
+        throw string("Lista insuficiente para generar un top"); 
     }
 
     bool intercambio;
@@ -584,7 +584,7 @@ void Interfaz::reporteTopClientes(Minisuper* mini) {
     } while (intercambio);
 
     if (listaClientes->size() < 5) {
-		cout << "No hay suficientes clientes para mostrar el top 5" << endl;
+        throw string("No hay suficientes clientes para mostrar el top 5");
 		return;
 	}
 
@@ -682,11 +682,11 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
         }
 	}
     else {
-
+        throw string("El cliente a facturar no existe");
 	}
     }
     else {
-        cout << "Codigo de factura existente..." << endl;
+        throw string("Codigo de factura existente...");
     }
     system("pause");
 }
@@ -756,7 +756,7 @@ ComponenteAbstracto* Interfaz::crearVenta(Minisuper* mini, ComponenteAbstracto& 
             }
        }
       else {
-         cout << "Producto no existe" << endl;
+          throw string("El producto digitado no existe"); 
       }
       system("cls");
       cout << "Desea continuar su venta (S)SI  (N)NO" << endl;

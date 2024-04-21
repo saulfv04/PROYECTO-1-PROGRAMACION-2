@@ -1,7 +1,7 @@
 #include "DecoradorEmbutido.h"
 #include "Categoria.h"
 
-DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, Perecedero* ptrPer, string marca, string nombreAni, string partAni, string codi, string nombre, string desc, double pes, double prec, bool nac,double can)
+DecoradorEmbutido::DecoradorEmbutido(ComponenteAbstracto* carro, Empaque* emp, Perecedero* ptrPer, string marca, string nombreAni, string partAni, string codi, string nombre, string desc, double pes, double prec, bool nac,int can)
 {
 	this->ptrCarrito = carro;
 	this->ptrEmpaque = emp;
@@ -85,6 +85,86 @@ double DecoradorEmbutido::getCantidad()
 ComponenteAbstracto* DecoradorEmbutido::clonar() const
 {
 	return new DecoradorEmbutido(*this);
+}
+
+void DecoradorEmbutido::guardarComponenteAbstracto(ofstream& file)
+{
+	string nacio;
+	if (this->nacional) {
+		nacio = "Nacional";
+	}
+	else {
+		nacio = "Internacional";
+	}
+	file << "Embutido" 
+		<< '\t' << codigo 
+		<< '\t' << nombreComercial 
+		<< '\t' << descripcion
+		<< '\t' << precioCosto 
+		<< '\t' << peso 
+		<< '\t' << nombreAnimal 
+		<< '\t' << parteDelAnimal 
+		<< '\t'<< marca 
+		<< '\t'<< nacio 
+		<< '\t' << cantidad << '\n';
+	if (ptrCarrito != nullptr) {
+		ptrCarrito->guardarComponenteAbstracto(file);
+	}
+	if (this->ptrPer != nullptr) {
+		this->ptrPer->guardarPerecedero(file);
+	}
+	if (this->ptrEmpaque != nullptr) {
+		this->ptrEmpaque->guardarEmpaque(file);
+	}
+}
+
+DecoradorEmbutido* DecoradorEmbutido::leerDecoEmbutido(ifstream& file)
+{
+	string tipo, cantidadF, codigoF, nombreComercialF, descripcionF, precioCostoF, peso, nacion, nomAnimal,partAnimal,marc;
+	bool env;
+	double precioCost, pesoT;
+	int cant;
+	ComponenteAbstracto* car = NULL;
+	Perecedero* pere = NULL;
+	Empaque* empa = NULL;
+	getline(file, tipo, '\t');
+	getline(file, codigoF, '\t');
+	getline(file, nombreComercialF, '\t');
+	getline(file, descripcionF, '\t');
+	getline(file, precioCostoF, '\t');
+	getline(file, peso, '\t');
+	getline(file, nomAnimal, '\t');
+	getline(file, partAnimal, '\t');
+	getline(file, marc, '\t');
+	getline(file, cantidadF, '\n');
+
+
+	precioCost = stod(precioCostoF);
+	pesoT = stod(peso);
+	cant = stoi(cantidadF);
+
+	if (nacion == "Envasado") {
+		env = true;
+	}
+	else {
+		env = false;
+	}
+	pere = Perecedero::leerPerecedero(file);
+	empa = Empaque::leerEmpaque(file);
+
+	if (tipo == "Abarrote") {
+		car =DecoradorAbarrote:: leerDecoAbarrote(file);
+	}
+	if (tipo == "Embutido") {
+		car = leerDecoEmbutido(file);
+	}
+	if (tipo == "Conserva") {
+		car = DecoradorConserva::leerDecoConserva(file);
+	}
+	if (tipo == "Carrito") {
+		car = Carrito::leerCarrito(file);
+	}
+	return new DecoradorEmbutido(car, empa,pere,marc,nomAnimal,partAnimal, codigoF, nombreComercialF, descripcionF, pesoT, precioCost, env, cant);
 }
 
 

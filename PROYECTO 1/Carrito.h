@@ -13,6 +13,10 @@ public:
 	virtual double getCantidad();
 	virtual ComponenteAbstracto* clonar() const;
 
+	//Archivos
+	virtual void guardarComponenteAbstracto(ofstream&);
+	static Carrito* leerCarrito(ifstream&);
+
 	//Sobrecargas
 	friend ostream& operator<<(ostream&, Carrito&);
 

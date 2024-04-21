@@ -13,17 +13,22 @@ public:
 	//Contructores y Desctructor
 	Persona();
 	Persona(string);
+	Persona(string, int);
 	Persona(const Persona&);
 	virtual ~Persona();
 
 
 	//Accesores
 	string getCodigo()const;
-	int getCantVentas()const;
+	int getCantVentas();
 	void setCantidadVentas(int);
 
 	//Información clase
 	string toString()const;
+
+	//Archivos
+	virtual void guardarPersona(ofstream&);
+	static Persona* leerPersona(ifstream&);
 
 	//Sobrecargas clase Persona
 	virtual  Persona* clonar()const;

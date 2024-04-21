@@ -33,13 +33,11 @@ public:
 	//Clonación
 	virtual Lista<T>* clonar()const;
 
+	//Archivos
+	virtual void guardarContenedor(ofstream&);
+	static Lista* leerContenedor(ifstream&);
+
 	friend ostream& operator<<(ostream& o, Lista& l) { return o << l.toString(); }
-
-
-
-
-
-
 
 };
 
@@ -90,6 +88,26 @@ template<class T>
  Lista<T>* Lista<T>::clonar() const{
 	return new Lista<T>(*this);
 }
+
+ template<class T>
+ void Lista<T>::guardarContenedor(ofstream& file)
+ {
+	 Nodo<T>* aux = inicio;
+
+	 if (file.is_open()) {
+		 while (aux != nullptr) {
+			 aux;
+			 aux = aux;
+		 }
+	 }
+	 file.close();
+ }
+
+ template<class T>
+ Lista<T>* Lista<T>::leerContenedor(ifstream& file)
+ {
+	 return nullptr;
+ }
 
 
 
