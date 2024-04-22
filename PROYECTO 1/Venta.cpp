@@ -1,5 +1,8 @@
 #include "Venta.h"
-#include <iomanip>
+#include "ProductoDecorador.h"
+#include "DecoradorAbarrote.h"
+#include "DecoradorEmbutido.h"
+#include "DecoradorConserva.h"
 
 Venta::Venta(ProductoDecorador* carr, string per, Fecha* f, string cod) :carrito(carr), cedulaCliente(per), fVenta(f), codigo(cod){}
 
@@ -104,28 +107,35 @@ Venta* Venta::clonar() const
 void Venta::guardarVenta(ofstream& file){
 
 
-    file << "Conserva"
+    file << "Venta"
         << '\t' << codigo
         << '\t' << cedulaCliente << '\n';
-  /*  if (this->carrito!=nullptr) {
-        this->carrito->guardarComponenteAbstracto(file);
-    }*/
     if (fVenta != nullptr) {
         this->fVenta->guardarFecha(file);
     }
+    if (this->carrito!=nullptr) {
+        this->carrito->guardarComponenteAbstracto(file);
+    }
 }
 Venta* Venta::leerVenta(ifstream& file){
-    string codigoL,cedL;
+    string codigoL,cedL,tipo;
     ProductoDecorador* car = NULL;
     Fecha* f = nullptr;
 
     getline(file, codigoL, '\t');
-    getline(file, cedL, '\n');
-
-
+    getline(file, cedL, '\t');
     f = Fecha::leerFecha(file);
-
-
+    getline(file, tipo, '\t');
+   
+    if (tipo == "Abarrote") {
+        car = DecoradorAbarrote::leerDecoAbarrote(file);
+    }
+    if (tipo == "Embutido") {
+        car = DecoradorEmbutido::leerDecoEmbutido(file);
+    }
+    if (tipo == "Conserva") {
+        car = DecoradorConserva::leerDecoConserva(file);
+    }
     return new Venta(car,cedL,f,codigoL );
 }
 

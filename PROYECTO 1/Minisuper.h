@@ -53,5 +53,17 @@ public:
 	string toStringListProd();
 	string toStringListClientes();
 
+	void guardarClientes();
+	void guardarProductos();
+	void guardarVentas();
+
+	void leerClientes();
+	void leerProductos();
+	void leerVentas();
+
+
+
+
+
 };
 

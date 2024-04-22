@@ -94,4 +94,128 @@ string Minisuper::toStringListClientes()
 	return s.str();
 }
 
+void Minisuper::guardarClientes()
+{
+	Lista<Persona>* listaClient = listPersona->clonar();
+	Nodo<Persona>* pAct = listaClient->getPrimero();
+	ofstream file;
+	file.open("../Clientes.txt", ios::out);
+	if (file.good()) {
+		while (pAct) {
+			pAct->obtenerInfo()->guardarPersona(file);
+			pAct = pAct->obtenerSig();
+		}
+		file.close();
+	}
+	else {
+		cout << "Error al abrir el archivo" << endl;	
+	}
+}
+
+void Minisuper::guardarProductos()
+{
+	Lista<Producto>* listaProd = listProducto->clonar();
+	Nodo<Producto>* pAct = listaProd->getPrimero();
+	ofstream file;
+	file.open("../Productos.txt", ios::out);
+	if (file.good()) {
+		while (pAct) {
+			pAct->obtenerInfo()->guardarProducto(file);
+			pAct = pAct->obtenerSig();
+		}
+		file.close();
+	}
+	else {
+		cout << "Error al abrir el archivo" << endl;
+	}
+}
+
+void Minisuper::guardarVentas() {
+	Lista<Venta>* listaVentas = listVenta->clonar();
+	Nodo<Venta>* pAct = listaVentas->getPrimero();
+	ofstream file;
+	file.open("../Ventas.txt", ios::out);
+	if (file.good()) {
+		while (pAct) {
+			pAct->obtenerInfo()->guardarVenta(file);
+			pAct = pAct->obtenerSig();
+		}
+		file.close();
+	}
+	else {
+		cout << "Error al abrir el archivo" << endl;
+	}
+}
+
+void Minisuper::leerClientes() {
+	Nodo<Persona>* pAct = listPersona->getPrimero();
+	ifstream file;
+	file.open("../Clientes.txt", ios::in);
+	if (file.good()) {
+		while (!file.eof()) {
+			Persona* p = Persona::leerPersona(file);
+			if (p != nullptr) {
+				agregarPersona(p);
+			}
+		}
+		file.close();
+	}
+	else {
+		cout << "Error al abrir el archivo" << endl;
+	}
+}
+
+void Minisuper::leerProductos() {
+	Nodo<Producto>* pAct = listProducto->getPrimero();
+	string tipo;
+	ifstream file;
+	file.open("../Productos.txt", ios::in);
+	if (file.good()) {
+		while (!file.eof()) {
+			file >> tipo;
+			Producto* p = NULL;
+			if (tipo == "Abarrote") {
+				p = Abarrote::leerAbarrote(file);
+			}
+			if (tipo == "Embutido") {
+				p = Embutido::leerEmbutido(file);
+			}
+			if (tipo == "Conserva") {
+				p = Conserva::leerConserva(file);
+			}
+			if (p != nullptr) {
+				agregarProducto(p);
+			}	
+		}
+		file.close();
+	}
+	else {
+		cout << "Error al abrir el archivo" << endl;
+	}
+}
+
+void Minisuper::leerVentas()
+{
+	Venta* venta = NULL;
+	string tipo;
+	ifstream file;
+	file.open("../Ventas.txt", ios::in);
+	if (file.good()) {
+		while (!file.eof()) {
+			file >> tipo;
+			if (tipo == "Venta") {
+				venta = Venta::leerVenta(file);
+				if (venta != nullptr) {
+					agregarVenta(venta);
+				}
+			}
+		}
+		file.close();
+	}
+	else {
+		cout << "Error al abrir el archivo" << endl;
+	}
+	
+}
+
 
