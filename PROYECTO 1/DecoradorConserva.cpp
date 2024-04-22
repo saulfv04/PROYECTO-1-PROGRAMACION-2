@@ -73,13 +73,7 @@ void DecoradorConserva::guardarComponenteAbstracto(ofstream& file)
     if (this->envasado)envasadoF = "Envasado";
     else envasadoF = "No envasado";
 
-    file << "Conserva" 
-        << '\t' << codigo 
-        << '\t' << nombre 
-        << '\t' << descricion 
-        << '\t' << precio 
-        << '\t' << envasadoF 
-        << '\t' << cantidad << '\n';
+    file << "Conserva" << '\t' << codigo << '\t' << nombre << '\t' << descricion << '\t' << precio << '\t' << envasadoF << '\t' << cantidad << '\n';
     if (ptrCarrito != nullptr) {
         ptrCarrito->guardarComponenteAbstracto(file);
     }
@@ -93,7 +87,7 @@ DecoradorConserva* DecoradorConserva::leerDecoConserva(ifstream& file)
     int cant;
     ComponenteAbstracto* car = NULL;
 
-    getline(file, tipo, '\t');
+
     getline(file, codigoF, '\t');
     getline(file, nombreComercialF, '\t');
     getline(file, descripcionF, '\t');
@@ -111,7 +105,7 @@ DecoradorConserva* DecoradorConserva::leerDecoConserva(ifstream& file)
     else {
         env = false;
     }
-
+    getline(file, tipo, '\t');
     if (tipo == "Abarrote") {
         car = DecoradorAbarrote::leerDecoAbarrote(file);
     }

@@ -288,9 +288,8 @@ void Abarrote::guardarProducto(ofstream& file)
     else {
         Nacional = "(Falso)";
     }
-    file << "Abarrote"<<empresaNombre<<'\t' << Nacional << '\t' << peso << '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion
-        << '\t' << precioCosto << '\t' << categoria << '\t' << existencia << '\t'
-        << '\t' << limite <<'\t';
+    file << "Abarrote"<< '\t' <<empresaNombre<<'\t' << Nacional << '\t' << peso << '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion
+        << '\t' << precioCosto << '\t' << categoria << '\t' << existencia << '\t' << limite <<'\n';
     if (ptrFechaIng!= NULL) {
         ptrFechaIng->guardarFecha(file);
     }
@@ -305,32 +304,31 @@ Abarrote* Abarrote::leerAbarrote(ifstream& file)
     Fecha* fecha = NULL;
     Perecedero* venc = NULL;
     double pCost, pes;
-    int exis, lim;
+    int exis, limi;
     bool nac;
+    getline(file, NombreEmpresa, '\n');
+    getline(file, Nacional, '\t');
+    getline(file, Peso, '\t');
     getline(file, Codigo, '\t');
     getline(file, NombreComercial, '\t');
     getline(file, Descripcion, '\t');
     getline(file, PrecioCosto, '\t');
     getline(file, Categoria, '\t');
     getline(file, Existencia, '\t');
-    getline(file, Limite, '\t');
-    getline(file, Peso, '\t');
-    getline(file, Nacional, '\t');
-    getline(file, Limite, '\t');
-    getline(file, NombreEmpresa, '\n');
+    getline(file, Limite, '\n');
 
     fecha = Fecha::leerFecha(file);
     venc = Perecedero::leerPerecedero(file);
 
     exis = stoi(Existencia);
-    lim = stoi(Limite);
+    limi = stoi(Limite);
     pes = stod(Peso);
     pCost = stod(PrecioCosto);
 
     if (Nacional == "Nacional")nac = true;
     else nac = false;
 
-    return new Abarrote(venc,fecha, NombreEmpresa,nac, pes,Codigo, NombreComercial, Descripcion, pCost, Categoria, exis, lim);
+    return new Abarrote(venc,fecha, NombreEmpresa,nac, pes,Codigo, NombreComercial, Descripcion, pCost, Categoria, exis, limi);
 }
 
 
