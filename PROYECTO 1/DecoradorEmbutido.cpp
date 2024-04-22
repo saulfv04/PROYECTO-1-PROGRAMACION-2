@@ -96,17 +96,7 @@ void DecoradorEmbutido::guardarComponenteAbstracto(ofstream& file)
 	else {
 		nacio = "Internacional";
 	}
-	file << "Embutido" 
-		<< '\t' << codigo 
-		<< '\t' << nombreComercial 
-		<< '\t' << descripcion
-		<< '\t' << precioCosto 
-		<< '\t' << peso 
-		<< '\t' << nombreAnimal 
-		<< '\t' << parteDelAnimal 
-		<< '\t'<< marca 
-		<< '\t'<< nacio 
-		<< '\t' << cantidad << '\n';
+	file << "Embutido" << '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion<< '\t' << precioCosto << '\t' << peso << '\t' << nombreAnimal << '\t' << parteDelAnimal << '\t'<< marca << '\t'<< nacio << '\t' << cantidad << '\n';
 	if (ptrCarrito != nullptr) {
 		ptrCarrito->guardarComponenteAbstracto(file);
 	}
@@ -127,7 +117,6 @@ DecoradorEmbutido* DecoradorEmbutido::leerDecoEmbutido(ifstream& file)
 	ComponenteAbstracto* car = NULL;
 	Perecedero* pere = NULL;
 	Empaque* empa = NULL;
-	getline(file, tipo, '\t');
 	getline(file, codigoF, '\t');
 	getline(file, nombreComercialF, '\t');
 	getline(file, descripcionF, '\t');
@@ -138,7 +127,8 @@ DecoradorEmbutido* DecoradorEmbutido::leerDecoEmbutido(ifstream& file)
 	getline(file, marc, '\t');
 	getline(file, cantidadF, '\n');
 
-
+	pere = Perecedero::leerPerecedero(file);
+	empa = Empaque::leerEmpaque(file);
 	precioCost = stod(precioCostoF);
 	pesoT = stod(peso);
 	cant = stoi(cantidadF);
@@ -149,9 +139,8 @@ DecoradorEmbutido* DecoradorEmbutido::leerDecoEmbutido(ifstream& file)
 	else {
 		env = false;
 	}
-	pere = Perecedero::leerPerecedero(file);
-	empa = Empaque::leerEmpaque(file);
 
+	getline(file, tipo, '\t');
 	if (tipo == "Abarrote") {
 		car =DecoradorAbarrote:: leerDecoAbarrote(file);
 	}

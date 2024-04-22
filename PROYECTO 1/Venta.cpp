@@ -107,9 +107,7 @@ Venta* Venta::clonar() const
 void Venta::guardarVenta(ofstream& file){
 
 
-    file << "Venta"
-        << '\t' << codigo
-        << '\t' << cedulaCliente << '\n';
+    file << codigo << '\t' << cedulaCliente << '\n';
     if (fVenta != nullptr) {
         this->fVenta->guardarFecha(file);
     }
@@ -119,11 +117,11 @@ void Venta::guardarVenta(ofstream& file){
 }
 Venta* Venta::leerVenta(ifstream& file){
     string codigoL,cedL,tipo;
-    ProductoDecorador* car = NULL;
+    ProductoDecorador* car = nullptr;
     Fecha* f = nullptr;
 
     getline(file, codigoL, '\t');
-    getline(file, cedL, '\t');
+    getline(file, cedL, '\n');
     f = Fecha::leerFecha(file);
     getline(file, tipo, '\t');
    

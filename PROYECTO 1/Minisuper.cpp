@@ -4,6 +4,10 @@ Minisuper::Minisuper(){
 	this->listPersona = new Lista<Persona>();
 	this->listProducto = new Lista<Producto>();
 	this->listVenta = new Lista<Venta>();
+
+	/*leerClientes();*/
+	leerProductos();
+	/*leerVentas();*/
 }
 
 Minisuper::~Minisuper(){
@@ -144,6 +148,7 @@ void Minisuper::guardarVentas() {
 	}
 	else {
 		cout << "Error al abrir el archivo" << endl;
+		system("pause");
 	}
 }
 
@@ -162,36 +167,47 @@ void Minisuper::leerClientes() {
 	}
 	else {
 		cout << "Error al abrir el archivo" << endl;
+		system("pause");
 	}
 }
 
 void Minisuper::leerProductos() {
-	Nodo<Producto>* pAct = listProducto->getPrimero();
+	Producto* prod = NULL;
 	string tipo;
 	ifstream file;
 	file.open("../Productos.txt", ios::in);
+	if (!file.is_open()) {
+		cerr << "No se pudo abrir el archivo de productos." << endl;
+		return;
+	}
+
 	if (file.good()) {
 		while (!file.eof()) {
-			file >> tipo;
-			Producto* p = NULL;
+			getline(file, tipo, '\t');
+
 			if (tipo == "Abarrote") {
-				p = Abarrote::leerAbarrote(file);
-			}
-			if (tipo == "Embutido") {
-				p = Embutido::leerEmbutido(file);
+				prod = Abarrote::leerAbarrote(file);
 			}
 			if (tipo == "Conserva") {
-				p = Conserva::leerConserva(file);
+				prod = Conserva::leerConserva(file);
 			}
-			if (p != nullptr) {
-				agregarProducto(p);
-			}	
+			if (tipo == "Embutido") {
+				prod = Embutido::leerEmbutido(file);
+			}
+			if (file.eof()) {
+				break;
+			}
+
+			if (prod != NULL) {
+				listProducto->agregarFinal(prod);
+			}
 		}
-		file.close();
 	}
 	else {
 		cout << "Error al abrir el archivo" << endl;
+		system("pause");
 	}
+	file.close();
 }
 
 void Minisuper::leerVentas()
