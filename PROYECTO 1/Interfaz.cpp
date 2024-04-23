@@ -567,6 +567,10 @@ void Interfaz::reporteTopClientes(Minisuper* mini) {
         throw string("Lista insuficiente para generar un top"); 
     }
 
+    cout << "__________________________________________" << endl;
+    cout << "|          -TOP 5 CLIENTES-              |" << endl;
+    cout << "|________________________________________|" << endl;
+
     bool intercambio;
     do {
         intercambio = false;
