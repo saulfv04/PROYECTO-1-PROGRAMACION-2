@@ -278,7 +278,7 @@ void Embutido::guardarProducto(ofstream& file)
     else nacionalF = "(Falso)";
 
 
-    file << "Embutido" << '\t' << marca << '\t' << nombreAnimal<<'\t'<<parteDelAnimal<<'\t'<<nacionalF<<'\t'<<peso<< '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion << '\t'
+    file << "Embutido" << '\t' <<codigo<< '\t' << marca << '\t' << nombreAnimal<<'\t'<<parteDelAnimal<<'\t'<<nacionalF<<'\t'<<peso << '\t' << nombreComercial << '\t' << descripcion << '\t'
         << precioCosto << '\t' << categoria << '\t' << existencia << '\t' << limite << '\n';
     if (ptrFechaIng != nullptr) {
         ptrFechaIng->guardarFecha(file);
@@ -307,13 +307,12 @@ Embutido* Embutido::leerEmbutido(ifstream& file)
     Perecedero* fecPer;
 
 
-
+    getline(file, codigoF, '\t');
     getline(file, marcaF, '\t');
     getline(file, nombreAnimalF, '\t');
     getline(file, parteDelAnimalF, '\t');
     getline(file, nacionalF, '\t');
     getline(file, pesoF, '\t');
-    getline(file, codigoF, '\t');
     getline(file, nombreComercialF, '\t');
     getline(file, descripcionF, '\t');
     getline(file, precioCostoF, '\t');

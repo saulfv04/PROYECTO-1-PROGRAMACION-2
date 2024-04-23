@@ -172,7 +172,7 @@ void Conserva::guardarProducto(ofstream& file)
     if (this->envasado)envasadoF = "(Verdadero)";
     else envasadoF = "(Falso)";
 
-    file<<"Conserva"<<'\t' << envasadoF << '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion << '\t'
+    file<<"Conserva"<<'\t' << codigo << '\t' << envasadoF << '\t' << nombreComercial << '\t' << descripcion << '\t'
         << precioCosto << '\t' << categoria << '\t' << existencia << '\t' << limite << '\n';
     if (ptrFechaIng != nullptr) {
         ptrFechaIng->guardarFecha(file);
@@ -187,9 +187,8 @@ Conserva* Conserva::leerConserva(ifstream& file){
     int exist, limit;
     Fecha* fec;
 
-
-    getline(file, envasadoF, '\t');
     getline(file, codigoF, '\t');
+    getline(file, envasadoF, '\t');
     getline(file, nombreComercialF, '\t');
     getline(file, descripcionF, '\t');
     getline(file, precioCostoF, '\t');

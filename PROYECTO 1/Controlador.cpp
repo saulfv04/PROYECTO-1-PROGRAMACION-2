@@ -4,7 +4,6 @@
 Controlador::Controlador()
 {
     this->minisuper = new Minisuper();
-
 }
 
 Controlador::~Controlador()
@@ -15,6 +14,7 @@ Controlador::~Controlador()
 }
 
 void Controlador::control0(){
+    
     int op=0;
     do {
         try {
@@ -30,6 +30,9 @@ void Controlador::control0(){
         this->control3();
         break;
     case 4:
+        minisuper->guardarClientes();
+        minisuper->guardarProductos();
+        minisuper->guardarVentas();
         cout << "Gracias por su visita" << endl;
         break;
     default:

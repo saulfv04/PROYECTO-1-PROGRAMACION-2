@@ -81,15 +81,7 @@ void DecoradorAbarrote::guardarComponenteAbstracto(ofstream& file)
     else {
         nacio = "Internacional";
     }
-    file << "Abarrote" 
-        << '\t' << codigo 
-        << '\t' << nombreComercial 
-        << '\t' << descripcion 
-        << '\t' << precioCosto 
-        << '\t' <<peso 
-        << '\t' <<empresaNombre
-        << '\t' << nacio
-        << '\t' << cantidad << '\n';
+    file << "Abarrote" << '\t' << codigo << '\t' << nombreComercial << '\t' << descripcion << '\t' << precioCosto << '\t' <<peso << '\t' <<empresaNombre << '\t' << nacio<< '\t' << cantidad << '\n';
     if (ptrCarrito != nullptr) {
         ptrCarrito->guardarComponenteAbstracto(file);
     }
@@ -107,7 +99,7 @@ DecoradorAbarrote* DecoradorAbarrote::leerDecoAbarrote(ifstream& file)
     ComponenteAbstracto* car = NULL;
     Perecedero* pere = NULL;
 
-    getline(file, tipo, '\t');
+   
     getline(file, codigoF, '\t');
     getline(file, nombreComercialF, '\t');
     getline(file, descripcionF, '\t');
@@ -117,6 +109,7 @@ DecoradorAbarrote* DecoradorAbarrote::leerDecoAbarrote(ifstream& file)
     getline(file, nacion, '\t');
     getline(file, cantidadF, '\n');
 
+    pere = Perecedero::leerPerecedero(file);
 
     precioCost = stod(precioCostoF);
     pesoT = stod(peso);
@@ -128,8 +121,9 @@ DecoradorAbarrote* DecoradorAbarrote::leerDecoAbarrote(ifstream& file)
     else {
         env = false;
     }
-    pere = Perecedero::leerPerecedero(file);
+    
 
+    getline(file, tipo, '\t');
     if (tipo == "Abarrote") {
         car = leerDecoAbarrote(file);
     }
