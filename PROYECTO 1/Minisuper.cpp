@@ -5,9 +5,9 @@ Minisuper::Minisuper(){
 	this->listProducto = new Lista<Producto>();
 	this->listVenta = new Lista<Venta>();
 
-	/*leerClientes();*/
+	leerClientes();
 	leerProductos();
-	/*leerVentas();*/
+	leerVentas();
 }
 
 Minisuper::~Minisuper(){
@@ -153,24 +153,33 @@ void Minisuper::guardarVentas() {
 }
 
 void Minisuper::leerClientes() {
-	Nodo<Persona>* pAct = listPersona->getPrimero();
+	Persona* cliente = NULL;
+	string tipo;
 	ifstream file;
 	file.open("../Clientes.txt", ios::in);
+
 	if (file.good()) {
 		while (!file.eof()) {
-			Persona* p = Persona::leerPersona(file);
-			if (p != nullptr) {
-				agregarPersona(p);
+
+			getline(file, tipo, '\t');
+
+			if (tipo == "Persona")
+				cliente = Persona::leerPersona(file);
+
+			if (file.eof()) {
+				break;
+			}
+
+			if (cliente != NULL) {
+				listPersona->agregarFinal(cliente);
 			}
 		}
-		file.close();
 	}
 	else {
-		cout << "Error al abrir el archivo" << endl;
-		system("pause");
+		cerr << "No se pudo abrir el archivo de clientes." << endl;
 	}
+	file.close();
 }
-
 void Minisuper::leerProductos() {
 	Producto* prod = NULL;
 	string tipo;
@@ -203,35 +212,39 @@ void Minisuper::leerProductos() {
 			}
 		}
 	}
-	else {
-		cout << "Error al abrir el archivo" << endl;
-		system("pause");
-	}
 	file.close();
 }
 
-void Minisuper::leerVentas()
-{
+void Minisuper::leerVentas(){
 	Venta* venta = NULL;
 	string tipo;
 	ifstream file;
 	file.open("../Ventas.txt", ios::in);
+	if (!file.is_open()) {
+		cerr << "No se pudo abrir el archivo de ventas." << endl;
+		system("pause");
+		return;
+	}
+
 	if (file.good()) {
 		while (!file.eof()) {
-			file >> tipo;
-			if (tipo == "Venta") {
+
+			getline(file, tipo, '\t');
+
+			if (tipo == "Venta")
 				venta = Venta::leerVenta(file);
-				if (venta != nullptr) {
-					agregarVenta(venta);
-				}
+
+			if (file.eof()) {
+				break;
+			}
+
+			if (venta != NULL) {
+				listVenta->agregarFinal(venta);
+
 			}
 		}
-		file.close();
 	}
-	else {
-		cout << "Error al abrir el archivo" << endl;
-	}
-	
+	file.close();
 }
 
 

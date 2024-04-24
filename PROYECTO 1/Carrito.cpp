@@ -41,9 +41,12 @@ ComponenteAbstracto* Carrito::clonar() const
     return NULL;
 }
 
-void Carrito::guardarComponenteAbstracto(ofstream&){}
+void Carrito::guardarComponenteAbstracto(ofstream& file){
+    file << "Carrito" << '\t' << "---" << '\n';
+}
 
-Carrito* Carrito::leerCarrito(ifstream&){
+
+Carrito* Carrito::leerCarrito(ifstream& file){
     return new Carrito();
 }
 
