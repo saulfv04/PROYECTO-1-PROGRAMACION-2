@@ -2,25 +2,25 @@
 
 Persona::Persona(){
 	this->cedula = "i";
-	this->cantVentas = 0;
+	this->dinero = 0.0;
 	
 }
 
 Persona::Persona(string c){
 
 	this->cedula = c;
-	this->cantVentas = 0;
+	this->dinero = 0.0;
 }
 
-Persona::Persona(string c, int cany)
+Persona::Persona(string c, double din)
 {
 	this->cedula = c;
-	this->cantVentas = cany;
+	this->dinero = din;
 }
 
 Persona::Persona(const Persona& p){
 	this->cedula = p.cedula;
-	this->cantVentas = p.cantVentas;	
+	this->dinero = p.dinero;	
 }
 
 Persona::~Persona(){
@@ -33,14 +33,14 @@ string Persona::getCodigo()const{
 	return this->cedula;
 }
 
-int Persona::getCantVentas()
+double Persona::getDinero()
 {
-	return this->cantVentas;
+	return this->dinero;
 }
 
-void Persona::setCantidadVentas(int n)
+void Persona::setDinero(double n)
 {
-	this->cantVentas = n;
+	this->dinero += n;
 }
 
 
@@ -48,25 +48,25 @@ string Persona::toString()const
 {
 	stringstream s;
 	s << "Cedula: " << this->cedula << endl;
-	s<< "Cantidad de Ventas: " << this->cantVentas << endl;
+	s<< "Dinero en ventas: " << this->dinero << endl;
 	return s.str();
 }
 
 void Persona::guardarPersona(ofstream& file)
 {
-	file <<"Persona"<< '\t' << cedula << '\t' << cantVentas << '\n';
+	file <<"Persona"<< '\t' << cedula << '\t' << dinero << '\n';
 }
 
 Persona* Persona::leerPersona(ifstream& file)
 {
-	string cedula,cant;
-	int cantidadVentas;
+	string cedula,din;
+	double dine;
 
 	getline(file, cedula, '\t');
-	getline(file, cant, '\n');
-	cantidadVentas = stoi(cant);
+	getline(file, din, '\n');
+	dine = stod(din);
 
-	return new Persona(cedula,cantidadVentas);
+	return new Persona(cedula,dine);
 }
 
 Persona* Persona::clonar() const

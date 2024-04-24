@@ -7,21 +7,21 @@ using namespace std;
 class Persona{
 private:
 	string cedula;
-	int cantVentas;
+	double dinero;
 
 public:
 	//Contructores y Desctructor
 	Persona();
 	Persona(string);
-	Persona(string, int);
+	Persona(string, double);
 	Persona(const Persona&);
 	virtual ~Persona();
 
 
 	//Accesores
 	string getCodigo()const;
-	int getCantVentas();
-	void setCantidadVentas(int);
+	double getDinero();
+	void setDinero(double);
 
 	//Información clase
 	string toString()const;

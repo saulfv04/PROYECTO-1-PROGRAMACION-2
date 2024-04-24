@@ -567,12 +567,16 @@ void Interfaz::reporteTopClientes(Minisuper* mini) {
         throw string("Lista insuficiente para generar un top"); 
     }
 
+    cout << "__________________________________________" << endl;
+    cout << "|          -TOP 5 CLIENTES-              |" << endl;
+    cout << "|________________________________________|" << endl;
+
     bool intercambio;
     do {
         intercambio = false;
         Nodo<Persona>* actual = listaClientes->getPrimero();
         while (actual->obtenerSig() != nullptr) {
-            if (actual->obtenerInfo()->getCantVentas() < actual->obtenerSig()->obtenerInfo()->getCantVentas()) {
+            if (actual->obtenerInfo()->getDinero() < actual->obtenerSig()->obtenerInfo()->getDinero()) {
                 // Intercambiar las personas
                 Persona temp = *actual->obtenerInfo();
                 *actual->obtenerInfo() = *actual->obtenerSig()->obtenerInfo();
@@ -668,12 +672,12 @@ void Interfaz::agregarProductoVenta(Minisuper* mini)
         ventaNueva->setCliente(persona);
         ventaNueva->setFecha(fNueva);
         ventaNueva->setCodigo(codVenta);
-        personaVenta->obtenerInfo()->setCantidadVentas(personaVenta->obtenerInfo()->getCantVentas() + 1);
         ProductoDecorador* pd = dynamic_cast<ProductoDecorador*>(carrito);
         if (pd!=nullptr) {
             ventaNueva->setCarrito(pd);
             cout << *ventaNueva;
             mini->agregarVenta(ventaNueva);
+            personaVenta->obtenerInfo()->setDinero(ventaNueva->totalneto());
         }
         else {
             cout << "Su carrito no pudo generarse..." << endl;
