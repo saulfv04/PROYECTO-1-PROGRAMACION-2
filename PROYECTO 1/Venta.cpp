@@ -105,9 +105,7 @@ Venta* Venta::clonar() const
 
 
 void Venta::guardarVenta(ofstream& file){
-
-
-    file << codigo << '\t' << cedulaCliente << '\n';
+    file <<"Venta" << '\t' << codigo << '\t' << cedulaCliente << '\n';
     if (fVenta != nullptr) {
         this->fVenta->guardarFecha(file);
     }
@@ -116,25 +114,20 @@ void Venta::guardarVenta(ofstream& file){
     }
 }
 Venta* Venta::leerVenta(ifstream& file){
-    string codigoL,cedL,tipo;
+    string codigo, cedula, tipo;
     ProductoDecorador* car = nullptr;
-    Fecha* f = nullptr;
+    Fecha* fechaVenta = nullptr;
 
-    getline(file, codigoL, '\t');
-    getline(file, cedL, '\n');
-    f = Fecha::leerFecha(file);
+    getline(file, codigo, '\t');
+    getline(file, cedula, '\n');
+    fechaVenta = Fecha::leerFecha(file);
     getline(file, tipo, '\t');
-   
-    if (tipo == "Abarrote") {
-        car = DecoradorAbarrote::leerDecoAbarrote(file);
-    }
-    if (tipo == "Embutido") {
-        car = DecoradorEmbutido::leerDecoEmbutido(file);
-    }
-    if (tipo == "Conserva") {
-        car = DecoradorConserva::leerDecoConserva(file);
-    }
-    return new Venta(car,cedL,f,codigoL );
+
+    if (tipo == "Embutido") car = DecoradorEmbutido::leerDecoEmbutido(file);
+    if (tipo == "Abarrote") car = DecoradorAbarrote::leerDecoAbarrote(file);
+    if (tipo == "Conserva") car = DecoradorConserva::leerDecoConserva(file);
+
+    return new Venta(car, cedula, fechaVenta, codigo);
 }
 
 ostream& operator<<(ostream& o , Venta& v)

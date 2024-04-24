@@ -79,7 +79,7 @@ istream& operator>>(istream& i, Fecha& f)
     }
     cout << "Mes: " << endl;
     i >> f.mes;
-    if (f.mes <= 0 && f.mes >=13) {
+    if (f.mes <= 0 || f.mes >12) {
         throw string("El mes ingresado no es posible...");
     }
     cout << "Dia: " << endl;
