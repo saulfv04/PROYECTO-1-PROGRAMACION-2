@@ -132,6 +132,9 @@
     <ClInclude Include="ERI.h">
       <Filter>Header Files\Excepciones</Filter>
     </ClInclude>
+    <ClInclude Include="ExcCedula.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Conserva.cpp">
@@ -201,6 +204,9 @@
       <Filter>Source Files\Excepciones</Filter>
     </ClCompile>
     <ClCompile Include="ERI.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ExcCedula.cpp">
       <Filter>Source Files\Excepciones</Filter>
     </ClCompile>
   </ItemGroup>

@@ -142,6 +142,7 @@
     <ClInclude Include="Empaque.h" />
     <ClInclude Include="ERI.h" />
     <ClInclude Include="ERS.h" />
+    <ClInclude Include="ExcCedula.h" />
     <ClInclude Include="ExcepcionRango.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Interfaz.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Empaque.cpp" />
     <ClCompile Include="ERI.cpp" />
     <ClCompile Include="ERS.cpp" />
+    <ClCompile Include="ExcCedula.cpp" />
     <ClCompile Include="ExcepcionRango.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Interfaz.cpp" />
