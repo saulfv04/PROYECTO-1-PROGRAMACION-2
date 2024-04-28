@@ -207,6 +207,11 @@ void Controlador::control4()
             cout << excp.toString() << endl;
             system("pause");
         }
+        catch (ExcCedula& e) {
+            cout << e.what() << endl;
+            system("pause");
+            person = 0;
+        }
         catch (...) {
             cout << "Error irreconocible" << endl;
             person = 0;
@@ -606,18 +611,18 @@ void Controlador::control3_4()
     int opC=0;
     do {
         try {
-        opC = controlReportVentasClienteEspecifico();
-        switch (opC) {
-        case 1:
-            control3_4_1();
-            break;
-        case 2:
-            cout << "Regresando..." << endl;
-            break;
-        default:
-            cout << "Opcion no disponible" << endl;
-            break;
-        }
+            opC = controlReportVentasClienteEspecifico();
+            switch (opC) {
+            case 1:
+                control3_4_1();
+                break;
+            case 2:
+                cout << "Regresando..." << endl;
+                break;
+            default:
+                cout << "Opcion no disponible" << endl;
+                break;
+            }
         }
         catch (string msj) {
             cout << msj << endl;
