@@ -54,14 +54,13 @@ string Persona::toString()const
 
 void Persona::guardarPersona(ofstream& file)
 {
-	file <<"Persona"<< '\t' << cedula << '\t' << dinero << '\n';
+	file  <<"Persona" << '\t' << cedula << '\t' << dinero << '\n';
 }
 
 Persona* Persona::leerPersona(ifstream& file)
 {
-	string cedula,din;
+	string tipo,cedula,din;
 	double dine;
-
 	getline(file, cedula, '\t');
 	getline(file, din, '\n');
 	dine = stod(din);

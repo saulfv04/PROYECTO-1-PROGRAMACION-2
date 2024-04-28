@@ -1,5 +1,6 @@
 #pragma once
 #include "ComponenteAbstracto.h"
+#include <fstream>
 class Carrito :public ComponenteAbstracto{
 
 public:
