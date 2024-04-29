@@ -32,7 +32,7 @@ Nodo<T>::Nodo(Nodo<T>* sig, T* dat) :siguiente(sig), dato(dat) {}
 template<class T>
 Nodo<T>::~Nodo()
 {
-	if (dato)//Esto depende de la aplicacion
+	if (dato)
 		delete dato;
 }
 
