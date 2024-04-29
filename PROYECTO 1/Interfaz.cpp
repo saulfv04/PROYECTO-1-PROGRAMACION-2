@@ -394,7 +394,7 @@ void Interfaz::Eliminacion(Minisuper* mini)
     cout << "|                                        |" << endl;
     cout << "|    (1)   Cod.Producto.                 |" << endl;
     cout << "|________________________________________|" << endl;
-    cout << "Digite la opcion: ";    
+    cout << "Digite el codigo del producto a eliminar: ";    
     cin >> op;
     Producto* aux = mini->eliminarProductoEspecifico(op);
     if (aux!=nullptr) {
