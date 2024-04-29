@@ -12,12 +12,12 @@ private:
 public:
 	Lista();
 	Lista(const Lista&);
-	Lista& operator = (const Lista&);//operador de asignacion
+	Lista& operator = (const Lista&);
 	virtual ~Lista();
 	void agregarInicio(T*);
 	void agregarFinal(T*);
-	T* eliminar(); // Eliminar primero, que devuelve lo que se borro
-	void eliminarTodos();//elimina los elementos de la lista
+	T* eliminar(); 
+	void eliminarTodos();
 	T* eliminarEspecifico(string);
 	void invierteLista();
 	Nodo<T>* buscarElemento(string);
@@ -133,9 +133,9 @@ void Lista<T>::agregarInicio(T* dat) {
 		primero = new Nodo<T>(nullptr, dato1);
 	}
 	else {
-		Nodo<T>* pNuevo = new Nodo<T>(nullptr, dato1); // New node's next pointer should point to the current first node
-		pNuevo->setSig(primero); // Set the next pointer of the new node to the current first node
-		primero = pNuevo; // Update the first node pointer to the new node
+		Nodo<T>* pNuevo = new Nodo<T>(nullptr, dato1); 
+		pNuevo->setSig(primero); 
+		primero = pNuevo; 
 	}
 }
 
