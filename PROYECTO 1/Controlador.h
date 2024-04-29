@@ -4,6 +4,7 @@
 #include "ExcepcionRango.h"
 #include "ERI.h"
 #include "ERS.h"
+#include "ExcCedula.h"
 class Controlador{
 private:
 	Minisuper* minisuper;

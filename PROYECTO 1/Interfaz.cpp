@@ -456,8 +456,8 @@ void Interfaz::menuMantAgregarClientes(Minisuper* mini)
     Persona* p = new Persona();
     cin >> *p;
     if (mini->getCliente(p->getCodigo())==nullptr) {
-    mini->agregarPersona(p);
-    cout << "Cliente ingresada..." << endl;
+        mini->agregarPersona(p);
+        cout << "Cliente ingresada..." << endl;
     }
     else {
         cout << "El cliente ya existe en nuestro sistema actual..." << endl;

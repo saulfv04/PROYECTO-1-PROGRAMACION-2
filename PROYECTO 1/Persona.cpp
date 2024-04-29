@@ -1,4 +1,7 @@
 #include "Persona.h"
+#include <cctype>
+
+#include "ExcCedula.h"
 
 Persona::Persona(){
 	this->cedula = "i";
@@ -84,5 +87,12 @@ istream& operator>>(istream& i, Persona& p)
 	cout << "Creando Persona" << endl;
 	cout << "Ingresar Cedula:" << endl;
 	i  >>  p.cedula;
+
+	for (char c : p.cedula) {
+		if (!isdigit(c)) {
+			throw ExcCedula(p.cedula);
+		}
+	}
+
 	return i;
 }
